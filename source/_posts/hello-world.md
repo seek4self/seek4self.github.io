@@ -1,30 +1,57 @@
 ---
-title: Hello World
+title: hexo config
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+
+[Hexo](https://hexo.io/zh-cn/) 是一款快速、简洁并且高效博客框架
+
+## Prepare the environment
+
+- Node.js >= 12.0
+- npm
+- git
+- hexo >= 5.0
+
+以上环境搭建若不会建议问 Google
+
+### Init hexo
+
+```sh
+npm install hexo-cli -g
+# 新建空文件夹
+mkdir blog
+cd blog
+# 初始化基础文件
+hexo init
+# 安装依赖
+npm install
+```
 
 ## Quick Start
 
 ### Create a new post
 
-``` bash
-$ hexo new "My New Post"
+```sh
+hexo new "My New Post"
 ```
 
 More info: [Writing](https://hexo.io/docs/writing.html)
 
 ### Run server
 
-``` bash
-$ hexo server
+```sh
+hexo server
+# 简化
+hexo s
 ```
 
 More info: [Server](https://hexo.io/docs/server.html)
 
 ### Generate static files
 
-``` bash
-$ hexo generate
+```sh
+hexo generate
+# 简化
+hexo g
 ```
 
 More info: [Generating](https://hexo.io/docs/generating.html)
@@ -32,7 +59,17 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 ### Deploy to remote sites
 
 ``` bash
-$ hexo deploy
+hexo deploy
+# 简化
+hexo d
 ```
 
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
+
+### Clean
+
+```bash
+hexo clean
+```
+
+清除缓存文件 (db.json) 和已生成的静态文件 (public)。
