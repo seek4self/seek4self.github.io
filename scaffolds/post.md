@@ -7,6 +7,6 @@ password:
 toc: true
 mathjax: true
 summary:
-tags:
 categories:
+tags:
 ---
