@@ -72,6 +72,8 @@ hexo deploy
 hexo d
 ```
 
+> **注意**：若 Github 设置自定义域名，部署之后，`CNAME` 文件会被覆盖，导致网站不可用,可以将 `CNAME` 文件放在`themes/[theme-name]/source`目录下，这样编译静态文件会自动带过去，之后会一同推送到远端
+
 More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 
 ### Clean
