@@ -6,7 +6,7 @@ toc: true
 mathjax: true
 date: 2021-04-05 10:31:49
 password:
-summary:
+summary: 对 golang map 的一些初步认识
 categories: 编程语言
 tags:
   - Golang
