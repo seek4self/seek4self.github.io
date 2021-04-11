@@ -1,6 +1,6 @@
 ---
 title: cgo 的魔法
-top: false
+top: true
 cover: false
 toc: true
 mathjax: true
@@ -36,10 +36,10 @@ import "unsafe"
 func main() {
   // CString() 是 go 内部的接口，可以转换 go 的字符串为 c 语言字符串格式 char*
   cs := C.CString("Hello, World\n")
-  // 调用c接口方式为 C.api(), 
   // 因为 CString 使用 c 的 malloc 申请空间，go GC 不会清理，用完后需要手动 free
   // unsafe.Pointer 相当于 c 的 void*，这里做了强制转换
   defer C.free(unsafe.Pointer(cs))
+  // 调用c接口方式为 C.api(), 
   C.puts(cs)
 }
 ```
@@ -151,7 +151,7 @@ func Float64bits(f float64) uint64 {
 
 #### 2. 将`Pointer`转换为`uintptr`（但不转换回`Pointer`）
 
-将 `Pointer` 转换为 `uintptr` 会生成所指向的值的内存地址（整数）。这种 `uintptr` 的通常用法是打印它。通常，将 `uintptr` 转换回 `Pointer` s是无效的。  
+将 `Pointer` 转换为 `uintptr` 会生成所指向的值的内存地址（整数）。这种 `uintptr` 的通常用法是打印它。通常，将 `uintptr` 转换回 `Pointer` 是无效的。  
 `uintptr`是整数，而不是引用。 将 `Pointer` 转换为 `uintptr` 会创建一个没有指针语义的整数值。 即使`uintptr`保留了某个对象的地址，垃圾回收器也不会在对象移动时更新该`uintptr`的值，该`uintptr`也不会使该对象被回收。
 
 其余的模式枚举了从`uintptr`到`Pointer`的唯一有效转换。
