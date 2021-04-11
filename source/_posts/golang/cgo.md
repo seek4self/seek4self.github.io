@@ -1,5 +1,5 @@
 ---
-title: cgo
+title: cgo 的魔法
 top: false
 cover: false
 toc: true
@@ -14,7 +14,7 @@ date: 2021-04-10 10:45:02
 password:
 ---
 
-## cgo 连接访问 c 标准库
+## cgo 访问 c 标准库
 
 当我们需要用 go 调用 c 语言写的接口时，就需要用 `cgo` 进行连接，`cgo` 属于 go 语言的一个特殊工具，直接通过一个例子来看
 
@@ -131,15 +131,17 @@ func main() {
 - 指针可以转换为 uintptr。 
 ```
 
-> 下面部分翻译自 go pkg.go.dev
+### Pointer转换实例
 
-以下涉及Pointer的模式是有效的。不使用这些模式的代码今天可能无效，或者将来可能无效。甚至下面的有效模式也带有重要的警告。
+> 下面内容翻译自 go [unsafe](https://pkg.go.dev/unsafe)
 
-运行 `go vet` 可以帮助查找不符合这些模式的Pointer用法，但是运行 `go vet` 没警告不能保证这些代码是有效。
+以下涉及 `Pointer` 的模式是有效的。不使用这些模式的代码今天可能无效，或者将来可能无效。甚至下面的有效模式也带有重要的警告。
 
-1. 将 `*T1` 转换为指向 `*T2` 的指针。
+运行 `go vet` 可以帮助查找不符合这些模式的 `Pointer` 用法，但是运行 `go vet` 没警告不能保证这些代码是有效。
 
-假设T2不大于T1，并且两个共享相同的内存布局，则此转换允许将一种类型的数据重新解释为另一种类型的数据。一个示例是math.Float64bits的实现：
+#### 1. 将 `*T1` 转换为指向 `*T2` 的指针
+
+假设T2不大于T1，并且两个共享相同的内存布局，则此转换允许将一种类型的数据重新解释为另一种类型的数据。一个示例是`math.Float64bits`的实现：
 
 ```go
 func Float64bits(f float64) uint64 {
@@ -147,14 +149,14 @@ func Float64bits(f float64) uint64 {
 }
 ```
 
-2. 将`Pointer`转换为`uintptr`（但不转换回`Pointer`）。
+#### 2. 将`Pointer`转换为`uintptr`（但不转换回`Pointer`）
 
 将 `Pointer` 转换为 `uintptr` 会生成所指向的值的内存地址（整数）。这种 `uintptr` 的通常用法是打印它。通常，将 `uintptr` 转换回 `Pointer` s是无效的。  
 `uintptr`是整数，而不是引用。 将 `Pointer` 转换为 `uintptr` 会创建一个没有指针语义的整数值。 即使`uintptr`保留了某个对象的地址，垃圾回收器也不会在对象移动时更新该`uintptr`的值，该`uintptr`也不会使该对象被回收。
 
 其余的模式枚举了从`uintptr`到`Pointer`的唯一有效转换。
 
-3. 用算术将`Pointer`转换为`uintptr`并返回。
+#### 3. 用算术将`Pointer`转换为`uintptr`并返回
 
 如果p指向已分配的对象，则可以通过转换为 `uintptr`，添加偏移量并将其转换回 `Pointer` 的方式将其推进对象。
 
@@ -202,7 +204,7 @@ u := unsafe.Pointer(nil)
 p := unsafe.Pointer(uintptr(u) + offset)
 ```
 
-4. 调用 `syscall.Syscall` 时将指针转换为 `uintptr`。
+#### 4. 调用 `syscall.Syscall` 时将指针转换为 `uintptr`
 
 `syscall` 包中的 `Syscall` 函数将其 `uintptr` 参数直接传递给操作系统，然后，操作系统可以根据调用的详细信息将其中一些参数重新解释为指针。 也就是说，系统调用实现正在将某些参数从 `uintptr` 隐式转换回指针。  
 如果必须将指针参数转换为 `uintptr` 用作参数，则该转换必须出现在调用表达式本身中：
@@ -221,7 +223,7 @@ u := uintptr(unsafe.Pointer(p))
 syscall.Syscall(SYS_READ, uintptr(fd), u, uintptr(n))
 ```
 
-5. 将 `reflect.Value.Pointer` 或 `reflect.Value.UnsafeAddr` 的结果从 `uintptr` 转换为 `Pointer`。
+#### 5. 将 `reflect.Value.Pointer` 或 `reflect.Value.UnsafeAddr` 的结果从 `uintptr` 转换为 `Pointer`
 
 包反射的名为 `Pointer` 和 `UnsafeAddr` 的 `Value` 方法返回类型 `uintptr` 而不是 `unsafe.Pointer`，以防止调用者在不首先导入 `"unsafe"` 的情况下将结果更改为任意类型。 但是，这意味着结果很脆弱，必须在调用后立即使用相同的表达式将其转换为Pointer：
 
@@ -238,7 +240,7 @@ u := reflect.ValueOf(new(int)).Pointer()
 p := (*int)(unsafe.Pointer(u))
 ```
 
-6. 将一个 `reflect.SliceHeader` 或 `reflect.StringHeader` 数据字段与指针进行转换。
+#### 6. 将一个 `reflect.SliceHeader` 或 `reflect.StringHeader` 数据字段与指针进行转换
 
 与前面的情况一样，反射数据结构 `SliceHeader` 和 `StringHeader` 将字段 `Data` 声明为 `uintptr`，以防止调用者在不首先导入 `"unsafe"` 的情况下将结果更改为任意类型。 但是，这意味着 `SliceHeader` 和 `StringHeader` 仅在解释实际切片或字符串值的内容时才有效。
 
