@@ -170,7 +170,7 @@ reward:
 # 是否激活复制文章时追加博客和作者的版权信息.
 copyright:
   enable: true
-  minCharNumber: 120 # 至少复制多少个字符就追加版权信息.
+  minCharNumber: 100 # 至少复制多少个字符就追加版权信息.
   description: 本文章著作权归作者所有，任何形式的转载都请注明出处。
 
 # Whether to activate the mathjax, this is a global configuration, but the post still does not open the mathjax rendering.
@@ -237,22 +237,22 @@ mySkills:
   data:
     Golang:
       background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
-      percent: 85%
+      percent: 75%
     JavaScript:
       background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
       percent: 60%
     C++:
       background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
-      percent: 40%
+      percent: 50%
     Vue:
       background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
       percent: 20%
     SQL:
       background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
-      percent: 80%
+      percent: 60%
     程序设计:
       background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
-      percent: 75%
+      percent: 70%
 
 # config gallery of my photos in about page.
 # If you don't want to display this `Gallery` content, you can deactivate or delete this configuration.
