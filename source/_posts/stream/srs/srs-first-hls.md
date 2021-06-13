@@ -76,7 +76,104 @@ http://example.com/audio/index.m3u8
 
 ### ts 切片
 
+> To do continue
 
-## srs 输出 hls
+## srs 分发 hls
 
 将 rtmp 流 推送到 srs 服务，通过 srs 将 rtmp 流切片并复用成 ts 格式文件，在没有转码的配置下只支持 h.264+aac 流格式
+
+### 流程
+
+- 接收客户端 rtmp 推流请求，准备存储 ts 流
+
+```plantuml
+@startuml
+start
+partition listenConn {
+  :SrsSTCoroutine::cycle();
+  :SrsConnection::cycle();
+  :SrsRtmpConn::do_cycle();
+  :SrsRtmpConn::service_cycle();
+}
+while (true)
+  :SrsRtmpConn::stream_service_cycle();
+  switch (SrsRtmpConnType)
+  case ( SrsRtmpConnPlay )
+    :SrsRtmpConn::playing();
+    : ...;
+  case ( SrsRtmpConnFMLEPublish ) 
+    :SrsRtmpConn::publishing();
+    :SrsRtmpConn::acquire_publish();
+    :SrsSource::on_publish();
+    :SrsOriginHub:on_publish();
+    :SrsHls:on_publish();
+    :SrsHlsController::on_publish;
+    partition tsSegment {
+      :read config;
+      -> new muxer st routine;
+      :muxer->on_publish();
+      -> update muxer config;
+      :muxer->update_config();
+      -> create ts segment;
+      :muxer->segment_open();
+      floating note right: 准备 hls 切片文件
+    }
+  case ( SrsRtmpConnFlashPublish )
+    :SrsRtmpConn::publishing();
+    :...;
+  case ( SrsRtmpConnHaivisionPublish )
+    :SrsRtmpConn::publishing();
+    :...;
+  endswitch
+endwhile (kill signal)
+end
+@enduml
+```
+
+- recv_thread 接收音视频流
+
+```plantuml
+@startuml
+start
+while (true)
+  -> rtmp server 接收到推流消息;
+  :SrsRtmpServer::recv_message();
+  :SrsPublishRecvThread::consume();
+  -> 处理消息;
+  :SrsRtmpConn::handle_publish_message();
+  -> 处理包含音视频、元数据的消息;
+  :SrsRtmpConn::process_publish_message();
+  if (msg->header is audio) then (yes)
+    -> 处理音频消息;
+    :SrsSource::on_audio();
+    :SrsSource::on_audio_imp();
+    -> 处理音频;
+    :SrsOriginHub::on_audio();
+    -> 初始化音频编码器 aac/mp3;
+    :SrsFormat::on_audio();
+    :SrsHls::on_audio;
+    -> 设置采样率，并将音频数据写入文件;
+    :SrsHlsController::write_audio;
+  elseif (msg->header is video) then (yes)
+    -> 处理视频消息;
+    :SrsSource::on_video();
+    :SrsSource::on_video_imp();
+    -> 处理视频;
+    :SrsOriginHub::on_video();
+    -> 初始化视频编码器 AVC;
+    :SrsFormat::on_video();
+    :SrsHls::on_video;
+    -> 设置DTS，并将视频数据写入文件;
+    :SrsHlsController::write_video;
+  elseif (msg->header is aggregate) then (yes)
+    -> 处理聚合包消息;
+    :SrsSource::on_aggregate();
+  elseif (msg->header is amf_data) then (yes)
+    -> 处理元数据消息;
+    :SrsRtmpServer::decode_message();
+  else (no)
+  endif
+endwhile
+end
+@enduml
+```
