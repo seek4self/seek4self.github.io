@@ -82,6 +82,65 @@ http://example.com/audio/index.m3u8
 
 将 rtmp 流 推送到 srs 服务，通过 srs 将 rtmp 流切片并复用成 ts 格式文件，在没有转码的配置下只支持 h.264+aac 流格式
 
+## hls 类关系
+
+```plantuml
+@startuml
+class SrsHls {
+  +dispose()
+  +cycle()
+  +initialize()
+  +on_publish()
+  +on_unpublish()
+  +on_audio()
+  +on_video()
+}
+
+class SrsHlsMuxer {
+  +sequence_no()
+  +ts_url()
+  +duration()
+  +deviation()
+  ..
+  +initialize()
+  +on_publish()
+  +on_unpublish()
+  +update_config()
+  +segment_open()
+  +on_sequence_header()
+  +is_segment_overflow()
+  +wait_keyframe()
+  +is_segment_absolutely_overflow()
+  ..
+  +pure_audio()
+  +flush_audio()
+  +flush_video()
+  +segment_close()
+}
+
+SrsOriginHub *--  SrsHls
+SrsHls <.. SrsFormat
+SrsHls *--  SrsRtmpJitter
+SrsHls "1" *-- "1"  SrsHlsController
+SrsHls o--> "0..1" SrsRequest
+SrsTsMessageCache  ..>  SrsHlsMuxer
+SrsHlsController *--  SrsTsMessageCache
+SrsHlsController <.. SrsAudioFrame 
+SrsHlsController <.. SrsVideoFrame 
+SrsHlsController *--  SrsHlsMuxer
+SrsRequest "0..1" <--o  SrsHlsMuxer
+SrsHlsMuxer *--  SrsFileWriter
+SrsHlsMuxer o--> "0..1" SrsHlsSegment
+SrsHlsMuxer *--  SrsTsContext
+SrsHlsMuxer *--  SrsAsyncCallWorker
+SrsHlsMuxer *--  SrsFragmentWindow
+SrsFileWriter --o SrsHlsSegment
+SrsTsContext --> SrsHlsSegment
+SrsHlsSegment *-- SrsTsContextWriter
+SrsHlsSegment --|> SrsFragment
+@enduml
+```
+
 ### 流程
 
 - 接收客户端 rtmp 推流请求，准备存储 ts 流
