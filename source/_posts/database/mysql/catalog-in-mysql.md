@@ -1,12 +1,12 @@
 ---
-title: 在 MySQL 中存储层级结构
+title: 在 MySQL 中管理层级结构
 top: false
 cover: false
 toc: true
 mathjax: false
 date: 2021-07-19 14:37:17
 password:
-summary: 
+summary: 层级数据不好存储，不如换个存储模型
 categories: 数据库
 tags: mysql
 ---
