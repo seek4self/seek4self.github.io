@@ -177,7 +177,7 @@ mysql> select * from catalog;
 
 嵌套集模型是多个嵌套在一起的集合来表示数据之间的层级关系，每个数据都有自己的 `left` 和 `right`值，以此来表示集合的边界
 
-![嵌套集合模型示意图](/image/db/nested_category.jpg)
+![嵌套集合模型示意图](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/db/nested_category.jpg)
 
 ### 初始化集合数据
 
@@ -212,7 +212,7 @@ INSERT INTO `nested_category` VALUES (11, 'psychology', 20, 21);
 
 这些左右值数据水平展开来看就如下图编号所示，从左到右，依次增大，这种左右值的访问顺序与二叉树的先序遍历类似
 
-![嵌套集合模型编号图](/image/db/nested_category_number.jpg)
+![嵌套集合模型编号图](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/db/nested_category_number.jpg)
 
 ### 查询完整树列表
 

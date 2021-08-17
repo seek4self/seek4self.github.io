@@ -21,7 +21,7 @@ SRS(Simple RTMP Server) 是国内开源的高性能流媒体集群服务器，�
 
 ## HLS 简介
 
-![hls Architecture from <https://developer.apple.com/documentation/http_live_streaming>](/image/srs/hls.png)
+![hls Architecture from <https://developer.apple.com/documentation/http_live_streaming>](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/srs/hls.png)
 
 HLS(Http Live Streaming) 是 Apple 公司出的流媒体协议，基于 HTTP 协议，以 m3u8 文件形式分发流，支持直播（live）和点播(vod)，一般用于传输 HEVC 或 H.264 视频和 AAC 或 AC-3 音频，流地址如下：
 

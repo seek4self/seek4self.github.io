@@ -42,20 +42,20 @@ CMake 编译需要写 CMakeLists.txt 文件， make 需要 Makefile 文件， �
 
 1. 选择 gcc 编译工具版本
 
-    ![select gcc](/image/vscode/cmake/cmake.png)
+    ![select gcc](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake.png)
 
 2. 根据提示创建 `CMakeLists.txt`， 选择 `Create`， 创建新文件， 选择`Locate` 打开已有文件
 
-    ![create CMakeLists.txt](/image/vscode/cmake/cmake_configure.png)
+    ![create CMakeLists.txt](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_configure.pn)
 
 3. 若 2 选择`Create`, 则按提示创建文件，输入项目名称，选择输出类型，就会生成 `CMakeLists.txt` 文件, 根据需要配置相关项，参考[CMakeLists.txt 实例](#cmakeliststxt-实例)
 
-    ![input project name](/image/vscode/cmake/cmake_project.png)  
-    ![select output](/image/vscode/cmake/cmake_out.png)
+    ![input project name](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_project.png)  
+    ![select output](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_out.png)
 
 当状态栏出现如下图表时，则表明配置完成，可以选择 `Build` 尝试编译
 
-![build status](/image/vscode/cmake/cmake_status.png)
+![build status](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_status.png)
 
 #### CMakeLists.txt 实例
 
@@ -97,11 +97,11 @@ target_link_libraries(extra_audio ${FFMPEG_LIBRARIES})
 
 设置好 CMake 后，打开 `.cpp` 文件， 按快捷键 `Ctrl+Shift+D` 打开调试面板，点击 `运行和调试`, 根据系统情况选取不同的 `C++` ,如下图所示：
 
-![select environment](/image/vscode/cmake/debug.png)
+![select environment](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug.png)
 
 然后根据需要选择不同版本的编译器配置，会生成 `launch.json` 和 `tasks.json`, 根据调试需求更改相应的参数
 
-![select complier config](/image/vscode/cmake/debug_g++.png)
+![select complier config](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_g++.png)
 
 下面以提供调试启动配置实例, 详细配置请参考[官方文档](https://code.visualstudio.com/docs/cpp/config-wsl)
 
