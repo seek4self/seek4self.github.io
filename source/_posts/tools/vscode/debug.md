@@ -46,7 +46,7 @@ CMake 编译需要写 CMakeLists.txt 文件， make 需要 Makefile 文件， �
 
 2. 根据提示创建 `CMakeLists.txt`， 选择 `Create`， 创建新文件， 选择`Locate` 打开已有文件
 
-    ![create CMakeLists.txt](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_configure.pn)
+    ![create CMakeLists.txt](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_configure.png)
 
 3. 若 2 选择`Create`, 则按提示创建文件，输入项目名称，选择输出类型，就会生成 `CMakeLists.txt` 文件, 根据需要配置相关项，参考[CMakeLists.txt 实例](#cmakeliststxt-实例)
 
