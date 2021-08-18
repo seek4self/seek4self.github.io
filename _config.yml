@@ -103,7 +103,7 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://github.com/mazhuang96/mazhuang96.github.io
+  repository: https://github.com/seek4self/seek4self.github.io.git
   branch: master
 
 # Search
