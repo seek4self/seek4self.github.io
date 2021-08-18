@@ -1,8 +1,8 @@
 ---
 title: ffmpeg 命令行
 top: false
-cover: true
-coverImg: https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/ffmpeg/FFmpeg.jpg
+img: https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/ffmpeg/FFmpeg.jpg
+cover: false
 toc: true
 mathjax: false
 date: 2021-08-17 18:09:19
