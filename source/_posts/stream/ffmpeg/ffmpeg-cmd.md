@@ -13,6 +13,7 @@ tags:
 - ffmpeg
 - video
 - audio
+- translate
 ---
 
 FFmpeg 是领先的多媒体框架，能够解码、编码、转码、复用、解复用、流、过滤和播放人类和机器创建的几乎任何东西。它支持最前沿的最晦涩的古代格式。无论它们是由某个标准委员会、社区还是公司设计的。它还具有高度的可移植性：FFmpeg 在各种构建环境、机器架构和配置下编译、运行并通过我们的测试基础设施 FATE，跨越 Linux、Mac OS X、Microsoft Windows、BSD、Solaris 等。
