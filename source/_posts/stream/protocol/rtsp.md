@@ -1105,61 +1105,61 @@ RTP 数据包等流数据由 ASCII 美元符号（24 位十六进制）封装，
 
 ### 11.3 Client Error 4xx
 
-#### 11.3.1 405 Method Not Allowed
-
-请求 URI 所标识的资源不允许使用请求中指定的方法。 响应必须包含一个 Allow 头，其中包含所请求资源的有效方法列表。 如果请求尝试使用在 `SETUP` 期间未指明的方法，也将使用此状态代码，例如，如果即使传输头中的模式参数仅指定了 `PLAY`，也会发出 `RECORD` 请求。
-
-#### 11.3.2 451 Parameter Not Understood
-
-请求的接收者不支持请求中包含的一个或多个参数。
-
-#### 11.3.3 452 Conference Not Found
-
-媒体服务器不知道会议头域指示的会议。
-
-#### 11.3.4 453 Not Enough Bandwidth
-
-由于带宽不足，请求被拒绝。 例如，这可能是资源预留失败的结果。
-
-#### 11.3.5 454 Session Not Found
-
-会话标头中的 RTSP 会话标识符丢失、无效或已超时。
-
-#### 11.3.6 455 Method Not Valid in This State
-
-客户端或服务器无法在当前状态下处理此请求。 响应应该包含一个 Allow 标头以使错误恢复更容易。
-
-#### 11.3.7 456 Header Field Not Valid for Resource
-
-服务器无法处理所需的请求标头。 例如，如果 `PLAY` 包含 Range 头字段，但流不允许查找。
-
-#### 11.3.8 457 Invalid Range
-
-给定的范围值超出范围，例如，超出了演示的结尾。
+* `405 Method Not Allowed`
   
-#### 11.3.9 458 Parameter Is Read-Only
+  请求 URI 所标识的资源不允许使用请求中指定的方法。 响应必须包含一个 Allow 头，其中包含所请求资源的有效方法列表。 如果请求尝试使用在 `SETUP` 期间未指明的方法，也将使用此状态代码，例如，如果即使传输头中的模式参数仅指定了 `PLAY`，也会发出 `RECORD` 请求。
 
-`SET_PARAMETER` 设置的参数可以读取但不能修改。
+* `451 Parameter Not Understood`
 
-#### 11.3.10 459 Aggregate Operation Not Allowed
+  请求的接收者不支持请求中包含的一个或多个参数。
+
+* `452 Conference Not Found`
+
+  媒体服务器不知道会议头域指示的会议。
+
+* `453 Not Enough Bandwidth`
+
+  由于带宽不足，请求被拒绝。 例如，这可能是资源预留失败的结果。
+
+* `454 Session Not Found`
+
+  会话标头中的 RTSP 会话标识符丢失、无效或已超时。
+
+* `455 Method Not Valid in This State`
+
+  客户端或服务器无法在当前状态下处理此请求。 响应应该包含一个 Allow 标头以使错误恢复更容易。
+
+* `456 Header Field Not Valid for Resource`
+
+  服务器无法处理所需的请求标头。 例如，如果 `PLAY` 包含 Range 头字段，但流不允许查找。
+
+* `457 Invalid Range`
+
+  给定的范围值超出范围，例如，超出了演示的结尾。
   
-所请求的方法可能不适用于相关 URL，因为它是一个聚合（表示）URL。该方法可以应用于流 URL。
+* 458 Parameter Is Read-Only
 
-#### 11.3.11 460 Only Aggregate Operation Allowed
+  `SET_PARAMETER` 设置的参数可以读取但不能修改。
 
-所请求的方法可能不适用于相关 URL，因为它不是聚合（表示）URL。该方法可以应用于演示 URL。
+* 459 Aggregate Operation Not Allowed
+  
+  所请求的方法可能不适用于相关 URL，因为它是一个聚合（表示）URL。该方法可以应用于流 URL。
 
-#### 11.3.12 461 Unsupported Transport
+* 460 Only Aggregate Operation Allowed
 
-传输字段不包含受支持的传输规范。
+  所请求的方法可能不适用于相关 URL，因为它不是聚合（表示）URL。该方法可以应用于演示 URL。
 
-#### 11.3.13 462 Destination Unreachable
+* 461 Unsupported Transport
 
-由于无法到达客户端地址，无法建立数据传输通道。此错误很可能是客户端尝试在传输字段中放置无效目标参数的结果。
+  传输字段不包含受支持的传输规范。
 
-#### 11.3.14 551 Option not supported
+* 462 Destination Unreachable
 
-不支持在 Require 或 Proxy-Require 字段中给出的选项。应返回 Unsupported 标头，说明不支持的选项。
+  由于无法到达客户端地址，无法建立数据传输通道。此错误很可能是客户端尝试在传输字段中放置无效目标参数的结果。
+
+* 551 Option not supported
+
+  不支持在 Require 或 Proxy-Require 字段中给出的选项。应返回 Unsupported 标头，说明不支持的选项。
 
 ## 12 头部字段定义
 
