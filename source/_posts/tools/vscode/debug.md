@@ -233,6 +233,7 @@ target_link_libraries(extra_audio ${FFMPEG_LIBRARIES})
                     "/usr/local/ffmpeg/include",
                     "${workspaceFolder}"
                 ],
+                "databaseFilename": "",
                 "limitSymbolsToIncludedHeaders": false
             },
             "compilerPath": "/usr/bin/clang",
@@ -246,6 +247,33 @@ target_link_libraries(extra_audio ${FFMPEG_LIBRARIES})
     "version": 4
 }
 ```
+
+- 配置属性
+  - `name` 标识配置的友好名称。 Linux、Mac 和 Win32 是将在这些平台上自动选择的配置的特殊标识符。 VS Code 中的状态栏将显示哪个配置处于活动状态。您还可以单击状态栏中的标签来更改活动配置。
+  - `compilerPath` （可选）用于构建项目的编译器的完整路径，例如 `/usr/bin/gcc`，以启用更准确的 IntelliSense。该扩展将查询编译器以确定用于 IntelliSense 的系统包含路径和默认定义。
+  - `compilerArgs` （可选）用于修改所使用的包含或定义的编译器参数，例如 -nostdinc++、-m32 等。
+  - `intelliSenseMode` 使用的 IntelliSense 模式映射到 MSVC、gcc 或 Clang 的特定于体系结构的变体。如果未设置或设置为 `${default}`，扩展将选择该平台的默认值。
+  
+    平台默认值：
+
+    - Windows: `msvc-x64`
+    - Linux: `gcc-x64`
+    - macOS: `clang-x64`
+  - `includePath` 包含路径是一个文件夹，其中包含源文件中包含的头文件（例如 `#include "myHeaderFile.h"`）。指定 IntelliSense 引擎在搜索包含的头文件时使用的路径列表。在这些路径上搜索不是递归的。指定 `**` 表示递归搜索。例如， `${workspaceFolder}/**` 将搜索所有子目录，而 `${workspaceFolder}` 则不会。如果在安装了 Visual Studio 的 Windows 上，或者如果在 `compilerPath` 设置中指定了编译器，则无需在此列表中列出系统包含路径。
+  - `defines` 解析文件时要使用的 IntelliSense 引擎的预处理器定义列表。或者，使用 = 设置一个值，例如 VERSION=1。
+  - `cStandard` 用于 IntelliSense 的 C 语言标准的版本。
+  - `cppStandard` 用于 IntelliSense 的 C++ 语言标准的版本。
+  - `configurationProvider` 可以为源文件提供 IntelliSense 配置信息的 VS Code 扩展的 ID。例如，使用 VS Code 扩展 ID `ms-vscode.cmake-tools` 提供来自 CMake 工具扩展的配置信息。
+  - `windowsSdkVersion` Windows SDK 的版本包括在 Windows 上使用的路径，例如 `10.0.17134.0`。
+  - `macFrameworkPath` IntelliSense 引擎在从 Mac 框架搜索包含的标头时使用的路径列表。仅支持 macOS 的配置。
+  - `forcedInclude` （可选）在处理源文件中的任何其他字符之前应包含的文件列表。文件包含在列出的顺序中。
+  - `compileCommands` （可选）工作区的 `compile_commands.json` 文件的完整路径。将使用在此文件中发现的包含路径和定义，而不是为包含路径和定义设置设置的值。如果编译命令数据库不包含与您在编辑器中打开的文件相对应的翻译单元条目，则会出现一条警告消息，扩展将使用 includePath 并定义设置。  
+  
+    有关文件格式的更多信息，请参阅 [Clang 文档](https://clang.llvm.org/docs/JSONCompilationDatabase.html)。某些构建系统（例如 CMake）[简化了生成此文件的过程](https://cmake.org/cmake/help/v3.5/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html)。
+  - `browse` 当 `"C_Cpp.intelliSenseEngine"` 设置为 `"Tag Parser"`（也称为“模糊”IntelliSense，或“browse”引擎）时使用的属性集。这些属性也由转到定义/声明功能使用，或者当“Default”智能感知引擎无法解析源文件中的 `#includes` 时
+    - `path` Tag Parser 用于搜索源文件中包含的标头的路径列表。**如果省略，`includePath` 将用作 `path`。**默认情况下，在这些路径上搜索是递归的。指定 `*` 表示非递归搜索。例如： `${workspaceFolder}` 将搜索所有子目录，而 `${workspaceFolder}/*` 不会。
+    - `limitSymbolsToIncludedHeaders` 当为 `true` 时，标签解析器将只解析 `${workspaceFolder}` 中的源文件直接或间接包含的代码文件。当为 `false` 时，标签解析器将解析在 `browse.path` 列表中指定的路径中找到的所有代码文件。
+    - `databaseFilename` 生成的符号数据库的路径。此属性指示扩展将标记解析器的符号数据库保存在工作区默认存储位置以外的其他位置。如果指定了相对路径，它将相对于工作区的默认存储位置，而不是工作区文件夹本身。 `${workspaceFolder}` 变量可用于指定相对于工作区文件夹的路径（例如 `${workspaceFolder}/.vscode/browse.vc.db`）
 
 ### 多线程调试
 
