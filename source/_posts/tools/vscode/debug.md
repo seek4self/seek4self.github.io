@@ -267,7 +267,7 @@ target_link_libraries(extra_audio ${FFMPEG_LIBRARIES})
   - `windowsSdkVersion` Windows SDK 的版本包括在 Windows 上使用的路径，例如 `10.0.17134.0`。
   - `macFrameworkPath` IntelliSense 引擎在从 Mac 框架搜索包含的标头时使用的路径列表。仅支持 macOS 的配置。
   - `forcedInclude` （可选）在处理源文件中的任何其他字符之前应包含的文件列表。文件包含在列出的顺序中。
-  - `compileCommands` （可选）工作区的 `compile_commands.json` 文件的完整路径。将使用在此文件中发现的包含路径和定义，而不是为包含路径和定义设置设置的值。如果编译命令数据库不包含与您在编辑器中打开的文件相对应的翻译单元条目，则会出现一条警告消息，扩展将使用 includePath 并定义设置。  
+  - `compileCommands` （可选）工作区的 `compile_commands.json` 文件的完整路径。将使用在此文件中发现的 `includePath` 和 `defines`，而不是为包含路径和定义设置设置的值。如果编译命令数据库不包含与您在编辑器中打开的文件相对应的翻译单元条目，则会出现一条警告消息，扩展将使用 `includePath` 和 `defines` 设置。  
   
     有关文件格式的更多信息，请参阅 [Clang 文档](https://clang.llvm.org/docs/JSONCompilationDatabase.html)。某些构建系统（例如 CMake）[简化了生成此文件的过程](https://cmake.org/cmake/help/v3.5/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html)。
   - `browse` 当 `"C_Cpp.intelliSenseEngine"` 设置为 `"Tag Parser"`（也称为“模糊”IntelliSense，或“browse”引擎）时使用的属性集。这些属性也由转到定义/声明功能使用，或者当“Default”智能感知引擎无法解析源文件中的 `#includes` 时
@@ -297,3 +297,17 @@ target_link_libraries(extra_audio ${FFMPEG_LIBRARIES})
     ]
 }
 ```
+
+## 调试技巧
+
+### 调试控制台打印数组信息
+
+调试遇见数组中存放指针时，vscode 调试器往往解析不出来数组信息，只能显示 `0` 索引的数据:
+
+![调试信息](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_console.png)
+
+该段代码出自 ffmpeg 的示例程序 [muxing.c](https://github.com/FFmpeg/FFmpeg/blob/master/doc/examples/muxing.c#L455)，有兴趣可以自行尝试。
+
+因为 VSCode 也是基于 GDB 调试的，所以可以使用 GDB 的`@`操作符进行打印： `*array@len`，其中 `len` 是指定打印的长度，详细信息可以查看[gdb 在线文档](https://sourceware.org/gdb/current/onlinedocs/gdb/Arrays.html#Arrays)
+
+![调试输出](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_print_array.png)
