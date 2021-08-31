@@ -7,7 +7,7 @@ mathjax: false
 date: 2021-08-20 09:28:54
 password:
 summary: RFC2326 RTSP 文档翻译
-categories: 流媒体
+categories: 音视频
 tags:
 - rtsp
 - translate

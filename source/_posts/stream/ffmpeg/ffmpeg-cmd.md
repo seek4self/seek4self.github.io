@@ -8,7 +8,7 @@ mathjax: false
 date: 2021-08-17 18:09:19
 password:
 summary: ffmpeg 工具官方文档翻译
-categories: 流媒体
+categories: 音视频
 tags: 
 - ffmpeg
 - video

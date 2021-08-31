@@ -6,8 +6,8 @@ toc: true
 mathjax: false
 date: 2021-05-30 09:54:35
 password:
-summary: 
-categories: 流媒体
+summary: srs 源码阅读笔记
+categories: 音视频
 tags: 
   - srs
   - hls 
