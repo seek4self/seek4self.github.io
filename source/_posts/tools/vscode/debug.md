@@ -311,3 +311,5 @@ target_link_libraries(extra_audio ${FFMPEG_LIBRARIES})
 因为 VSCode 也是基于 GDB 调试的，所以可以使用 GDB 的`@`操作符进行打印： `*array@len`，其中 `len` 是指定打印的长度，详细信息可以查看[gdb 在线文档](https://sourceware.org/gdb/current/onlinedocs/gdb/Arrays.html#Arrays)
 
 ![调试输出](https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_print_array.png)
+
+若要从中间打印数组，只需要将 `*array` 索引改至指定的起始位置 `array[start]@len`，就会打印从 `start`~`len` 之间的数据。
