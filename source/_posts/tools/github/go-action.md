@@ -6,7 +6,7 @@ toc: true
 mathjax: false
 date: 2021-08-31 18:03:53
 password:
-summary:
+summary: github 自动化
 categories: tools
 tags:
 - github
@@ -15,7 +15,7 @@ tags:
 - ci
 ---
 
-当需要自动编译并发布release程序时，可以使用 github action 的工作流来实现
+当需要自动编译并发布 release 程序时，可以使用 github action 的工作流来实现
 
 ## 创建工作流脚本
 
