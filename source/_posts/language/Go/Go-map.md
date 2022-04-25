@@ -9,7 +9,7 @@ password:
 summary: 对 golang map 的一些初步认识
 categories: 编程语言
 tags:
-  - Golang
+  - Go
   - Map
 ---
 

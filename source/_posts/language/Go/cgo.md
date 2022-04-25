@@ -7,7 +7,7 @@ mathjax: true
 summary: c 和 go 之间的交互
 categories: 编程语言
 tags:
-  - Golang
+  - Go
   - cgo
   - unsafe
 date: 2021-04-10 10:45:02

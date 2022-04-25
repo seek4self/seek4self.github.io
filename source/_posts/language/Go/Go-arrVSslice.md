@@ -1,5 +1,5 @@
 ---
-title: Golang 数组和切片的区别
+title: Go 数组和切片的区别
 date: 2021-04-03 20:36:36
 top: false
 cover: false
@@ -9,7 +9,7 @@ mathjax: true
 summary: 面试经常遇到的问题，做一些总结
 categories: 编程语言
 tags: 
-  - Golang
+  - Go
   - Slice
 ---
 golang 集合类型包含数组和切片两种，存储相同类型的序列数据

@@ -5,6 +5,7 @@ cover: false
 password:
 toc: true
 mathjax: true
+date: 2021-4-3 20:33:41
 summary: 简单介绍 hexo 的环境搭建及基础命令
 tags: hexo
 categories: 环境搭建
