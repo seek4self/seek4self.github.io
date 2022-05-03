@@ -1,0 +1,2971 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="rtsp 协议, Seeker">
+    <meta name="description" content="be the one that you wanna be">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>rtsp 协议 | Seeker</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Seeker</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Seeker</div>
+        <div class="logo-desc">
+            
+            be the one that you wanna be
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/seek4self/seek4self.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0ae6e6;
+        fill: #173eeb;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/seek4self/seek4self.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">rtsp 协议</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/translate/">
+                                <span class="chip bg-color">translate</span>
+                            </a>
+                        
+                            <a href="/tags/rtsp/">
+                                <span class="chip bg-color">rtsp</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" class="post-category">
+                                音视频
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-08-20
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-04-25
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    22k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    89 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>实时流协议 (RTSP) 是一种应用程序级协议，用于控制具有实时属性的数据的传送。 RTSP 提供了一个可扩展的框架，以实现实时数据（如音频和视频）的受控、按需交付。 数据源可以包括实时数据馈送和存储的剪辑。 该协议旨在控制多个数据传输会话，提供一种选择传输通道（例如 UDP、多播 UDP 和 TCP）的方法，并提供一种选择基于 RTP (<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc1889">RFC 1889</a>) 的传输机制的方法。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><h3 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1 目的"></a>1.1 目的</h3><p>实时流协议 (RTSP) 建立和控制 单个或多个时间同步的连续流 音频和视频等媒体。它通常不提供 连续流本身，虽然连续的交错 带有控制流的媒体流是可能的（参见<a href="#1012-%E5%B5%8C%E5%85%A5%E4%BA%A4%E9%94%99%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE">第 10.12 节</a>）。 换句话说，RTSP 充当“网络远程控制” 多媒体服务器。</p>
+<p>要控制的流集由演示描述(presentation description)定义。 本备忘录未定义演示描述的格式。</p>
+<p>没有 RTSP 连接的概念； 相反，服务器维护一个由标识符标记的会话。 RTSP 会话与传输级连接（如 TCP 连接）无关。 在 RTSP 会话期间，RTSP 客户端可能会打开和关闭许多与服务器的可靠传输连接以发出 RTSP 请求。或者，它可以使用无连接传输协议，例如 UDP。</p>
+<p>RTSP 控制的流可以使用 RTP [1]，但是 RTSP 不依赖于用于承载的传输机制 连续媒体。该协议在语法上有意相似 并运行到 HTTP/1.1 [2] 以便扩展机制到 HTTP 在大多数情况下也可以添加到 RTSP。但是，RTSP 的不同之处在于 HTTP 的几个重要方面：</p>
+<ul>
+<li>RTSP 引入了许多新方法并具有不同的协议标识符。</li>
+<li>一个 RTSP 服务器需要在几乎所有情况下默认维护状态 与 HTTP 的无状态性质相反。</li>
+<li>RTSP 服务器和客户端都可以发出请求。</li>
+<li>数据通过不同的协议在带外(out-of-band)传输（有一特例除外）。</li>
+<li>RTSP 被定义为使用 ISO 10646 (UTF-8) 而不是 ISO 8859-1， 与当前的 HTML 国际化努力一致 [3]。</li>
+<li>Request-URI 始终包含绝对 URI。因为 向后兼容历史错误，HTTP/1.1 [2] 请求中只携带绝对路径，并放置主机 名称在单独的头部字段中。</li>
+</ul>
+<p>这使得“虚拟主机”的实现更容易，其中一台主机与一台主机 IP 地址托管多个文档树。</p>
+<p>该协议支持以下操作：</p>
+<ul>
+<li>从媒体服务器检索媒体：<br>客户端可以通过 HTTP 或其他一些方法请求演示描述。 如果演示正在被多播，则演示描述包含要用于连续媒体的多播地址和端口。 如果仅通过单播将演示发送给客户端，则出于安全原因，客户端会提供目的地。</li>
+<li>邀请媒体服务器参加会议：<br>可以“邀请”媒体服务器加入现有会议，或者在演示中播放媒体，或者在演示中记录媒体的全部或子集。 这种模式对于分布式教学应用很有用。 会议中的几方可能会轮流“按下遥控器按钮”。</li>
+<li>向现有演示添加媒体：<br>特别是对于现场演示，如果服务器可以告诉客户端额外的媒体正在成为可用的。</li>
+</ul>
+<p>RTSP 请求可以由代理、隧道和缓存处理，如 HTTP/1.1 [2]。</p>
+<h3 id="1-2-要求"><a href="#1-2-要求" class="headerlink" title="1.2 要求"></a>1.2 要求</h3><p>本文档中的关键词“MUST”、“MUST NOT”、“REQUIRED”、“SHALL”、“SHALL NOT”、“SHOULD”、“SHOULD NOT”、“RECOMMENDED”、“MAY”和“OPTIONAL” 将按照 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a> [4] 中的描述进行解释。</p>
+<h3 id="1-3-术语"><a href="#1-3-术语" class="headerlink" title="1.3 术语"></a>1.3 术语</h3><ul>
+<li>聚合控制（Aggregate control）：<br>服务器使用单个时间线控制多个流。对于音频/视频源，这意味着客户端可以发出单个播放或暂停消息来控制音频和视频源。</li>
+<li>会议（Conference）：<br>多方多媒体演示，其中“多”意味着大于或等于一。</li>
+<li>客户端（Client）：<br>客户端从媒体服务器请求连续的媒体数据。</li>
+<li>连接（Connection）：<br>在两个以通讯为目的的程序之间建立传输层虚拟电路。</li>
+<li>容器文件（Container file）：<br>可能包含多个媒体流的文件，这些媒体流在一起播放时通常包含一个演示。 RTSP 服务器可以提供对这些文件的聚合控制，尽管容器文件的概念没有嵌入到协议中。</li>
+<li>连续媒体（Continuous media）：<br>source和sink之间存在时序关系的数据； 也就是说，接收端必须重现源端存在的时序关系。 连续媒体最常见的例子是音频和动态视频。 连续媒体可以是实时的（交互式），其中源和接收器之间存在“紧密”的时间关系，也可以是流媒体（回放），这种关系不太严格。</li>
+<li>实体（Entity）：<br>作为请求或响应的有效负载传输的信息。一个实体由实体头字段形式的元信息和实体主体形式的内容组成，如第 8 节所述。</li>
+<li>媒体初始化（Media initialization）：<br>数据类型/编解码器特定的初始化。 这包括诸如时钟速率、颜色表等。客户端播放媒体流所需的任何传输无关信息发生在流设置的媒体初始化阶段。</li>
+<li>媒体参数（Media parameter）：<br>特定于媒体类型的参数，可以在流播放之前或期间更改。</li>
+<li>媒体服务器（Media server）：<br>为一个或多个媒体流提供播放或录制服务的服务器。 演示中的不同媒体流可能源自不同的媒体服务器。 媒体服务器可以与调用演示的 Web 服务器驻留在相同或不同的主机上。</li>
+<li>媒体服务器间接（Media server indirection）：<br>将媒体客户端重定向到不同的媒体服务器。</li>
+<li>媒体流（Media stream）：<br>单个媒体实例，例如音频流或视频流以及单个白板或共享应用程序组。 使用 RTP 时，流由 RTP 会话中的源创建的所有 RTP 和 RTCP 数据包组成。 这等效于 DSM-CC 流（[5]）的定义。</li>
+<li>消息（Message）：<br>RTSP 通信的基本单元，由符合第 15 节中定义的语法并通过连接或无连接协议传输的八位字节的结构化序列组成。</li>
+<li>参与者（Participant）：<br>会议成员。 参与者可以是机器，例如媒体记录或回放服务器。</li>
+<li>演示（Presentation）：<br>一组一个或多个流作为完整的媒体馈送呈现给客户端，使用如下定义的演示描述。 在 RTSP 上下文中的大多数情况下，这意味着对这些流的聚合控制，但并非必须如此。</li>
+<li>演示描述（Presentation description）：<br>演示描述包含有关演示中一个或多个媒体流的信息，例如编码集、网络地址和有关内容的信息。 其他 IETF 协议如 SDP (<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2327">RFC 2327</a> [6]) 使用术语“会话”来表示现场演示。 呈现描述可以采用多种不同的格式，包括但不限于会话描述格式SDP。</li>
+<li>响应（Response）：<br>RTSP 响应。 如果是 HTTP 响应，则明确指出。</li>
+<li>请求（Request）：<br>RTSP 请求。 如果是 HTTP 请求，则明确指出。</li>
+<li>RTSP 会话(RTSP session)：<br>完整的 RTSP“事务”，例如观看电影。 会话通常包括客户端为连续媒体流设置传输机制 (<code>SETUP</code>)，使用 <code>PLAY</code> 或 <code>RECORD</code> 启动流，并使用 <code>TEARDOWN</code> 关闭流。</li>
+<li>传输初始化（Transport initialization）：<br>客户端和服务器之间传输信息（例如，端口号、传输协议）的协商。</li>
+</ul>
+<h3 id="1-4-协议属性"><a href="#1-4-协议属性" class="headerlink" title="1.4 协议属性"></a>1.4 协议属性</h3><p>RTSP 具有以下属性：</p>
+<ul>
+<li><strong>可扩展</strong>：<br>可以轻松地将新方法和参数添加到 RTSP。</li>
+<li><strong>易于解析</strong>：<br>RTSP 可以被标准 HTTP 或 MIME 解析器解析。</li>
+<li><strong>安全</strong>：<br>RTSP 重复使用网络安全机制。 所有 HTTP 身份验证机制，例如基本（<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068">RFC 2068</a> [2，第 11.1 节]）和摘要身份验证（<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2069">RFC 2069</a> [8]）都可以直接应用。 还可以重用传输或网络层安全机制。</li>
+<li><strong>传输无关</strong>：<br>RTSP 可以使用不可靠的数据报协议 (UDP) (<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc768">RFC 768</a> [9])、可靠的数据报协议 (RDP（<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc1151">RFC 1151</a>）未广泛使用的 [10]) 或可靠的流协议，例如 TCP (<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc793">RFC 793</a> [11]），因为它实现了应用程序级的可靠性。</li>
+<li><strong>支持多服务器</strong>：<br>演示中的每个媒体流都可以驻留在不同的服务器上。 客户端自动与不同的媒体服务器建立多个并发控制会话。 媒体同步在传输层执行。</li>
+<li><strong>记录设备的控制</strong>：<br>该协议可以控制记录和播放设备，以及可以在两种模式之间交替的设备（“VCR”）。</li>
+<li><strong>流控与会议发起分离</strong>：<br>流控与邀请媒体服务器加入会议分离。 唯一的要求是会议发起协议提供或可用于创建唯一的会议标识符。 特别地，SIP[12]或H.323[13]可用于邀请服务器参加会议。</li>
+<li><strong>适用于专业应用</strong>：<br>RTSP 通过 SMPTE 时间戳支持帧级精度，允许远程数字编辑。</li>
+<li><strong>演示描述中立</strong>：<br>协议不强加特定的演示描述或元文件格式，并且可以传达要使用的格式类型。 但是，演示描述必须至少包含一个 RTSP URI。</li>
+<li><strong>代理和防火墙友好</strong>：<br>应用程序和传输层 (SOCKS [14]) 防火墙应该可以轻松处理该协议。 防火墙可能需要了解 <code>SETUP</code> 方法才能为 UDP 媒体流打开一个“洞”。</li>
+<li><strong>HTTP 友好</strong>：<br>在合理的情况下，RTSP 重用 HTTP 概念，以便可以重用现有的基础设施。 该基础设施包括用于将标签与内容相关联的 PICS（互联网内容选择平台 [15,16]）。 然而，RTSP 不仅仅向 HTTP 添加方法，因为在大多数情况下控制连续媒体需要服务器状态。</li>
+<li><strong>适当的服务器控制</strong>：<br>如果客户端可以启动流，则它必须能够停止流。 服务器不应以客户端无法停止流的方式开始向客户端流式传输。</li>
+<li><strong>传输协商</strong>：<br>客户端可以在实际需要处理连续媒体流之前协商传输方法。</li>
+<li><strong>能力协商</strong>：<br>如果基本功能被禁用，客户端必须有一些干净的机制来确定哪些方法不会被实现。 这允许客户端呈现适当的用户界面。 例如，如果不允许搜索，则用户界面必须能够禁止移动滑动位置指示器。</li>
+</ul>
+<p>RTSP 的早期要求是多客户端功能。 但是，确定更好的方法是确保协议可以轻松扩展到多客户端场景。 流标识符可以被多个控制流使用，因此“传递远程”是可能的。 该协议不会解决几个客户端如何协商访问的问题； 这留给“社交协议”或其他一些楼层控制机制。</p>
+<h3 id="1-5-扩展-RTSP"><a href="#1-5-扩展-RTSP" class="headerlink" title="1.5 扩展 RTSP"></a>1.5 扩展 RTSP</h3><p>由于并非所有媒体服务器都具有相同的功能，因此媒体服务器必然会支持不同的请求集。 例如：</p>
+<ul>
+<li>服务器可能只能播放，因此不需要支持 <code>RECORD</code> 请求。</li>
+<li>如果服务器仅支持实时事件，则它可能无法搜索（绝对定位）。</li>
+<li>某些服务器可能不支持设置流参数，因此不支持 <code>GET_PARAMETER</code> 和 <code>SET_PARAMETER</code>。</li>
+</ul>
+<p>服务器应该实现<a href="#12-%E5%A4%B4%E9%83%A8%E5%AD%97%E6%AE%B5%E5%AE%9A%E4%B9%89">第 12 节</a>中描述的所有头域。</p>
+<p>由演示描述的创建者决定不要询问服务器的不可能。 这种情况与 HTTP/1.1 [2] 中的情况类似，其中 [H19.6] 中描述的方法不太可能在所有服务器上都得到支持。</p>
+<p>RTSP 可以通过三种方式进行扩展，此处按支持的更改量级列出：</p>
+<ul>
+<li>现有方法可以用新参数扩展，只要这些参数可以被接收者安全地忽略。（这相当于向 HTML 标签添加新参数。）如果客户端在不支持方法扩展时需要否定确认，则可以在 <code>Require</code>: 字段中添加与扩展对应的标签（参见第 12.32 节）。</li>
+<li>可以添加新方法。如果消息的接收者不理解该请求，它会以错误代码 <code>501</code>（未实现）进行响应，并且发送者不应再次尝试使用此方法。客户端也可以使用 <code>OPTIONS</code> 方法来查询服务器支持的方法。服务器应该使用公共响应头列出它支持的方法。</li>
+<li>可以定义新的协议版本，允许几乎所有方面（除了协议版本号的位置）改变。</li>
+</ul>
+<h3 id="1-6-操作模式"><a href="#1-6-操作模式" class="headerlink" title="1.6 操作模式"></a>1.6 操作模式</h3><p>每个演示和媒体流都可以由一个 RTSP URL 标识。 整个演示和演示组成的媒体的属性由演示描述文件定义，其格式超出了本规范的范围。 呈现描述文件可以由客户端通过HTTP或电子邮件等其他方式获取，不一定存储在媒体服务器上。</p>
+<p>出于本规范的目的，假定一个演示描述描述一个或多个演示，每个演示维护一个共同的时间轴。为了说明的简单并且不失一般性，假设演示描述恰好包含一个这样的演示。一个演示可能包含多个媒体流。</p>
+<p>演示描述文件包含对构成演示的媒体流的描述，包括它们的编码、语言和其他参数，这些参数使客户端能够选择最合适的媒体组合。在此演示描述中，每个可由 RTSP 单独控制的媒体流由一个 RTSP URL 标识，该 URL 指向处理该特定媒体流的媒体服务器并命名存储在该服务器上的流。多个媒体流可以位于不同的服务器上；例如，音频和视频流可以跨服务器拆分以进行负载共享。该描述还列举了服务器能够使用的传输方法。</p>
+<p>除了媒体参数之外，还需要确定网络目标地址和端口。 可以区分几种操作模式：</p>
+<ul>
+<li>单播：<br>媒体通过客户端选择的端口号传输到 RTSP 请求的源。 或者，媒体在与 RTSP 相同的可靠流上传输。</li>
+<li>多播，服务器选择地址：<br>媒体服务器选择多播地址和端口。 这是实况或近媒体点播传输的典型情况。</li>
+<li>多播，客户端选择地址：<br>如果服务器要参加现有的多播会议，则多播地址、端口和加密密钥由会议描述给出，通过本规范范围之外的方式建立。</li>
+</ul>
+<h3 id="1-7-RTSP-状态"><a href="#1-7-RTSP-状态" class="headerlink" title="1.7 RTSP 状态"></a>1.7 RTSP 状态</h3><p>RTSP 控制可以通过独立协议发送的流，与控制通道无关。 例如，当数据通过 UDP 流动时，RTSP 控制可能发生在 TCP 连接上。 因此，即使媒体服务器没有收到 RTSP 请求，数据传递也会继续。 此外，在其生命周期内，单个媒体流可能由在不同 TCP 连接上顺序发出的 RTSP 请求控制。 因此，服务器需要维护“会话状态”才能将 RTSP 请求与流相关联。 状态转换在 A 节中描述。</p>
+<p>RTSP 中的许多方法对状态没有贡献。 但是，以下在定义服务器上流资源的分配和使用方面起着核心作用：<code>SETUP</code>, <code>PLAY</code>, <code>RECORD</code>, <code>PAUSE</code>, 和 <code>TEARDOWN</code>。</p>
+<ul>
+<li><code>SETUP</code>：<br>使服务器为流分配资源并启动 RTSP 会话。</li>
+<li><code>PLAY</code> 和 <code>RECORD</code>：<br>在通过 SETUP 分配的流上开始数据传输。</li>
+<li><code>PAUSE</code>：<br>在不释放服务器资源的情况下暂时停止流。</li>
+<li><code>TEARDOWN</code>：<br>释放与流相关的资源。 RTSP 会话不再存在于服务器上。有助于状态的 RTSP 方法使用会话头字段（第 12.37 节）来标识其状态正在被操纵的 RTSP 会话。 服务器生成会话标识符以响应 SETUP 请求（<a href="#104-setup">第 10.4 节</a>）。</li>
+</ul>
+<h3 id="1-8-与其他协议的关系"><a href="#1-8-与其他协议的关系" class="headerlink" title="1.8 与其他协议的关系"></a>1.8 与其他协议的关系</h3><p>RTSP 在功能上与 HTTP 有一些重叠。 它还可能与 HTTP 交互，因为与流媒体内容的初始联系通常是通过网页进行的。 当前协议规范旨在允许 Web 服务器和实现 RTSP 的媒体服务器之间的不同切换点。 例如，可以使用 HTTP 或 RTSP 检索表示描述，这减少了基于 Web 浏览器的场景中的往返次数，同时还允许完全不依赖 HTTP 的独立 RTSP 服务器和客户端。</p>
+<p>但是，RTSP 与 HTTP 的根本不同之处在于，数据传递是在不同的协议中带外进行的。 HTTP 是一种非对称协议，客户端发出请求，服务器响应。 <strong>在 RTSP 中，媒体客户端和媒体服务器都可以发出请求。 RTSP 请求也不是无状态的； 他们可以设置参数并在请求被确认后很长时间继续控制媒体流。</strong></p>
+<blockquote>
+<p>重用 HTTP 功能至少在两个方面具有优势，即安全性和代理。 要求非常相似，因此能够在缓存、代理和身份验证上采用 HTTP 工作是很有价值的。</p>
+</blockquote>
+<p>虽然大多数实时媒体将使用 RTP 作为传输协议，但 RTSP 并不依赖于 RTP。</p>
+<p>RTSP 假定存在可以表达包含多个媒体流的演示的静态和时间属性的演示描述格式。</p>
+<h2 id="2-符号约定"><a href="#2-符号约定" class="headerlink" title="2 符号约定"></a>2 符号约定</h2><p>由于许多定义和语法与 HTTP/1.1 相同，因此本规范仅指向定义它们的部分，而不是复制它。 为简洁起见，[HX.Y] 指的是当前 HTTP/1.1 规范（<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068">RFC 2068</a> [2]）的 X.Y 部分。</p>
+<p>本文档中指定的所有机制均以散文和类似于 [H2.1] 中使用的增强型巴科斯-诺尔形式 (BNF) 进行描述。 它在 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2234">RFC 2234</a> [17] 中有详细描述，不同之处在于该 RTSP 规范维护逗号分隔列表的“1#”符号。</p>
+<p>在本备忘录中，我们使用缩进和较小类型的段落来提供背景和动机。 这是为了让没有参与规范制定的读者理解为什么事情是他们在 RTSP 中的方式。</p>
+<h2 id="3-协议参数"><a href="#3-协议参数" class="headerlink" title="3 协议参数"></a>3 协议参数</h2><h3 id="3-1-RTSP-版本"><a href="#3-1-RTSP-版本" class="headerlink" title="3.1 RTSP 版本"></a>3.1 RTSP 版本</h3><p><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-3.1">[H3.1]</a> 适用，HTTP 被 RTSP 取代。</p>
+<h3 id="3-2-RTSP-RUL"><a href="#3-2-RTSP-RUL" class="headerlink" title="3.2 RTSP RUL"></a>3.2 RTSP RUL</h3><p>“rtsp”和“rtspu”方案用于通过RTSP协议引用网络资源。 本节定义了 RTSP URL 的特定于方案的语法和语义。</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">rtsp_URL  &#x3D;   ( &quot;rtsp:&quot; | &quot;rtspu:&quot; )
+              &quot;&#x2F;&#x2F;&quot; host [ &quot;:&quot; port ] [ abs_path ]
+host      &#x3D;   &lt;IP 地址的合法 Internet 主机域名（点分十进制形式），如 RFC 1123 \cite&#123;rfc1123&#125; 的第 2.1 节所定义 &gt;
+port      &#x3D;   *DIGIT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>abs_path 在[H3.2.1] 中定义。</p>
+<blockquote>
+<p>请注意，此时片段和查询标识符没有明确定义的含义，解释权留给 RTSP 服务器。</p>
+</blockquote>
+<p>rtsp 方案要求使用可靠的协议（Internet 的 TCP 协议）发出命令，而 rtspu 方案使用不可靠的协议（Internet 的 UDP 协议）。</p>
+<p>如果端口为空或未给出，则默认端口为 554。 语义是识别的资源可以由服务器上的 RTSP 控制，监听 TCP（方案“rtsp”）连接或主机端口上的 UDP（方案“rtspu”）数据包，资源的 Request-URI 是 rtsp_URL。</p>
+<p>应尽可能避免在 URL 中使用 IP 地址（参见 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc1924">RFC 1924</a> [19]）。</p>
+<p>演示或流由文本媒体标识符标识，使用 URL 的字符集和转义约定 [H3.2]（<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc1738">RFC 1738</a> [20]）。 URL 可以指一个流或一个流的集合，即一个演示。 因此，第 10 节中描述的请求可以应用于整个演示或演示中的单个流。 请注意，某些请求方法只能应用于流，不能应用于演示，反之亦然。</p>
+<p>例如，RTSP URL：<code>rtsp://media.example.com:554/twister/audiotrack</code>，标识了演示“twister”中的音频流，可以通过 TCP 连接向主机 <code>media.example.com</code> 的端口 <code>554</code> 发出的 RTSP 请求进行控制。</p>
+<p>此外，RTSP URL：<code>rtsp://media.example.com:554/twister</code> 标识了可能由音频和视频流组成的演示“twister”。</p>
+<p>这并不意味着在 URL 中引用流的标准方法。 演示描述定义了演示中的层次关系以及各个流的 URL。 演示描述可以将流命名为“a.mov”，并将整个演示命名为“b.mov”。</p>
+<p>RTSP URL 的路径组件对客户端是不透明的，并且不暗示服务器的任何特定文件系统结构。</p>
+<blockquote>
+<p>这种解耦还允许通过简单地替换 URL 中的方案来将表示描述与非 RTSP 媒体控制协议一起使用。</p>
+</blockquote>
+<h3 id="3-3-会议标识符"><a href="#3-3-会议标识符" class="headerlink" title="3.3 会议标识符"></a>3.3 会议标识符</h3><p>会议标识符对 RTSP 是不透明的，并使用标准 URI 编码方法进行编码（即，LWS 使用 % 进行转义）。 它们可以包含任何八位字节值。 会议标识符必须是全局唯一的。 对于 H.323，将使用会议 ID 值。</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">conference-id &#x3D;   1*xchar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>会议标识符用于允许 RTSP 会话从媒体服务器正在参与的多媒体会议中获取参数。这些会议是由本规范范围之外的协议创建的，例如 H.323 [13] 或 SIP [12]。 例如，RTSP 客户端不是明确提供传输信息，而是要求媒体服务器使用会议描述中的值。</p>
+<h3 id="3-4-会话标识符"><a href="#3-4-会话标识符" class="headerlink" title="3.4 会话标识符"></a>3.4 会话标识符</h3><p>会话标识符是任意长度的不透明字符串。 线性空白必须是 URL 转义的。 会话标识符必须随机选择，并且必须至少有 8 个八位字节长，以便更难猜测。 （见第 16 节。）</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">session-id   &#x3D;   1*( ALPHA | DIGIT | safe )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-5-SMPTE-相对时间戳"><a href="#3-5-SMPTE-相对时间戳" class="headerlink" title="3.5 SMPTE 相对时间戳"></a>3.5 SMPTE 相对时间戳</h3><p>SMPTE 相对时间戳表示相对于剪辑开始的时间。 相对时间戳表示为 SMPTE 时间码，以确保帧级访问精度。 时间码的格式为 <code>hours:minutes:seconds:frames.subframes</code>，原点位于剪辑的开头。 默认的 smpte 格式为“SMPTE 30 drop”格式，帧率为 29.97 帧/秒。 通过使用“smpte time”的替代使用，可以支持其他 SMPTE 代码（例如“SMPTE 25”）。 对于时间值中的“帧”字段，可以假定值为 0 到 29。每秒 30 和 29.97 帧之间的差异是通过丢弃每分钟的前两个帧索引（值 00 和 01）来处理的，每十分钟除外 . 如果帧值为零，则可以省略。 子帧以帧的百分之一进行测量。</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">smpte-range  &#x3D;   smpte-type &quot;&#x3D;&quot; smpte-time &quot;-&quot; [ smpte-time ]
+smpte-type   &#x3D;   &quot;smpte&quot; | &quot;smpte-30-drop&quot; | &quot;smpte-25&quot;
+                                ; other timecodes may be added
+smpte-time   &#x3D;   1*2DIGIT &quot;:&quot; 1*2DIGIT &quot;:&quot; 1*2DIGIT [ &quot;:&quot; 1*2DIGIT ]
+                    [ &quot;.&quot; 1*2DIGIT ]
+
+Examples:
+    smpte&#x3D;10:12:33:20-
+    smpte&#x3D;10:07:33-
+    smpte&#x3D;10:07:00-10:07:33:05.01
+    smpte-25&#x3D;10:07:00-10:07:33:05.01<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-6-正常播放时间-NPT"><a href="#3-6-正常播放时间-NPT" class="headerlink" title="3.6 正常播放时间(NPT)"></a>3.6 正常播放时间(NPT)</h3><p>正常播放时间 (NPT) 表示流相对于演示开始的绝对位置。时间戳由小数组成。小数点左边的部分可以用秒或小时、分钟和秒来表示。小数点右边的部分测量秒的分数。</p>
+<p>演示的开始对应于 0.0 秒。负值没有定义。特殊常量 now 被定义为实时事件的当前时刻。它只能用于现场活动。</p>
+<p>NPT 在 DSM-CC 中被定义为：“直观地说，NPT 是观众与节目相关联的时钟。它通常以数字方式显示在 VCR 上。NPT 在正常播放模式（比例 = 1）下正常推进，以更快的速度推进 “在快速向前扫描（高正比例）时的速率，在反向扫描（高负比例）时递减，并在暂停模式下固定。NPT（逻辑上）等效于 SMPTE 时间码。” [5]</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">npt-range    &#x3D;   ( npt-time &quot;-&quot; [ npt-time ] ) | ( &quot;-&quot; npt-time )
+npt-time     &#x3D;   &quot;now&quot; | npt-sec | npt-hhmmss
+npt-sec      &#x3D;   1*DIGIT [ &quot;.&quot; *DIGIT ]
+npt-hhmmss   &#x3D;   npt-hh &quot;:&quot; npt-mm &quot;:&quot; npt-ss [ &quot;.&quot; *DIGIT ]
+npt-hh       &#x3D;   1*DIGIT     ; any positive number
+npt-mm       &#x3D;   1*2DIGIT    ; 0-59
+npt-ss       &#x3D;   1*2DIGIT    ; 0-59
+
+Examples:
+    npt&#x3D;123.45-125
+    npt&#x3D;12:05:35.3-
+    npt&#x3D;now-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>语法符合 ISO 8601。 npt-sec 表示法针对自动生成进行了优化，ntp-hhmmss 表示法针对人类读者的使用进行了优化。 “now”常量允许客户端请求接收实时提要，而不是存储或延迟的版本。 这是必需的，因为绝对时间和零时间都不适合这种情况。</p>
+</blockquote>
+<h3 id="3-7-绝对时间"><a href="#3-7-绝对时间" class="headerlink" title="3.7 绝对时间"></a>3.7 绝对时间</h3><p>绝对时间表示为 ISO 8601 时间戳，使用 UTC (GMT)。 可以指示几分之一秒。</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">utc-range    &#x3D;   &quot;clock&quot; &quot;&#x3D;&quot; utc-time &quot;-&quot; [ utc-time ]
+utc-time     &#x3D;   utc-date &quot;T&quot; utc-time &quot;Z&quot;
+utc-date     &#x3D;   8DIGIT                    ; &lt; YYYYMMDD &gt;
+utc-time     &#x3D;   6DIGIT [ &quot;.&quot; fraction ]   ; &lt; HHMMSS.fraction &gt;
+
+Example for November 8, 1996 at 14h37 and 20 and a quarter seconds UTC:
+
+19961108T143720.25Z<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-8-选项标签"><a href="#3-8-选项标签" class="headerlink" title="3.8 选项标签"></a>3.8 选项标签</h3><p>选项标签是用于在 RTSP 中指定新选项的唯一标识符。 这些标签用于 Require（第 12.32 节）和 Proxy-Require（第 12.27 节）标头字段。</p>
+<p>语法:</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">option-tag   &#x3D;   1*xchar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>新 RTSP 选项的创建者应该使用反向域名作为该选项的前缀（例如，“com.foo.mynewfeature”是可以在“foo.com”上找到其发明者的特征的恰当名称），或者注册 互联网号码分配机构 (IANA) 的新选项。</p>
+<h4 id="3-8-1-向-IANA-注册新的选项标签"><a href="#3-8-1-向-IANA-注册新的选项标签" class="headerlink" title="3.8.1 向 IANA 注册新的选项标签"></a>3.8.1 向 IANA 注册新的选项标签</h4><p>注册新的 RTSP 选项时，应提供以下信息：</p>
+<ul>
+<li>选项的名称和描述。 名称可以是任意长度，但长度不应超过 20 个字符。 名称不得包含任何空格、控制字符或句点。</li>
+<li>表明谁对选项具有变更控制权（例如，IETF、ISO、ITU-T、其他国际标准化机构、财团或特定公司或公司集团）；</li>
+<li>对进一步描述的引用（如果有），例如（按优先顺序）RFC、发表的论文、专利申请、技术报告、记录的源代码或计算机手册；</li>
+<li>对于专有选项，联系信息（邮政和电子邮件地址）；</li>
+</ul>
+<h2 id="4-RTSP-消息"><a href="#4-RTSP-消息" class="headerlink" title="4 RTSP 消息"></a>4 RTSP 消息</h2><p>RTSP 是一种基于文本的协议，使用 UTF-8 编码（<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2279">RFC 2279</a> [21]）中的 ISO 10646 字符集。线路由 CRLF 终止，但接收方也应准备好将 CR 和 LF 自己解释为线路终止符。</p>
+<blockquote>
+<p>基于文本的协议使以自描述方式添加可选参数变得更加容易。由于参数数量和命令频率低，处理效率不是问题。如果仔细完成基于文本的协议，还可以轻松地以 Tcl、Visual Basic 和 Perl 等脚本语言实现研究原型。</p>
+<p>10646 字符集避免了棘手的字符集切换，但只要使用 US-ASCII，应用程序就看不到它。这也是用于 RTCP 的编码。 ISO 8859-1 直接转换为 Unicode，高位八位字节为零。设置了最高有效位的 ISO 8859-1 字符表示为 1100001x 10xxxxxx。 （参见 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2279">RFC 2279</a> [21]）</p>
+</blockquote>
+<p>RTSP 消息可以通过任何 8 位简洁的低层传输协议承载。</p>
+<p>请求包含方法、方法所操作的对象以及进一步描述方法的参数。除非另有说明，否则方法是幂等的。方法还被设计为在媒体服务器上需要很少或不需要状态维护。</p>
+<h3 id="4-1-消息类型"><a href="#4-1-消息类型" class="headerlink" title="4.1 消息类型"></a>4.1 消息类型</h3><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-4.1">[H4.1]</a></p>
+<p>RTSP 消息包括从客户端到服务器的请求和响应 从服务器到客户端。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">RTSP-message   &#x3D; Request | Response     ; RTSP&#x2F;1.0 messages<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>请求（第 5 节）和响应（第 6 节）消息使用 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc822">RFC 822</a> [9] 的通用消息格式来传输实体（消息的有效负载）。 两种类型的消息都包含一个起始行、一个或多个头域（也称为“头”）、一个空行（即在 CRLF 之前没有任何内容的行）指示头域的结尾，以及一个可选的 message-body。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">generic-message &#x3D; start-line
+                  *message-header
+                  CRLF
+                  [ message-body ]
+
+start-line      &#x3D; Request-Line | Status-Line<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为了健壮性，服务器应该忽略收到请求行的任何空行。换句话说，如果服务器正在读取消息开头的协议流并首先接收到 CRLF，则它应该忽略 CRLF。</p>
+<h3 id="4-2-消息头"><a href="#4-2-消息头" class="headerlink" title="4.2 消息头"></a>4.2 消息头</h3><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-4.2">[H4.2]</a></p>
+<p>RTSP 标头字段，包括通用标头（第 4.5 节）、请求标头（第 5.3 节）、响应标头（第 6.2 节）和实体标头（第 7.1 节）字段，遵循与节中给出的相同的通用格式 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc822#section-3.1">RFC 822 [9] 的 3.1 节</a>。 每个头字段由一个名称后跟一个冒号（“:”）和字段值组成。 字段名称不区分大小写。 字段值前面可以有任意数量的 LWS，但首选单个 SP。 通过在每个额外的行之前至少添加一个 SP 或 HT，可以将头部字段扩展到多行。 应用程序在生成 RTSP 构造时应该遵循“通用形式”，因为可能存在一些无法接受通用形式之外的任何内容的实现。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">message-header &#x3D; field-name &quot;:&quot; [ field-value ] CRLF
+
+field-name     &#x3D; token
+field-value    &#x3D; *( field-content | LWS )
+
+field-content  &#x3D; &lt;the OCTETs making up the field-value
+                 and consisting of either *TEXT or combinations
+                 of token, tspecials, and quoted-string &gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接收具有不同字段名称的头字段的顺序并不重要。 然而，“好的做法”是先发送通用头域，然后是请求头域或响应头域，最后是实体头域。</p>
+<p>当且仅当该头字段的整个字段值定义为逗号分隔列表 [即#(values)] 时，消息中可能会出现多个具有相同字段名称的消息头字段。 通过将每个后续字段值附加到第一个字段值，每个字段值用逗号分隔，必须可以将多个头部字段组合成一个“字段名称：字段值”对，而不改变消息的语义。 因此，接收具有相同字段名的头字段的顺序对组合字段值的解释很重要，因此当转发消息时，代理不得更改这些字段值的顺序。</p>
+<h3 id="4-3-消息体"><a href="#4-3-消息体" class="headerlink" title="4.3 消息体"></a>4.3 消息体</h3><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-4.3">[H4.3]</a></p>
+<p>RTSP 消息的消息正文（如果有）用于携带与请求或响应相关联的实体正文。仅当应用了传输编码时，消息正文才与实体正文不同，如传输编码头字段所示（第 14.40 节）。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">message-body &#x3D; entity-body
+             | &lt;entity-body encoded as per Transfer-Encoding&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>Transfer-Encoding 必须用于指示应用程序应用的任何传输编码，以确保消息的安全和正确传输。 Transfer-Encoding 是消息的属性，而不是实体的属性，因此可以由任何应用程序沿请求/响应链添加或删除。</p>
+<p>消息中何时允许消息正文的规则因请求和响应而异。</p>
+<p>通过在请求的消息头中包含 Content-Length 或 Transfer-Encoding 头字段来表示请求中消息正文的存在。只有当请求方法（第 5.1.1 节）允许实体主体时，消息主体才可以包含在请求中。</p>
+<p>对于响应消息，消息中是否包含消息体取决于请求方法和响应状态代码（第 6.1.1 节）。对 HEAD 请求方法的所有响应不得包含消息正文，即使实体头字段的存在可能使人们相信它们确实如此。所有 1xx（信息性）、204（无内容）和 304（未修改）响应不得包含消息正文。所有其他响应都包含消息正文，尽管它的长度可能为零。</p>
+<h3 id="4-4-消息长度"><a href="#4-4-消息长度" class="headerlink" title="4.4 消息长度"></a>4.4 消息长度</h3><p>当消息包含消息正文时，该正文的长度由以下之一确定（按优先顺序）：</p>
+<ol>
+<li>任何不包括消息体的响应消息（例如 1xx、204 和 304 响应）总是以头字段后的第一个空行结束，而不管消息中存在的实体头字段。 （注意：空行仅包含 CRLF。）</li>
+<li>如果存在 Content-Length 头字段（第 12.14 节），则其值（以字节为单位）表示消息体的长度。 如果该头域不存在，则假定值为零。</li>
+<li>由服务器关闭连接。（关闭连接不能用于指示请求正文的结束，因为这将使服务器无法发回响应。）</li>
+</ol>
+<blockquote>
+<p>请注意，RTSP（目前）不支持 HTTP/1.1 “分块”传输编码（参见 [H3.6]）并且需要存在 Content-Length 头字段。</p>
+<blockquote>
+<p>鉴于返回的表示描述的长度适中，服务器应该始终能够确定它的长度，即使它是动态生成的，这使得分块传输编码变得不必要。 即使 Content-Length 必须存在，如果有任何实体主体，即使没有明确给出长度，规则也能确保合理的行为。</p>
+</blockquote>
+</blockquote>
+<h2 id="5-通用头部字段"><a href="#5-通用头部字段" class="headerlink" title="5 通用头部字段"></a>5 通用头部字段</h2><p>参见 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-4.5">[H4.5]</a>，除了 Pragma、Transfer-Encoding 和 Upgrade 标头没有定义：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">general-header     &#x3D;     Cache-Control     ; Section 12.8  
+                   |     Connection        ; Section 12.10  
+                   |     Date              ; Section 12.18  
+                   |     Via               ; Section 12.43  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="6-请求"><a href="#6-请求" class="headerlink" title="6 请求"></a>6 请求</h2><p>从客户端到服务器（反之亦然）的请求消息在该消息的第一行中包括要应用于资源的方法、资源的标识符和使用的协议版本。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">Request     &#x3D;       Request-Line          ; Section 6.1
+            *(      general-header        ; Section 5
+            |       request-header        ; Section 6.2
+            |       entity-header )       ; Section 8.1
+                    CRLF
+                    [ message-body ]      ; Section 4.3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-1-请求行"><a href="#6-1-请求行" class="headerlink" title="6.1 请求行"></a>6.1 请求行</h3><pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">Request-Line &#x3D; Method SP Request-URI SP RTSP-Version CRLF
+
+ Method         &#x3D;         &quot;DESCRIBE&quot;              ; Section 10.2
+                |         &quot;ANNOUNCE&quot;              ; Section 10.3
+                |         &quot;GET_PARAMETER&quot;         ; Section 10.8
+                |         &quot;OPTIONS&quot;               ; Section 10.1
+                |         &quot;PAUSE&quot;                 ; Section 10.6
+                |         &quot;PLAY&quot;                  ; Section 10.5
+                |         &quot;RECORD&quot;                ; Section 10.11
+                |         &quot;REDIRECT&quot;              ; Section 10.10
+                |         &quot;SETUP&quot;                 ; Section 10.4
+                |         &quot;SET_PARAMETER&quot;         ; Section 10.9
+                |         &quot;TEARDOWN&quot;              ; Section 10.7
+                |         extension-method
+
+extension-method &#x3D; token
+
+Request-URI &#x3D; &quot;*&quot; | absolute_URI
+
+RTSP-Version &#x3D; &quot;RTSP&quot; &quot;&#x2F;&quot; 1*DIGIT &quot;.&quot; 1*DIGIT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-2-请求头域"><a href="#6-2-请求头域" class="headerlink" title="6.2 请求头域"></a>6.2 请求头域</h3><pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">request-header  &#x3D;          Accept                   ; Section 12.1
+                |          Accept-Encoding          ; Section 12.2
+                |          Accept-Language          ; Section 12.3
+                |          Authorization            ; Section 12.5
+                |          From                     ; Section 12.20
+                |          If-Modified-Since        ; Section 12.23
+                |          Range                    ; Section 12.29
+                |          Referer                  ; Section 12.30
+                |          User-Agent               ; Section 12.41<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>请注意，与 HTTP/1.1 [2] 相比，RTSP 请求始终包含绝对 URL（即，包括方案、主机和端口）而不仅仅是绝对路径。</p>
+<blockquote>
+<p>HTTP/1.1 要求服务器理解绝对 URL，但客户端应该使用 Host 请求标头。 这纯粹是为了向后兼容 HTTP/1.0 服务器，这一考虑不适用于 RTSP。</p>
+</blockquote>
+</blockquote>
+<p>Request-URI 中的星号“*”表示该请求并不适用于特定资源，而是适用于服务器本身，并且仅在使用的方法不一定适用于资源时才允许。 一个例子是：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">OPTIONS * RTSP&#x2F;1.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="7-响应"><a href="#7-响应" class="headerlink" title="7 响应"></a>7 响应</h2><p>[H6] 适用，但 HTTP-Version 被 RTSP-Version 取代。 此外，RTSP 定义了额外的状态代码，并没有定义一些 HTTP 代码。 表 1 中定义了有效的响应代码和它们可以使用的方法。</p>
+<p>接收并解释请求消息后，接收方以 RTSP 响应消息进行响应。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">Response    &#x3D;     Status-Line         ; Section 7.1
+            *(    general-header      ; Section 5
+            |     response-header     ; Section 7.1.2
+            |     entity-header )     ; Section 8.1
+                  CRLF
+                  [ message-body ]    ; Section 4.3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-1-状态行"><a href="#7-1-状态行" class="headerlink" title="7.1 状态行"></a>7.1 状态行</h3><p>响应消息的第一行是状态行，由协议版本后跟数字状态代码和与状态代码关联的文本短语组成，每个元素由 SP 字符分隔。 除了最后的 CRLF 序列外，不允许使用 CR 或 LF。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">Status-Line &#x3D;   RTSP-Version SP Status-Code SP Reason-Phrase CRLF<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="7-1-1-状态码和原因短语"><a href="#7-1-1-状态码和原因短语" class="headerlink" title="7.1.1 状态码和原因短语"></a>7.1.1 状态码和原因短语</h4><p>Status-Code 元素是尝试理解和满足请求的 3 位整数结果代码。 这些代码在第 11 节中有完整定义。原因短语旨在提供状态代码的简短文本描述。 状态代码供自动机使用，原因短语供人类用户使用。 客户端不需要检查或显示原因短语。</p>
+<p>状态代码的第一位数字定义了响应的类别。最后两位数字没有任何分类作用。第一个数字有 5 个值：</p>
+<ul>
+<li>1xx：信息性 - 收到请求，继续处理</li>
+<li>2xx：成功 - 成功接收、理解和接受动作</li>
+<li>3xx：重定向 - 必须采取进一步行动才能完成请求</li>
+<li>4xx：客户端错误 - 请求包含错误的语法或无法完成</li>
+<li>5xx：服务器错误 - 服务器未能满足明显有效的请求</li>
+</ul>
+<p>为 RTSP/1.0 定义的数字状态代码的各个值以及一组相应的原因短语示例如下所示。此处列出的原因短语仅供推荐 - 它们可能会被本地等效项替换而不影响协议。请注意，RTSP 采用了大多数 HTTP/1.1 [2] 状态代码，并添加了从 x50 开始的 RTSP 特定状态代码，以避免与新定义的 HTTP 状态代码发生冲突。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">Status-Code &#x3D;     &quot;100&quot;      ; Continue
+            |     &quot;200&quot;      ; OK
+            |     &quot;201&quot;      ; Created
+            |     &quot;250&quot;      ; Low on Storage Space
+            |     &quot;300&quot;      ; Multiple Choices
+            |     &quot;301&quot;      ; Moved Permanently
+            |     &quot;302&quot;      ; Moved Temporarily
+            |     &quot;303&quot;      ; See Other
+            |     &quot;304&quot;      ; Not Modified
+            |     &quot;305&quot;      ; Use Proxy
+            |     &quot;400&quot;      ; Bad Request
+            |     &quot;401&quot;      ; Unauthorized
+            |     &quot;402&quot;      ; Payment Required
+            |     &quot;403&quot;      ; Forbidden
+            |     &quot;404&quot;      ; Not Found
+            |     &quot;405&quot;      ; Method Not Allowed
+            |     &quot;406&quot;      ; Not Acceptable
+            |     &quot;407&quot;      ; Proxy Authentication Required
+            |     &quot;408&quot;      ; Request Time-out
+            |     &quot;410&quot;      ; Gone
+            |     &quot;411&quot;      ; Length Required
+            |     &quot;412&quot;      ; Precondition Failed
+            |     &quot;413&quot;      ; Request Entity Too Large
+            |     &quot;414&quot;      ; Request-URI Too Large
+            |     &quot;415&quot;      ; Unsupported Media Type
+            |     &quot;451&quot;      ; Parameter Not Understood
+            |     &quot;452&quot;      ; Conference Not Found
+            |     &quot;453&quot;      ; Not Enough Bandwidth
+            |     &quot;454&quot;      ; Session Not Found
+            |     &quot;455&quot;      ; Method Not Valid in This State
+            |     &quot;456&quot;      ; Header Field Not Valid for Resource
+            |     &quot;457&quot;      ; Invalid Range
+            |     &quot;458&quot;      ; Parameter Is Read-Only
+            |     &quot;459&quot;      ; Aggregate operation not allowed
+            |     &quot;460&quot;      ; Only aggregate operation allowed
+            |     &quot;461&quot;      ; Unsupported transport
+            |     &quot;462&quot;      ; Destination unreachable
+            |     &quot;500&quot;      ; Internal Server Error
+            |     &quot;501&quot;      ; Not Implemented
+            |     &quot;502&quot;      ; Bad Gateway
+            |     &quot;503&quot;      ; Service Unavailable
+            |     &quot;504&quot;      ; Gateway Time-out
+            |     &quot;505&quot;      ; RTSP Version not supported
+            |     &quot;551&quot;      ; Option not supported
+            |     extension-code
+
+extension-code  &#x3D;     3DIGIT
+Reason-Phrase   &#x3D;     *&lt;TEXT, excluding CR, LF&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>RTSP 状态代码是可扩展的。RTSP 应用程序不需要理解所有注册状态代码的含义，尽管这种理解显然是可取的。 但是，应用程序必须理解任何状态代码的类别，如第一个数字所示，并将任何无法识别的响应视为等同于该类的 x00 状态代码，除非不能缓存无法识别的响应。例如，如果客户端收到无法识别的 431 状态代码，它可以安全地假设其请求有问题，并将响应视为收到 400 状态代码。 在这种情况下，用户代理应该将响应返回的实体呈现给用户，因为该实体可能包含解释异常状态的人类可读信息。</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>reason</th>
+<th>RTSP method</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100</td>
+<td>Continue</td>
+<td>all</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>all</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>RECORD</td>
+</tr>
+<tr>
+<td>250</td>
+<td>Low on Storage Space</td>
+<td>RECORD</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>300</td>
+<td>Multiple Choices</td>
+<td>all</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>all</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Moved Temporarily</td>
+<td>all</td>
+</tr>
+<tr>
+<td>303</td>
+<td>See Other</td>
+<td>all</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Use Proxy</td>
+<td>all</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>all</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>all</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Payment Required</td>
+<td>all</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>all</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>all</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>all</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>all</td>
+</tr>
+<tr>
+<td>407</td>
+<td>Proxy Authentication Required</td>
+<td>all</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Request Timeout</td>
+<td>all</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+<td>all</td>
+</tr>
+<tr>
+<td>411</td>
+<td>Length Required</td>
+<td>all</td>
+</tr>
+<tr>
+<td>412</td>
+<td>Precondition Failed</td>
+<td>DESCRIBE, SETUP</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Request Entity Too Large</td>
+<td>all</td>
+</tr>
+<tr>
+<td>414</td>
+<td>Request-URI Too Long</td>
+<td>all</td>
+</tr>
+<tr>
+<td>415</td>
+<td>Unsupported Media Type</td>
+<td>all</td>
+</tr>
+<tr>
+<td>451</td>
+<td>Invalid parameter</td>
+<td>SETUP</td>
+</tr>
+<tr>
+<td>452</td>
+<td>Illegal Conference Identifier</td>
+<td>SETUP</td>
+</tr>
+<tr>
+<td>453</td>
+<td>Not Enough Bandwidth</td>
+<td>SETUP</td>
+</tr>
+<tr>
+<td>454</td>
+<td>Session Not Found</td>
+<td>all</td>
+</tr>
+<tr>
+<td>455</td>
+<td>Method Not Valid In This State</td>
+<td>all</td>
+</tr>
+<tr>
+<td>456</td>
+<td>Header Field Not Valid</td>
+<td>all</td>
+</tr>
+<tr>
+<td>457</td>
+<td>Invalid Range</td>
+<td>PLAY</td>
+</tr>
+<tr>
+<td>458</td>
+<td>Parameter Is Read-Only</td>
+<td>SET_PARAMETER</td>
+</tr>
+<tr>
+<td>459</td>
+<td>Aggregate Operation Not Allowed</td>
+<td>all</td>
+</tr>
+<tr>
+<td>460</td>
+<td>Only Aggregate Operation Allowed</td>
+<td>all</td>
+</tr>
+<tr>
+<td>461</td>
+<td>Unsupported Transport</td>
+<td>all</td>
+</tr>
+<tr>
+<td>462</td>
+<td>Destination Unreachable</td>
+<td>all</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>all</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Not Implemented</td>
+<td>all</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Bad Gateway</td>
+<td>all</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>all</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout</td>
+<td>all</td>
+</tr>
+<tr>
+<td>505</td>
+<td>RTSP Version Not Supported</td>
+<td>all</td>
+</tr>
+<tr>
+<td>551</td>
+<td>Option not support</td>
+<td>all</td>
+</tr>
+</tbody></table>
+<p>表1：状态代码及其在 RTSP 方法中的使用</p>
+<h4 id="7-1-2-响应头域"><a href="#7-1-2-响应头域" class="headerlink" title="7.1.2 响应头域"></a>7.1.2 响应头域</h4><p>响应头字段允许请求接收者传递关于响应的附加信息，这些信息不能放在状态行中。 这些头域提供了关于服务器的信息以及关于对由 Request-URI 标识的资源的进一步访问的信息。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">response-header &#x3D;     Location             ; Section 12.25
+                |     Proxy-Authenticate   ; Section 12.26
+                |     Public               ; Section 12.28
+                |     Retry-After          ; Section 12.31
+                |     Server               ; Section 12.36
+                |     Vary                 ; Section 12.42
+                |     WWW-Authenticate     ; Section 12.44<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>只有结合协议版本的更改才能可靠地扩展响应头字段名称。 然而，新的或实验性的头域可以被赋予响应头域的语义，如果通信中的所有各方都将它们识别为响应头域。 无法识别的头字段被视为实体头字段。</p>
+<h2 id="8-实体"><a href="#8-实体" class="headerlink" title="8 实体"></a>8 实体</h2><p>如果请求方法或响应状态代码不受其他限制，则请求和响应消息可以传输实体。 实体由实体头字段和实体主体组成，尽管某些响应将仅包含实体头。</p>
+<p>在本节中，发送者和接收者都指的是客户端或服务器，具体取决于谁发送和谁接收实体。</p>
+<h3 id="8-1-实体头域"><a href="#8-1-实体头域" class="headerlink" title="8.1 实体头域"></a>8.1 实体头域</h3><p>实体头字段定义了关于实体主体的可选元信息，或者，如果不存在主体，则定义有关请求标识的资源的元信息。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">entity-header       &#x3D;    Allow               ; Section 12.4
+                    |    Content-Base        ; Section 12.11
+                    |    Content-Encoding    ; Section 12.12
+                    |    Content-Language    ; Section 12.13
+                    |    Content-Length      ; Section 12.14
+                    |    Content-Location    ; Section 12.15
+                    |    Content-Type        ; Section 12.16
+                    |    Expires             ; Section 12.19
+                    |    Last-Modified       ; Section 12.24
+                    |    extension-header
+extension-header    &#x3D;    message-header<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>扩展头机制允许在不改变协议的情况下定义额外的实体头字段，但不能假设这些字段是接收者可识别的。 无法识别的头域应该被接收者忽略并由代理转发。</p>
+<h3 id="8-2-实体主体"><a href="#8-2-实体主体" class="headerlink" title="8.2 实体主体"></a>8.2 实体主体</h3><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-7.2">[H7.2]</a></p>
+<p>与 RTSP 请求或响应一起发送的实体主体（如果有）采用实体头字段定义的格式和编码。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">entity-body    &#x3D; *OCTET <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如第 4.3 节所述，实体正文仅在消息正文存在时才出现在消息中。 实体主体是通过对可能已被应用以确保消息的安全和正确传输的任何传输编码进行解码而从消息主体中获得的。</p>
+<h2 id="9-连接"><a href="#9-连接" class="headerlink" title="9 连接"></a>9 连接</h2><p>RTSP 请求可以通过几种不同的方式传输：</p>
+<ul>
+<li>用于多个请求-响应事务的持久传输连接；</li>
+<li>每个请求/响应事务一个连接；</li>
+<li>无连接模式。</li>
+</ul>
+<p>传输连接的类型由 RTSP URI（<a href="#32-rtsp-rul">第 3.2 节</a>）定义。 对于“rtsp”方案，假设一个持久连接，而“rtspu”方案要求在不建立连接的情况下发送RTSP请求。</p>
+<p>与 HTTP 不同，RTSP 允许媒体服务器向媒体客户端发送请求。但是，这仅支持持久连接，因为媒体服务器没有可靠的方式到达客户端。此外，这是从媒体服务器到客户端的请求可能穿过防火墙的唯一方式。</p>
+<h3 id="9-1-流水线"><a href="#9-1-流水线" class="headerlink" title="9.1 流水线"></a>9.1 流水线</h3><p>支持持久连接或无连接模式的客户端可以“管道”其请求（即发送多个请求而不等待每个响应）。 服务器必须按照接收请求的相同顺序发送对这些请求的响应。</p>
+<h3 id="9-2-可靠性和确认"><a href="#9-2-可靠性和确认" class="headerlink" title="9.2 可靠性和确认"></a>9.2 可靠性和确认</h3><p>除非请求被发送到多播组，否则接收者会确认请求。 如果没有确认，发送方可能会在一个往返时间 (RTT) 超时后重新发送相同的消息。 往返时间的估计与 TCP (<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc1123">RFC 1123</a>) [18] 中一样，初始往返值为 500 毫秒。 一个实现可以缓存最后一个 RTT 测量作为未来连接的初始值。</p>
+<p>如果使用可靠的传输协议来承载 RTSP，则不得重传请求； RTSP 应用程序必须依赖底层传输来提供可靠性。</p>
+<blockquote>
+<p>如果底层可靠传输（例如 TCP）和 RTSP 应用程序都重传请求，则每个数据包丢失可能导致两次重传。 接收器通常不能利用应用层重传，因为传输栈不会在第一次尝试到达接收器之前传递应用层重传。 如果丢包是由于拥塞造成的，不同层的多次重传会加剧拥塞。</p>
+<p>如果在小型 RTT LAN 上使用 RTSP，则用于优化初始 TCP 往返估计的标准程序，例如 T/TCP (<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc1644">RFC 1644</a>) [22] 中使用的程序，可能会有所帮助。</p>
+</blockquote>
+<p>时间戳标头（第 12.38 节）用于避免重传歧义问题 [23, p. 301] 并消除了对卡恩算法的需要。</p>
+<p>每个请求在 CSeq 标头中携带一个序列号（第 12.17 节），对于每个传输的不同请求，该序列号递增 1。如果由于缺乏确认而重复请求，则该请求必须携带原始序列号（即，序列号不递增）。</p>
+<p>实现 RTSP 的系统必须支持通过 TCP 承载 RTSP，并且可以支持 UDP。 RTSP 服务器的默认端口对于 UDP 和 TCP 都是 554。</p>
+<p>发往同一个控制端点的多个 RTSP 数据包可能会被打包到单个低层 PDU 中或被封装到 TCP 流中。 RTSP 数据可以与 RTP 和 RTCP 数据包交错。</p>
+<p>与 HTTP 不同，RTSP 消息必须包含一个 Content-Length 标头，只要该消息包含有效负载。否则，RTSP 包以紧跟在最后一个消息头之后的空行终止。</p>
+<h2 id="10-方法定义"><a href="#10-方法定义" class="headerlink" title="10 方法定义"></a>10 方法定义</h2><p>方法标记指示要在请求 URI 标识的资源上执行的方法。 该方法区分大小写。 未来可能会定义新的方法。 方法名称不能以 $ 字符（十进制 24）开头，并且必须是标记。 方法总结在表 2 中。</p>
+<table>
+<thead>
+<tr>
+<th>method</th>
+<th>direction</th>
+<th>object</th>
+<th>requirement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DESCRIBE</td>
+<td>C-&gt;S</td>
+<td>P,S</td>
+<td>recommended</td>
+</tr>
+<tr>
+<td>ANNOUNCE</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P,S</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>GET_PARAMETER</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P,S</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P,S</td>
+<td>required (S-&gt;C: optional)</td>
+</tr>
+<tr>
+<td>PAUSE</td>
+<td>C-&gt;S</td>
+<td>P,S</td>
+<td>recommended</td>
+</tr>
+<tr>
+<td>PLAY</td>
+<td>C-&gt;S</td>
+<td>P,S</td>
+<td>required</td>
+</tr>
+<tr>
+<td>RECORD</td>
+<td>C-&gt;S</td>
+<td>P,S</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>REDIRECT</td>
+<td>S-&gt;C</td>
+<td>P,S</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>SETUP</td>
+<td>C-&gt;S</td>
+<td>S</td>
+<td>required</td>
+</tr>
+<tr>
+<td>SET_PARAMETER</td>
+<td>C-&gt;S, S-&gt;C</td>
+<td>P,S</td>
+<td>optional</td>
+</tr>
+<tr>
+<td>TEARDOWN</td>
+<td>C-&gt;S</td>
+<td>P,S</td>
+<td>required</td>
+</tr>
+</tbody></table>
+<p>表 2：RTSP 方法概述、它们的方向以及它们操作的对象（P: presentation, S: stream）</p>
+<blockquote>
+<p>注意：建议使用 PAUSE，但不是必需的，因为可以构建不支持此方法的全功能服务器，例如，用于实时提要。 如果一个服务器不支持一个特定的方法，它必须返回“501 Not Implemented”并且客户端不应该为这个服务器再次尝试这个方法。</p>
+</blockquote>
+<h3 id="10-1-OPTIONS"><a href="#10-1-OPTIONS" class="headerlink" title="10.1 OPTIONS"></a>10.1 OPTIONS</h3><p>该行为等同于 [H9.2] 中描述的行为。一个 <code>OPTIONS</code> 请求可以在任何时候发出，例如，如果客户端将要尝试一个非标准请求。 它不会影响服务器状态。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S:   OPTIONS * RTSP&#x2F;1.0
+        CSeq: 1
+        Require: implicit-play
+        Proxy-Require: gzipped-messages
+
+S-&gt;C:   RTSP&#x2F;1.0 200 OK
+        CSeq: 1
+        Public: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>请注意，这些必然是虚构的功能（人们希望我们不会故意忽略一个真正有用的功能，以便我们在本节中有一个强有力的例子）。</p>
+</blockquote>
+<h3 id="10-2-DESCRIBE"><a href="#10-2-DESCRIBE" class="headerlink" title="10.2 DESCRIBE"></a>10.2 DESCRIBE</h3><p><code>DESCRIBE</code> 方法从服务器检索由请求 URL 标识的演示或媒体对象的描述。 它可以使用 Accept 头来指定客户端理解的描述格式。服务器以所请求资源的描述作为响应。<code>DESCRIBE</code> 回复-响应对构成了 RTSP 的媒体初始化阶段。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S:   DESCRIBE rtsp:&#x2F;&#x2F;server.example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+        CSeq: 312
+        Accept: application&#x2F;sdp, application&#x2F;rtsl, application&#x2F;mheg
+
+S-&gt;C:   RTSP&#x2F;1.0 200 OK
+        CSeq: 312
+        Date: 23 Jan 1997 15:35:06 GMT
+        Content-Type: application&#x2F;sdp
+        Content-Length: 376
+
+        v&#x3D;0
+        o&#x3D;mhandley 2890844526 2890842807 IN IP4 126.16.64.4
+        s&#x3D;SDP Seminar
+        i&#x3D;A Seminar on the session description protocol
+        u&#x3D;http:&#x2F;&#x2F;www.cs.ucl.ac.uk&#x2F;staff&#x2F;M.Handley&#x2F;sdp.03.ps
+        e&#x3D;mjh@isi.edu (Mark Handley)
+        c&#x3D;IN IP4 224.2.17.12&#x2F;127
+        t&#x3D;2873397496 2873404696
+        a&#x3D;recvonly
+        m&#x3D;audio 3456 RTP&#x2F;AVP 0
+        m&#x3D;video 2232 RTP&#x2F;AVP 31
+        m&#x3D;whiteboard 32416 UDP WB
+        a&#x3D;orient:portrait<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>DESCRIBE</code> 响应必须包含它描述的资源的所有媒体初始化信息。如果媒体客户端从 <code>DESCRIBE</code> 以外的来源获得演示描述，并且该描述包含一组完整的媒体初始化参数，则客户端应该使用这些参数，而不是通过 RTSP 请求相同媒体的描述。此外，服务器不应该使用 <code>DESCRIBE</code> 响应作为媒体间接的手段。</p>
+<blockquote>
+<p>需要建立明确的基本规则，以便客户端能够清楚地知道何时通过 <code>DESCRIBE</code> 请求媒体初始化信息，何时不请求。通过强制 <code>DESCRIBE</code> 响应包含它描述的一组流的所有媒体初始化，并阻止将 <code>DESCRIBE</code> 用于媒体间接，我们避免了可能由其他方法导致的循环问题。<br>媒体初始化是任何基于 RTSP 的系统的要求，但 RTSP 规范并未规定必须通过 <code>DESCRIBE</code> 方法完成此操作。 RTSP 客户端可以通过三种方式接收初始化信息：</p>
+<ul>
+<li>通过 RTSP 的 <code>DESCRIBE</code> 方法；</li>
+<li>通过一些其他协议（HTTP、电子邮件附件等）；</li>
+<li>通过命令行或标准输入（因此作为使用 SDP 文件或其他媒体初始化格式启动的浏览器帮助应用程序工作）。</li>
+</ul>
+<p>为了实际互操作性，强烈建议最小服务器支持 <code>DESCRIBE</code> 方法，并强烈建议最小客户端支持充当“帮助应用程序”的能力，从标准输入、命令行和/或其他适合客户端操作环境的方式。</p>
+</blockquote>
+<h3 id="10-3-ANNOUNCE"><a href="#10-3-ANNOUNCE" class="headerlink" title="10.3 ANNOUNCE"></a>10.3 ANNOUNCE</h3><p><code>ANNOUNCE</code> 方法有两个目的：</p>
+<ul>
+<li>当从客户端发送到服务器时，<code>ANNOUNCE</code> 将请求 URL 标识的演示或媒体对象的描述发布到服务器。</li>
+<li>当从服务器发送到客户端时，<code>ANNOUNCE</code> 实时更新会话描述。</li>
+</ul>
+<p>如果将新媒体流添加到演示中（例如，在现场演示期间），则应再次发送整个演示描述，而不仅仅是附加组件，以便可以删除组件。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S:   ANNOUNCE rtsp:&#x2F;&#x2F;server.example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+        CSeq: 312
+        Date: 23 Jan 1997 15:35:06 GMT
+        Session: 47112344
+        Content-Type: application&#x2F;sdp
+        Content-Length: 332
+
+        v&#x3D;0
+        o&#x3D;mhandley 2890844526 2890845468 IN IP4 126.16.64.4
+        s&#x3D;SDP Seminar
+        i&#x3D;A Seminar on the session description protocol
+        u&#x3D;http:&#x2F;&#x2F;www.cs.ucl.ac.uk&#x2F;staff&#x2F;M.Handley&#x2F;sdp.03.ps
+        e&#x3D;mjh@isi.edu (Mark Handley)
+        c&#x3D;IN IP4 224.2.17.12&#x2F;127
+        t&#x3D;2873397496 2873404696
+        a&#x3D;recvonly
+        m&#x3D;audio 3456 RTP&#x2F;AVP 0
+        m&#x3D;video 2232 RTP&#x2F;AVP 31
+
+S-&gt;C:   RTSP&#x2F;1.0 200 OK
+        CSeq: 312<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-4-SETUP"><a href="#10-4-SETUP" class="headerlink" title="10.4 SETUP"></a>10.4 SETUP</h3><p>对 URI 的 <code>SETUP</code> 请求指定用于流媒体的传输机制。客户端可以对已经播放的流发出 <code>SETUP</code> 请求以更改传输参数，服务器可以允许。如果它不允许这样做，它必须以错误“455 Method Not Valid In This State”响应。为了任何中间防火墙的利益，客户端必须指明传输参数，即使它对这些参数没有影响，例如，服务器在哪里通告固定的多播地址。</p>
+<blockquote>
+<p>由于 <code>SETUP</code> 包括所有传输初始化信息，防火墙和其他中间网络设备（需要此信息）可以免于解析 <code>DESCRIBE</code> 响应的更艰巨的任务，该响应已保留用于媒体初始化。</p>
+</blockquote>
+<p><code>Transport</code> 头指定客户端可接受的传输参数，用于数据传输；响应将包含服务器选择的传输参数。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S:   SETUP rtsp:&#x2F;&#x2F;example.com&#x2F;foo&#x2F;bar&#x2F;baz.rm RTSP&#x2F;1.0
+        CSeq: 302
+        Transport: RTP&#x2F;AVP;unicast;client_port&#x3D;4588-4589
+
+S-&gt;C:   RTSP&#x2F;1.0 200 OK
+        CSeq: 302
+        Date: 23 Jan 1997 15:35:06 GMT
+        Session: 47112344
+        Transport: RTP&#x2F;AVP;unicast;
+          client_port&#x3D;4588-4589;server_port&#x3D;6256-6257<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>服务器生成会话标识符以响应 <code>SETUP</code> 请求。 如果对服务器的 <code>SETUP</code> 请求包含会话标识符，则服务器必须将此设置请求捆绑到现有会话中或返回错误“459 Aggregate Operation Not Allowed”（参见第 11.3.10 节）。</p>
+<h3 id="10-5-PLAY"><a href="#10-5-PLAY" class="headerlink" title="10.5 PLAY"></a>10.5 PLAY</h3><p><code>PLAY</code> 方法告诉服务器通过 <code>SETUP</code> 中指定的机制开始发送数据。<strong>在任何未完成的 <code>SETUP</code> 请求被确认为成功之前，客户端不得发出 <code>PLAY</code> 请求。</strong></p>
+<p><code>PLAY</code> 请求将正常播放时间定位到指定范围的开始，并传送流数据直到到达范围结束。<code>PLAY</code> 请求可能会被流水线化（排队）；服务器必须将 <code>PLAY</code> 请求按顺序执行。也就是说，<strong>在前一个 <code>PLAY</code> 请求仍处于活动状态时到达的 <code>PLAY</code> 请求会被延迟，直到第一个请求完成。</strong></p>
+<blockquote>
+<p>这允许精确编辑。</p>
+</blockquote>
+<p>例如，无论下面示例中的两个 <code>PLAY</code> 请求到达的间隔有多近，服务器将首先播放 10 到 15 秒，然后紧随其后的是 20 到 25 秒，最后是 30 秒到结束。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S:   PLAY rtsp:&#x2F;&#x2F;audio.example.com&#x2F;audio RTSP&#x2F;1.0
+        CSeq: 835
+        Session: 12345678
+        Range: npt&#x3D;10-15
+
+C-&gt;S:   PLAY rtsp:&#x2F;&#x2F;audio.example.com&#x2F;audio RTSP&#x2F;1.0
+        CSeq: 836
+        Session: 12345678
+        Range: npt&#x3D;20-25
+
+C-&gt;S:   PLAY rtsp:&#x2F;&#x2F;audio.example.com&#x2F;audio RTSP&#x2F;1.0
+        CSeq: 837
+        Session: 12345678
+        Range: npt&#x3D;30-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>有关更多示例，请参阅 <code>PAUSE</code> 请求的说明。</p>
+<p>没有 <code>Range</code> 标头的 <code>PLAY</code> 请求是合法的。 除非流已暂停，否则它会从头开始播放流。 如果流已通过 <code>PAUSE</code> 暂停，则流传输将在暂停点恢复。 如果一个流正在播放，这样的 <code>PLAY</code> 请求不会引起进一步的动作，客户端可以使用它来测试服务器的活跃度。</p>
+<p><code>Range</code> 头也可能包含一个时间参数。此参数指定应开始播放的 UTC 时间。如果在指定时间后收到消息，则立即开始播放。时间参数可用于辅助从不同源获得的流的同步。</p>
+<p>对于点播流，服务器回复将播放的实际范围。如果媒体源需要将请求的范围与有效的帧边界对齐，则这可能与请求的范围不同。如果请求中未指定范围，则在回复中返回当前位置。回复中的范围单位与请求中的范围单位相同。</p>
+<p>播放完所需的范围后，演示会自动暂停，就像发出了暂停请求一样。</p>
+<p>以下示例从 SMPTE 时间码 0:10:20 开始播放整个演示，直到剪辑结束。播放时间为1997年1月23日15时36分。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: PLAY rtsp:&#x2F;&#x2F;audio.example.com&#x2F;twister.en RTSP&#x2F;1.0
+      CSeq: 833
+      Session: 12345678
+      Range: smpte&#x3D;0:10:20-;time&#x3D;19970123T153600Z
+
+S-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 833
+      Date: 23 Jan 1997 15:35:06 GMT
+      Range: smpte&#x3D;0:10:22-;time&#x3D;19970123T153600Z<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为了回放现场演示的录音，可能需要使用时钟单位：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: PLAY rtsp:&#x2F;&#x2F;audio.example.com&#x2F;meeting.en RTSP&#x2F;1.0
+      CSeq: 835
+      Session: 12345678
+      Range: clock&#x3D;19961108T142300Z-19961108T143520Z
+
+S-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 835
+      Date: 23 Jan 1997 15:35:06 GMT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>仅支持播放的媒体服务器必须支持 npt 格式，并且可以支持时钟和 smpte 格式。</p>
+<h3 id="10-6-PAUSE"><a href="#10-6-PAUSE" class="headerlink" title="10.6 PAUSE"></a>10.6 PAUSE</h3><p><code>PAUSE</code> 请求会导致流传输暂时中断（停止）。如果请求 URL 命名了一个流，则只会暂停该流的播放和记录。例如，对于音频，这相当于静音。如果请求 URL 为一个演示或一组流命名，则该演示或组中所有当前活动流的传递将停止。恢复播放或录制后，必须保持曲目同步。任何服务器资源都被保留，尽管服务器可以在暂停了 <code>SETUP</code> 消息中会话头的超时参数指定的持续时间后关闭会话并释放资源。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: PAUSE rtsp:&#x2F;&#x2F;example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+      CSeq: 834
+      Session: 12345678
+
+S-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 834
+      Date: 23 Jan 1997 15:35:06 GMT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>PAUSE</code> 请求可能包含一个 Range 标头，指定何时停止流或演示。我们将这一点称为“暂停点”。标头必须只包含一个值而不是时间范围。流的正常播放时间设置为暂停点。暂停请求在服务器第一次遇到任何当前挂起的 <code>PLAY</code> 请求中指定的时间点时生效。如果 Range 标头指定了任何当前挂起的 <code>PLAY</code> 请求之外的时间，则返回错误“457 Invalid Range”。如果媒体单元（例如音频或视频帧）恰好在暂停点开始呈现，则不会播放或录制。如果缺少 Range 标头，则在收到消息时立即中断流传递，并将暂停点设置为当前正常播放时间。</p>
+<p><code>PAUSE</code> 请求会丢弃所有排队的 <code>PLAY</code> 请求。然而，必须保持媒体流中的暂停点。没有 Range 标头的后续 <code>PLAY</code> 请求从暂停点恢复。</p>
+<p>例如，如果服务器有 10 到 15 和 20 到 29 范围的播放请求待处理，然后收到 NPT 21 的暂停请求，它将开始播放第二个范围并在 NPT 21 处停止。如果暂停请求是针对 NPT 12 的并且服务器正在 NPT 13 处播放第一个播放请求，服务器立即停止。如果暂停请求是针对 NPT 16，则服务器在完成第一个播放请求后停止并丢弃第二个播放请求。</p>
+<p>再举一个例子，如果服务器收到了播放范围 10 到 15 然后是 13 到 20（即重叠范围）的请求，则 NPT=14 的 <code>PAUSE</code> 请求将在服务器播放第一个范围时生效，第二个 <code>PLAY</code> 请求实际上被忽略，假设 <code>PAUSE</code> 请求在服务器开始播放第二个重叠范围之前到达。 无论 <code>PAUSE</code> 请求何时到达，它都会将 NPT 设置为 14。</p>
+<p>如果服务器已经在 Range 标头中指定的时间之外发送了数据，则 <code>PLAY</code> 仍会在该时间点恢复，因为假定客户端在该时间点之后丢弃了数据。 这确保了无间隙的连续暂停/播放循环。</p>
+<h3 id="10-7-TEARDOWN"><a href="#10-7-TEARDOWN" class="headerlink" title="10.7 TEARDOWN"></a>10.7 TEARDOWN</h3><p><code>TEARDOWN</code> 请求停止给定 URI 的流传递，释放与之关联的资源。 如果 URI 是此演示的演示 URI，则与该会话关联的任何 RTSP 会话标识符都不再有效。 除非所有传输参数都由会话描述定义，否则必须在会话再次播放之前发出 <code>SETUP</code> 请求。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: TEARDOWN rtsp:&#x2F;&#x2F;example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+      CSeq: 892
+      Session: 12345678
+S-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 892<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-8-GET-PARAMETER"><a href="#10-8-GET-PARAMETER" class="headerlink" title="10.8 GET_PARAMETER"></a>10.8 GET_PARAMETER</h3><p><code>GET_PARAMETER</code> 请求检索 URI 中指定的演示或流的参数值。 回复和响应的内容留给实现。 没有实体主体的 <code>GET_PARAMETER</code> 可用于测试客户端或服务器的活跃度（“ping”）。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">S-&gt;C: GET_PARAMETER rtsp:&#x2F;&#x2F;example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+      CSeq: 431
+      Content-Type: text&#x2F;parameters
+      Session: 12345678
+      Content-Length: 15
+
+      packets_received
+      jitter
+
+C-&gt;S: RTSP&#x2F;1.0 200 OK
+      CSeq: 431
+      Content-Length: 46
+      Content-Type: text&#x2F;parameters
+
+      packets_received: 10
+      jitter: 0.3838<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>“text/parameters”部分只是参数的示例类型。 这种方法是故意松散定义的，目的是在进一步实验后定义回复内容和响应内容。</p>
+<h3 id="10-9-SET-PARAMETER"><a href="#10-9-SET-PARAMETER" class="headerlink" title="10.9 SET_PARAMETER"></a>10.9 SET_PARAMETER</h3><p>此方法请求为由 URI 指定的演示或流设置参数值。</p>
+<p>一个请求应该只包含一个参数，以允许客户端确定特定请求失败的原因。如果请求包含多个参数，则服务器必须仅在所有参数都可以成功设置的情况下对请求进行操作。服务器必须允许将参数重复设置为相同的值，但它可以禁止更改参数值。</p>
+<blockquote>
+<p>注意：媒体流的传输参数必须只能用 SETUP 命令设置。限制将传输参数设置为 SETUP 是为了防火墙的利益。</p>
+</blockquote>
+<p>参数以细粒度的方式拆分，以便可以有更有意义的错误指示。但是，如果需要原子设置，则允许设置多个参数可能是有意义的。想象一下设备控制，客户端不希望摄像机平移，除非它也可以同时倾斜到正确的角度。例如：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: SET_PARAMETER rtsp:&#x2F;&#x2F;example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+      CSeq: 421
+      Content-length: 20
+      Content-type: text&#x2F;parameters
+
+      barparam: barstuff
+
+S-&gt;C: RTSP&#x2F;1.0 451 Invalid Parameter
+      CSeq: 421
+      Content-length: 10
+      Content-type: text&#x2F;parameters
+
+      barparam<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>“text/parameters”部分只是参数的示例类型。 这种方法是故意松散定义的，目的是在进一步实验后定义回复内容和响应内容。</p>
+<h3 id="10-10-REDIRECT"><a href="#10-10-REDIRECT" class="headerlink" title="10.10 REDIRECT"></a>10.10 REDIRECT</h3><p>重定向请求通知客户端它必须连接到另一个服务器位置。 **它包含必需的标头 <code>Location</code>**，它指示客户端应该发出对该 URL 的请求。 它可能包含参数 Range，该参数指示重定向何时生效。 如果客户端想继续为这个 URI 发送或接收媒体，客户端必须在指定的主机上为当前会话发出一个 <code>TEARDOWN</code> 请求和一个新会话的 <code>SETUP</code> 请求。</p>
+<p>此示例请求在给定的播放时间将此 URI 的流量重定向到新服务器：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">S-&gt;C: REDIRECT rtsp:&#x2F;&#x2F;example.com&#x2F;fizzle&#x2F;foo RTSP&#x2F;1.0
+      CSeq: 732
+      Location: rtsp:&#x2F;&#x2F;bigserver.com:8001
+      Range: clock&#x3D;19960213T143205Z-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-11-RECORD"><a href="#10-11-RECORD" class="headerlink" title="10.11 RECORD"></a>10.11 RECORD</h3><p>该方法根据呈现描述开始记录一系列媒体数据。 时间戳反映开始和结束时间 (UTC)。 如果未指定时间范围，请使用演示说明中提供的开始或结束时间。 如果会话已经开始，请立即开始录制。</p>
+<p>服务器决定是否将记录的数据存储在 request-URI 或另一个 URI 下。 如果服务器不使用请求 URI，则响应应该是 <code>201</code>（已创建）并包含一个描述请求状态和引用新资源的实体，以及一个位置头。</p>
+<p>支持录制现场演示的媒体服务器必须支持时钟范围格式； smpte 格式没有意义。</p>
+<p>在该示例中，媒体服务器先前被邀请参加所指示的会议。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: RECORD rtsp:&#x2F;&#x2F;example.com&#x2F;meeting&#x2F;audio.en RTSP&#x2F;1.0
+      CSeq: 954
+      Session: 12345678
+      Conference: 128.16.64.19&#x2F;32492374<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="10-12-嵌入（交错）二进制数据"><a href="#10-12-嵌入（交错）二进制数据" class="headerlink" title="10.12 嵌入（交错）二进制数据"></a>10.12 嵌入（交错）二进制数据</h3><p>某些防火墙设计和其他情况可能会强制服务器交错 RTSP 方法和流数据。除非必要，否则通常应避免这种交织，因为它使客户端和服务器操作复杂化并增加了额外的开销。仅当 RTSP 通过 TCP 传输时，才应使用交错二进制数据。</p>
+<p>RTP 数据包等流数据由 ASCII 美元符号（24 位十六进制）封装，后跟一字节通道标识符，后跟封装的二进制数据的长度，以网络字节顺序为二进制、两字节整数。流数据紧随其后，没有 CRLF，但包括上层协议头。每个 $ 块正好包含一个上层协议数据单元，例如一个 RTP 数据包。</p>
+<p>信道标识符在传输报头中用交错参数定义（第 12.39 节）。</p>
+<p>当传输选择是 RTP 时，RTCP 消息也由服务器通过 TCP 连接交错。默认情况下，RTCP 数据包在高于 RTP 通道的第一个可用通道上发送。客户端可以在另一个通道上显式地请求 RTCP 数据包。这是通过在传输头的交错参数中指定两个通道来完成的（第 12.39 节）。</p>
+<blockquote>
+<p>当两个或多个流以这种方式交错时，需要 RTCP 进行同步。 此外，这提供了一种方便的方法，可以在网络配置需要时通过 TCP 控制连接隧道传输 RTP/RTCP 数据包，并在可能的情况下将它们传输到 UDP。</p>
+</blockquote>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S: SETUP rtsp:&#x2F;&#x2F;foo.com&#x2F;bar.file RTSP&#x2F;1.0
+      CSeq: 2
+      Transport: RTP&#x2F;AVP&#x2F;TCP;interleaved&#x3D;0-1
+
+S-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 2
+      Date: 05 Jun 1997 18:57:18 GMT
+      Transport: RTP&#x2F;AVP&#x2F;TCP;interleaved&#x3D;0-1
+      Session: 12345678
+
+C-&gt;S: PLAY rtsp:&#x2F;&#x2F;foo.com&#x2F;bar.file RTSP&#x2F;1.0
+      CSeq: 3
+      Session: 12345678
+
+S-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 3
+      Session: 12345678
+      Date: 05 Jun 1997 18:59:15 GMT
+      RTP-Info: url&#x3D;rtsp:&#x2F;&#x2F;foo.com&#x2F;bar.file;
+        seq&#x3D;232433;rtptime&#x3D;972948234
+
+S-&gt;C: $\000&#123;2 byte length&#125;&#123;&quot;length&quot; bytes data, w&#x2F;RTP header&#125;
+S-&gt;C: $\000&#123;2 byte length&#125;&#123;&quot;length&quot; bytes data, w&#x2F;RTP header&#125;
+S-&gt;C: $\001&#123;2 byte length&#125;&#123;&quot;length&quot; bytes  RTCP packet&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="11-状态代码定义"><a href="#11-状态代码定义" class="headerlink" title="11 状态代码定义"></a>11 状态代码定义</h2><p>在适用的情况下，会重复使用 HTTP 状态 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-10">[H10]</a> 代码。 具有相同含义的状态码在此不再赘述。 有关哪些请求可能返回哪些状态代码的列表，请参见表 1。</p>
+<h3 id="11-1-Success-2xx"><a href="#11-1-Success-2xx" class="headerlink" title="11.1 Success 2xx"></a>11.1 Success 2xx</h3><h4 id="11-1-1-250-Low-on-Storage-Space"><a href="#11-1-1-250-Low-on-Storage-Space" class="headerlink" title="11.1.1 250 Low on Storage Space"></a>11.1.1 250 Low on Storage Space</h4><p>服务器在收到由于存储空间不足而可能无法完全完成的 RECORD 请求后返回此警告。 如果可能，服务器应该使用 Range 标头来指示它仍然可以记录的时间段。 由于服务器上的其他进程可能同时消耗存储空间，因此客户端应仅将其作为估计值。</p>
+<h3 id="11-2-Redirection-3xx"><a href="#11-2-Redirection-3xx" class="headerlink" title="11.2 Redirection 3xx"></a>11.2 Redirection 3xx</h3><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2068#section-10.3">[H10.3]</a>。</p>
+<p>在 RTSP 中，重定向可用于负载平衡或将流请求重定向到拓扑更靠近客户端的服务器。 确定拓扑接近度的机制超出了本规范的范围。</p>
+<h3 id="11-3-Client-Error-4xx"><a href="#11-3-Client-Error-4xx" class="headerlink" title="11.3 Client Error 4xx"></a>11.3 Client Error 4xx</h3><ul>
+<li><p><code>405 Method Not Allowed</code></p>
+<p>请求 URI 所标识的资源不允许使用请求中指定的方法。 响应必须包含一个 Allow 头，其中包含所请求资源的有效方法列表。 如果请求尝试使用在 <code>SETUP</code> 期间未指明的方法，也将使用此状态代码，例如，如果即使传输头中的模式参数仅指定了 <code>PLAY</code>，也会发出 <code>RECORD</code> 请求。</p>
+</li>
+<li><p><code>451 Parameter Not Understood</code></p>
+<p>请求的接收者不支持请求中包含的一个或多个参数。</p>
+</li>
+<li><p><code>452 Conference Not Found</code></p>
+<p>媒体服务器不知道会议头域指示的会议。</p>
+</li>
+<li><p><code>453 Not Enough Bandwidth</code></p>
+<p>由于带宽不足，请求被拒绝。 例如，这可能是资源预留失败的结果。</p>
+</li>
+<li><p><code>454 Session Not Found</code></p>
+<p>会话标头中的 RTSP 会话标识符丢失、无效或已超时。</p>
+</li>
+<li><p><code>455 Method Not Valid in This State</code></p>
+<p>客户端或服务器无法在当前状态下处理此请求。 响应应该包含一个 Allow 标头以使错误恢复更容易。</p>
+</li>
+<li><p><code>456 Header Field Not Valid for Resource</code></p>
+<p>服务器无法处理所需的请求标头。 例如，如果 <code>PLAY</code> 包含 Range 头字段，但流不允许查找。</p>
+</li>
+<li><p><code>457 Invalid Range</code></p>
+<p>给定的范围值超出范围，例如，超出了演示的结尾。</p>
+</li>
+<li><p>458 Parameter Is Read-Only</p>
+<p><code>SET_PARAMETER</code> 设置的参数可以读取但不能修改。</p>
+</li>
+<li><p>459 Aggregate Operation Not Allowed</p>
+<p>所请求的方法可能不适用于相关 URL，因为它是一个聚合（表示）URL。该方法可以应用于流 URL。</p>
+</li>
+<li><p>460 Only Aggregate Operation Allowed</p>
+<p>所请求的方法可能不适用于相关 URL，因为它不是聚合（表示）URL。该方法可以应用于演示 URL。</p>
+</li>
+<li><p>461 Unsupported Transport</p>
+<p>传输字段不包含受支持的传输规范。</p>
+</li>
+<li><p>462 Destination Unreachable</p>
+<p>由于无法到达客户端地址，无法建立数据传输通道。此错误很可能是客户端尝试在传输字段中放置无效目标参数的结果。</p>
+</li>
+<li><p>551 Option not supported</p>
+<p>不支持在 Require 或 Proxy-Require 字段中给出的选项。应返回 Unsupported 标头，说明不支持的选项。</p>
+</li>
+</ul>
+<h2 id="12-头部字段定义"><a href="#12-头部字段定义" class="headerlink" title="12 头部字段定义"></a>12 头部字段定义</h2><p>HTTP/1.1 [2] 或其他未在此处列出的非标准标头字段目前没有明确定义的含义，接收方应忽略。表 3 总结了 RTSP 使用的报头字段。</p>
+<p>在 “type” 列中：</p>
+<ul>
+<li>“g” 指定在请求和响应中都能找到的通用请求头，</li>
+<li>“R” 指定请求头，</li>
+<li>“r” 指定响应头，</li>
+<li>“e” 指定实体头字段。</li>
+</ul>
+<p>在 “support” 列中标记为 “req.” 的字段必须由接收者为特定方法实现，而标记为 “opt.” 的字段是可选的。</p>
+<blockquote>
+<p>请注意，并非所有标记为 “req.” 的字段都会在这种类型的每个请求中发送。 “req.”意味着只有客户端（对于响应头）和服务器（对于请求头）必须实现这些字段。</p>
+</blockquote>
+<p>最后一列列出了此头部字段有意义的方法；名称“entity”是指返回消息正文的所有方法。在本规范中，<code>DESCRIBE</code> 和 <code>GET_PARAMETER</code> 属于此类。</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>type</th>
+<th>support</th>
+<th>methods</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accept</td>
+<td>R</td>
+<td>opt.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>R</td>
+<td>opt.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>R</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Allow</td>
+<td>r</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>R</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>R</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Blocksize</td>
+<td>R</td>
+<td>opt.</td>
+<td>all but OPTIONS, TEARDOWN</td>
+</tr>
+<tr>
+<td>Cache-Control</td>
+<td>g</td>
+<td>opt.</td>
+<td>SETUP</td>
+</tr>
+<tr>
+<td>Conference</td>
+<td>R</td>
+<td>opt.</td>
+<td>SETUP</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>g</td>
+<td>req.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Content-Base</td>
+<td>e</td>
+<td>opt.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>e</td>
+<td>req.</td>
+<td>SET_PARAMETER</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>e</td>
+<td>req.</td>
+<td>DESCRIBE, ANNOUNCE</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>e</td>
+<td>req.</td>
+<td>DESCRIBE, ANNOUNCE</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>e</td>
+<td>req.</td>
+<td>SET_PARAMETER, ANNOUNCE</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>e</td>
+<td>req.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>Content-Location</td>
+<td>e</td>
+<td>opt.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>e</td>
+<td>req.</td>
+<td>SET_PARAMETER, ANNOUNCE</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>r</td>
+<td>req.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>CSeq</td>
+<td>g</td>
+<td>req.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>g</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>e</td>
+<td>opt.</td>
+<td>DESCRIBE, ANNOUNCE</td>
+</tr>
+<tr>
+<td>From</td>
+<td>R</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>If-Modified-Since</td>
+<td>R</td>
+<td>opt.</td>
+<td>DESCRIBE, SETUP</td>
+</tr>
+<tr>
+<td>Last-Modified</td>
+<td>e</td>
+<td>opt.</td>
+<td>entity</td>
+</tr>
+<tr>
+<td>Proxy-Authenticate</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Proxy-Require</td>
+<td>R</td>
+<td>req.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Public</td>
+<td>r</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>R</td>
+<td>opt.</td>
+<td>PLAY, PAUSE, RECORD</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>r</td>
+<td>opt.</td>
+<td>PLAY, PAUSE, RECORD</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td>R</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Require</td>
+<td>R</td>
+<td>req.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Retry-After</td>
+<td>r</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>RTP-Info</td>
+<td>r</td>
+<td>req.</td>
+<td>PLAY</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>Rr</td>
+<td>opt.</td>
+<td>PLAY, RECORD</td>
+</tr>
+<tr>
+<td>Session</td>
+<td>Rr</td>
+<td>req.</td>
+<td>all but SETUP, OPTIONS</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>r</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Rr</td>
+<td>opt.</td>
+<td>PLAY</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>Rr</td>
+<td>req.</td>
+<td>SETUP</td>
+</tr>
+<tr>
+<td>Unsupported</td>
+<td>r</td>
+<td>req.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>R</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Via</td>
+<td>g</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+<tr>
+<td>WWW-Authenticate</td>
+<td>r</td>
+<td>opt.</td>
+<td>all</td>
+</tr>
+</tbody></table>
+<p>   表3： RTSP 头域概述</p>
+<p>请求头详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2326#section-12">RFC 2326</a></p>
+<h2 id="13-缓存"><a href="#13-缓存" class="headerlink" title="13 缓存"></a>13 缓存</h2><p>在 HTTP 中，响应-请求对被缓存。 RTSP 在这方面有很大的不同。响应不可缓存，但 <code>DESCRIBE</code> 返回的或包含在 <code>ANNOUNCE</code> 中的演示描述除外。 （因为除了 <code>DESCRIBE</code> 和 <code>GET_PARAMETER</code> 之外的任何响应都不会返回任何数据，缓存对于这些请求来说并不是真正的问题。）但是，对于连续媒体数据来说是可取的，通常相对于 RTSP 在带外传送，要缓存，以及会话描述。</p>
+<p>在接收到 <code>SETUP</code> 或 <code>PLAY</code> 请求时，代理确定它是否具有连续媒体内容及其描述的最新副本。它可以通过分别发出 <code>SETUP</code> 或 <code>DESCRIBE</code> 请求并将 Last-Modified 标头与缓存副本的标头进行比较来确定副本是否是最新的。如果副本不是最新的，它会根据需要修改 SETUP 传输参数并将请求转发到源服务器。随后的控制命令如 <code>PLAY</code> 或 <code>PAUSE</code> 然后未经修改地传递代理。代理将连续媒体数据传送给客户端，同时可能制作本地副本供以后重用。缓存允许的确切行为由第 12.8 节中描述的缓存响应指令给出。如果缓存当前正在向请求者提供流，则它必须回答任何 DESCRIBE 请求，因为流描述的低级细节可能在源服务器上已更改。</p>
+<blockquote>
+<p>请注意，RTSP 缓存与 HTTP 缓存不同，属于“直通”类型。缓存不是从源服务器检索整个资源，而是简单地复制流数据，因为它在流向客户端的途中经过。因此，它不会引入额外的延迟。</p>
+</blockquote>
+<p>对于客户端来说，RTSP 代理缓存就像一个普通的媒体服务器，对于媒体源服务器来说就像一个客户端。正如 HTTP 缓存必须为它缓存的对象存储内容类型、内容语言等，媒体缓存必须存储表示描述。通常，缓存会从表示描述中消除所有传输引用（即多播信息），因为这些与从缓存到客户端的数据传递无关。有关编码的信息保持不变。如果缓存能够翻译缓存的媒体数据，它将创建一个新的演示描述，其中包含它可以提供的所有编码可能性。</p>
+<h2 id="14-示例"><a href="#14-示例" class="headerlink" title="14 示例"></a>14 示例</h2><p>以下示例涉及非标准的流描述格式，例如 RTSL。 以下示例不能用作这些格式的参考。</p>
+<h3 id="14-1-媒体点播（单播）"><a href="#14-1-媒体点播（单播）" class="headerlink" title="14.1 媒体点播（单播）"></a>14.1 媒体点播（单播）</h3><p>客户端 C 从媒体服务器 A (audio.example.com) 和 V (video.example.com) 请求电影。 媒体描述存储在网络服务器 W 上。 媒体描述包含对演示及其所有流的描述，包括可用的编解码器、动态 RTP 有效负载类型、协议栈以及语言或版权限制等内容信息。 它还可以给出关于电影时间线的指示。</p>
+<p>在这个例子中，客户端只对电影的最后部分感兴趣。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;W: GET &#x2F;twister.sdp HTTP&#x2F;1.1
+      Host: www.example.com
+      Accept: application&#x2F;sdp
+
+W-&gt;C: HTTP&#x2F;1.0 200 OK
+      Content-Type: application&#x2F;sdp
+      v&#x3D;0
+      o&#x3D;- 2890844526 2890842807 IN IP4 192.16.24.202
+      s&#x3D;RTSP Session
+      m&#x3D;audio 0 RTP&#x2F;AVP 0
+      a&#x3D;control:rtsp:&#x2F;&#x2F;audio.example.com&#x2F;twister&#x2F;audio.en
+      m&#x3D;video 0 RTP&#x2F;AVP 31
+      a&#x3D;control:rtsp:&#x2F;&#x2F;video.example.com&#x2F;twister&#x2F;video
+
+C-&gt;A: SETUP rtsp:&#x2F;&#x2F;audio.example.com&#x2F;twister&#x2F;audio.en RTSP&#x2F;1.0
+      CSeq: 1
+      Transport: RTP&#x2F;AVP&#x2F;UDP;unicast;client_port&#x3D;3056-3057
+
+A-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 1
+      Session: 12345678
+      Transport: RTP&#x2F;AVP&#x2F;UDP;unicast;client_port&#x3D;3056-3057;
+                 server_port&#x3D;5000-5001
+
+C-&gt;V: SETUP rtsp:&#x2F;&#x2F;video.example.com&#x2F;twister&#x2F;video RTSP&#x2F;1.0
+      CSeq: 1
+      Transport: RTP&#x2F;AVP&#x2F;UDP;unicast;client_port&#x3D;3058-3059
+
+V-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 1
+      Session: 23456789
+      Transport: RTP&#x2F;AVP&#x2F;UDP;unicast;client_port&#x3D;3058-3059;
+                 server_port&#x3D;5002-5003
+
+C-&gt;V: PLAY rtsp:&#x2F;&#x2F;video.example.com&#x2F;twister&#x2F;video RTSP&#x2F;1.0
+      CSeq: 2
+      Session: 23456789
+      Range: smpte&#x3D;0:10:00-
+
+V-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 2
+      Session: 23456789
+      Range: smpte&#x3D;0:10:00-0:20:00
+      RTP-Info: url&#x3D;rtsp:&#x2F;&#x2F;video.example.com&#x2F;twister&#x2F;video;
+        seq&#x3D;12312232;rtptime&#x3D;78712811
+
+C-&gt;A: PLAY rtsp:&#x2F;&#x2F;audio.example.com&#x2F;twister&#x2F;audio.en RTSP&#x2F;1.0
+      CSeq: 2
+      Session: 12345678
+      Range: smpte&#x3D;0:10:00-
+
+A-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 2
+      Session: 12345678
+      Range: smpte&#x3D;0:10:00-0:20:00
+      RTP-Info: url&#x3D;rtsp:&#x2F;&#x2F;audio.example.com&#x2F;twister&#x2F;audio.en;
+        seq&#x3D;876655;rtptime&#x3D;1032181
+
+C-&gt;A: TEARDOWN rtsp:&#x2F;&#x2F;audio.example.com&#x2F;twister&#x2F;audio.en RTSP&#x2F;1.0
+      CSeq: 3
+      Session: 12345678
+
+A-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 3
+
+C-&gt;V: TEARDOWN rtsp:&#x2F;&#x2F;video.example.com&#x2F;twister&#x2F;video RTSP&#x2F;1.0
+      CSeq: 3
+      Session: 23456789
+
+V-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>即使音频和视频轨道在两个不同的服务器上，并且可能在稍微不同的时间开始并且可能相互漂移，客户端也可以使用标准 RTP 方法同步两者，特别是 RTCP 发送方中包含的时间尺度 报告。</p>
+<h3 id="14-2-容器文件的流式传输"><a href="#14-2-容器文件的流式传输" class="headerlink" title="14.2 容器文件的流式传输"></a>14.2 容器文件的流式传输</h3><p>出于本示例的目的，容器文件是一个存储实体，其中存在属于同一最终用户呈现的多个连续媒体类型。实际上，容器文件表示一个 RTSP 演示，其每个组件都是 RTSP 流。容器文件是一种广泛使用的存储此类演示的方式。当组件作为独立的流传输时，希望在服务器端为这些流维护一个公共上下文。</p>
+<blockquote>
+<p>这使服务器能够轻松保持单个存储手柄打开。它还允许在服务器对流进行任何优先级排序的情况下平等地处理所有流。</p>
+</blockquote>
+<p>演示作者也可能希望防止客户端对流进行选择性检索，以保留组合媒体演示的艺术效果。类似地，在这种紧密绑定的表示中，希望能够通过使用聚合 URL 的单个控制消息来控制所有流。</p>
+<p>以下是使用单个 RTSP 会话控制多个流的示例。它还说明了聚合 URL 的使用。客户端 C 向媒体服务器 M 请求演示。 影片存储在容器文件中。 客户端已获得容器文件的 RTSP URL。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;M: DESCRIBE rtsp:&#x2F;&#x2F;foo&#x2F;twister RTSP&#x2F;1.0
+      CSeq: 1
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 1
+      Content-Type: application&#x2F;sdp
+      Content-Length: 164
+
+      v&#x3D;0
+      o&#x3D;- 2890844256 2890842807 IN IP4 172.16.2.93
+      s&#x3D;RTSP Session
+      i&#x3D;An Example of RTSP Session Usage
+      a&#x3D;control:rtsp:&#x2F;&#x2F;foo&#x2F;twister
+      t&#x3D;0 0
+      m&#x3D;audio 0 RTP&#x2F;AVP 0
+      a&#x3D;control:rtsp:&#x2F;&#x2F;foo&#x2F;twister&#x2F;audio
+      m&#x3D;video 0 RTP&#x2F;AVP 26
+      a&#x3D;control:rtsp:&#x2F;&#x2F;foo&#x2F;twister&#x2F;video
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;foo&#x2F;twister&#x2F;audio RTSP&#x2F;1.0
+      CSeq: 2
+      Transport: RTP&#x2F;AVP;unicast;client_port&#x3D;8000-8001
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 2
+      Transport: RTP&#x2F;AVP;unicast;client_port&#x3D;8000-8001;
+                 server_port&#x3D;9000-9001
+      Session: 12345678
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;foo&#x2F;twister&#x2F;video RTSP&#x2F;1.0
+      CSeq: 3
+      Transport: RTP&#x2F;AVP;unicast;client_port&#x3D;8002-8003
+      Session: 12345678
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 3
+      Transport: RTP&#x2F;AVP;unicast;client_port&#x3D;8002-8003;
+                 server_port&#x3D;9004-9005
+      Session: 12345678
+
+C-&gt;M: PLAY rtsp:&#x2F;&#x2F;foo&#x2F;twister RTSP&#x2F;1.0
+      CSeq: 4
+      Range: npt&#x3D;0-
+      Session: 12345678
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 4
+      Session: 12345678
+      RTP-Info: url&#x3D;rtsp:&#x2F;&#x2F;foo&#x2F;twister&#x2F;video;
+        seq&#x3D;9810092;rtptime&#x3D;3450012
+
+C-&gt;M: PAUSE rtsp:&#x2F;&#x2F;foo&#x2F;twister&#x2F;video RTSP&#x2F;1.0
+      CSeq: 5
+      Session: 12345678
+
+M-&gt;C: RTSP&#x2F;1.0 460 Only aggregate operation allowed
+      CSeq: 5
+
+C-&gt;M: PAUSE rtsp:&#x2F;&#x2F;foo&#x2F;twister RTSP&#x2F;1.0
+      CSeq: 6
+      Session: 12345678
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 6
+      Session: 12345678
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;foo&#x2F;twister RTSP&#x2F;1.0
+      CSeq: 7
+      Transport: RTP&#x2F;AVP;unicast;client_port&#x3D;10000
+
+M-&gt;C: RTSP&#x2F;1.0 459 Aggregate operation not allowed
+      CSeq: 7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在第一个失败实例中，客户端尝试暂停演示的一个流（在本例中为视频）。 对于该演示，服务器不允许这样做。 在第二种情况下，聚合 URL 可能不用于 <code>SETUP</code>，并且每个流需要一个控制消息来设置传输参数。</p>
+<blockquote>
+<p>这使传输标头的语法保持简单，并允许防火墙轻松解析传输信息。</p>
+</blockquote>
+<h3 id="14-3-单流容器文件"><a href="#14-3-单流容器文件" class="headerlink" title="14.3 单流容器文件"></a>14.3 单流容器文件</h3><p>一些 RTSP 服务器可能会将所有文件视为“容器文件”，而其他服务器可能不支持这样的概念。 因此，客户端应该使用会话描述中为请求 URL 设置的规则，而不是假设始终使用一致的 URL。 下面是一个多流服务器如何期望提供单流文件的示例：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">      Accept: application&#x2F;x-rtsp-mh, application&#x2F;sdp
+      CSeq: 1
+
+S-&gt;C  RTSP&#x2F;1.0 200 OK
+      CSeq: 1
+      Content-base: rtsp:&#x2F;&#x2F;foo.com&#x2F;test.wav&#x2F;
+      Content-type: application&#x2F;sdp
+      Content-length: 48
+
+      v&#x3D;0
+      o&#x3D;- 872653257 872653257 IN IP4 172.16.2.187
+      s&#x3D;mu-law wave file
+      i&#x3D;audio test
+      t&#x3D;0 0
+      m&#x3D;audio 0 RTP&#x2F;AVP 0
+      a&#x3D;control:streamid&#x3D;0
+
+C-&gt;S  SETUP rtsp:&#x2F;&#x2F;foo.com&#x2F;test.wav&#x2F;streamid&#x3D;0 RTSP&#x2F;1.0
+      Transport: RTP&#x2F;AVP&#x2F;UDP;unicast;
+                 client_port&#x3D;6970-6971;mode&#x3D;play
+      CSeq: 2
+
+S-&gt;C  RTSP&#x2F;1.0 200 OK
+      Transport: RTP&#x2F;AVP&#x2F;UDP;unicast;client_port&#x3D;6970-6971;
+                 server_port&#x3D;6970-6971;mode&#x3D;play
+      CSeq: 2
+      Session: 2034820394
+
+C-&gt;S  PLAY rtsp:&#x2F;&#x2F;foo.com&#x2F;test.wav RTSP&#x2F;1.0
+      CSeq: 3
+      Session: 2034820394
+
+S-&gt;C  RTSP&#x2F;1.0 200 OK
+      CSeq: 3
+      Session: 2034820394
+      RTP-Info: url&#x3D;rtsp:&#x2F;&#x2F;foo.com&#x2F;test.wav&#x2F;streamid&#x3D;0;
+        seq&#x3D;981888;rtptime&#x3D;3781123<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意 <code>SETUP</code> 命令中的不同 URL，然后切换回 <code>PLAY</code> 命令中的聚合 URL。 当有多个流具有聚合控制时，这完全有意义，但在流数为 1 的特殊情况下不太直观。</p>
+<p>在这种特殊情况下，建议服务器原谅发送以下内容的实现：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S  PLAY rtsp:&#x2F;&#x2F;foo.com&#x2F;test.wav&#x2F;streamid&#x3D;0 RTSP&#x2F;1.0
+      CSeq: 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>在最坏的情况下，服务器应该发回：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">S-&gt;C  RTSP&#x2F;1.0 460 Only aggregate operation allowed
+      CSeq: 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>人们还希望服务器实现也能接受以下内容：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;S  SETUP rtsp:&#x2F;&#x2F;foo.com&#x2F;test.wav RTSP&#x2F;1.0
+      Transport: rtp&#x2F;avp&#x2F;udp;client_port&#x3D;6970-6971;mode&#x3D;play
+      CSeq: 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>由于此文件中只有一个流，因此这意味着什么并不含糊。</p>
+<h3 id="14-4-使用多播的现场媒体演示"><a href="#14-4-使用多播的现场媒体演示" class="headerlink" title="14.4 使用多播的现场媒体演示"></a>14.4 使用多播的现场媒体演示</h3><p>媒体服务器 M 选择多播地址和端口。 这里，我们假设网络服务器只包含一个指向完整描述的指针，而媒体服务器 M 维护完整描述。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;W: GET &#x2F;concert.sdp HTTP&#x2F;1.1
+      Host: www.example.com
+
+W-&gt;C: HTTP&#x2F;1.1 200 OK
+      Content-Type: application&#x2F;x-rtsl
+
+      &lt;session&gt;
+        &lt;track src&#x3D;&quot;rtsp:&#x2F;&#x2F;live.example.com&#x2F;concert&#x2F;audio&quot;&gt;
+      &lt;&#x2F;session&gt;
+
+C-&gt;M: DESCRIBE rtsp:&#x2F;&#x2F;live.example.com&#x2F;concert&#x2F;audio RTSP&#x2F;1.0
+      CSeq: 1
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 1
+      Content-Type: application&#x2F;sdp
+      Content-Length: 44
+
+      v&#x3D;0
+      o&#x3D;- 2890844526 2890842807 IN IP4 192.16.24.202
+      s&#x3D;RTSP Session
+      m&#x3D;audio 3456 RTP&#x2F;AVP 0
+      a&#x3D;control:rtsp:&#x2F;&#x2F;live.example.com&#x2F;concert&#x2F;audio
+      c&#x3D;IN IP4 224.2.0.1&#x2F;16
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;live.example.com&#x2F;concert&#x2F;audio RTSP&#x2F;1.0
+      CSeq: 2
+      Transport: RTP&#x2F;AVP;multicast
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 2
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;224.2.0.1;
+                 port&#x3D;3456-3457;ttl&#x3D;16
+      Session: 0456804596
+
+C-&gt;M: PLAY rtsp:&#x2F;&#x2F;live.example.com&#x2F;concert&#x2F;audio RTSP&#x2F;1.0
+      CSeq: 3
+      Session: 0456804596
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 3
+      Session: 0456804596<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="14-5-在现有会话中播放媒体"><a href="#14-5-在现有会话中播放媒体" class="headerlink" title="14.5 在现有会话中播放媒体"></a>14.5 在现有会话中播放媒体</h3><p>会议参与者 C 希望媒体服务器 M 将演示磁带回放到现有会议中。 C 向媒体服务器表明网络地址和加密密钥已由会议提供，因此不应由服务器选择。 该示例省略了简单的 ACK 响应。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;M: DESCRIBE rtsp:&#x2F;&#x2F;server.example.com&#x2F;demo&#x2F;548&#x2F;sound RTSP&#x2F;1.0
+      CSeq: 1
+      Accept: application&#x2F;sdp
+
+M-&gt;C: RTSP&#x2F;1.0 200 1 OK
+      Content-type: application&#x2F;sdp
+      Content-Length: 44
+
+      v&#x3D;0
+      o&#x3D;- 2890844526 2890842807 IN IP4 192.16.24.202
+      s&#x3D;RTSP Session
+      i&#x3D;See above
+      t&#x3D;0 0
+      m&#x3D;audio 0 RTP&#x2F;AVP 0
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;server.example.com&#x2F;demo&#x2F;548&#x2F;sound RTSP&#x2F;1.0
+      CSeq: 2
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;225.219.201.15;
+                 port&#x3D;7000-7001;ttl&#x3D;127
+      Conference: 199702170042.SAA08642@obiwan.arl.wustl.edu%20Starr
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 2
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;225.219.201.15;
+                 port&#x3D;7000-7001;ttl&#x3D;127
+      Session: 91389234234
+      Conference: 199702170042.SAA08642@obiwan.arl.wustl.edu%20Starr
+
+C-&gt;M: PLAY rtsp:&#x2F;&#x2F;server.example.com&#x2F;demo&#x2F;548&#x2F;sound RTSP&#x2F;1.0
+      CSeq: 3
+      Session: 91389234234
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="14-6-录像"><a href="#14-6-录像" class="headerlink" title="14.6 录像"></a>14.6 录像</h3><p>会议参与者客户端C要求媒体服务器M记录会议的音频和视频部分。 客户端使用 <code>ANNOUNCE</code> 方法向服务器提供有关记录会话的元信息。</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">C-&gt;M: ANNOUNCE rtsp:&#x2F;&#x2F;server.example.com&#x2F;meeting RTSP&#x2F;1.0
+      CSeq: 90
+      Content-Type: application&#x2F;sdp
+      Content-Length: 121
+
+      v&#x3D;0
+      o&#x3D;camera1 3080117314 3080118787 IN IP4 195.27.192.36
+      s&#x3D;IETF Meeting, Munich - 1
+      i&#x3D;The thirty-ninth IETF meeting will be held in Munich, Germany
+      u&#x3D;http:&#x2F;&#x2F;www.ietf.org&#x2F;meetings&#x2F;Munich.html
+      e&#x3D;IETF Channel 1 &lt;ietf39-mbone@uni-koeln.de&gt;
+      p&#x3D;IETF Channel 1 +49-172-2312 451
+      c&#x3D;IN IP4 224.0.1.11&#x2F;127
+      t&#x3D;3080271600 3080703600
+      a&#x3D;tool:sdr v2.4a6
+      a&#x3D;type:test
+      m&#x3D;audio 21010 RTP&#x2F;AVP 5
+      c&#x3D;IN IP4 224.0.1.11&#x2F;127
+      a&#x3D;ptime:40
+      m&#x3D;video 61010 RTP&#x2F;AVP 31
+      c&#x3D;IN IP4 224.0.1.12&#x2F;127
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 90
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;server.example.com&#x2F;meeting&#x2F;audiotrack RTSP&#x2F;1.0
+      CSeq: 91
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;224.0.1.11;
+                 port&#x3D;21010-21011;mode&#x3D;record;ttl&#x3D;127
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 91
+      Session: 50887676
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;224.0.1.11;
+                 port&#x3D;21010-21011;mode&#x3D;record;ttl&#x3D;127
+
+C-&gt;M: SETUP rtsp:&#x2F;&#x2F;server.example.com&#x2F;meeting&#x2F;videotrack RTSP&#x2F;1.0
+      CSeq: 92
+      Session: 50887676
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;224.0.1.12;
+                 port&#x3D;61010-61011;mode&#x3D;record;ttl&#x3D;127
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 92
+      Transport: RTP&#x2F;AVP;multicast;destination&#x3D;224.0.1.12;
+                 port&#x3D;61010-61011;mode&#x3D;record;ttl&#x3D;127
+
+C-&gt;M: RECORD rtsp:&#x2F;&#x2F;server.example.com&#x2F;meeting RTSP&#x2F;1.0
+      CSeq: 93
+      Session: 50887676
+      Range: clock&#x3D;19961110T1925-19961110T2015
+
+M-&gt;C: RTSP&#x2F;1.0 200 OK
+      CSeq: 93<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="15-语法"><a href="#15-语法" class="headerlink" title="15 语法"></a>15 语法</h2><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2326#section-15">RFC 2326</a></p>
+<h2 id="16-安全注意事项"><a href="#16-安全注意事项" class="headerlink" title="16 安全注意事项"></a>16 安全注意事项</h2><p>详见<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2326#section-16">RFC 2326</a></p>
+<h2 id="附录-A：RTSP-协议状态机"><a href="#附录-A：RTSP-协议状态机" class="headerlink" title="附录 A：RTSP 协议状态机"></a>附录 A：RTSP 协议状态机</h2><p>RTSP 客户端和服务器状态机描述了从 RTSP 会话初始化到 RTSP 会话终止的协议行为。</p>
+<p>状态是基于每个对象定义的。 对象由流 URL 和 RTSP 会话标识符唯一标识。 任何使用聚合 URL 表示由多个流组成的 RTSP 演示的请求/回复都将对所有流的各个状态产生影响。 例如，如果演示 /movie 包含两个流，/movie/audio 和 /movie/video，则以下命令：</p>
+<pre class="line-numbers language-rtsp" data-language="rtsp"><code class="language-rtsp">PLAY rtsp:&#x2F;&#x2F;foo.com&#x2F;movie RTSP&#x2F;1.0
+CSeq: 559
+Session: 12345678<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>将对 /movie/audio 和 /movie/video 的状态产生影响。</p>
+<blockquote>
+<p>这个例子并不意味着用标准的方式来表示 URL 中的流或与文件系统的关系。 见第 3.2 节。</p>
+</blockquote>
+<p>请求 OPTIONS、ANNOUNCE、DESCRIBE、GET_PARAMETER、SET_PARAMETER 对客户端或服务器状态没有任何影响，因此未在状态表中列出。</p>
+<h3 id="A-1-客户端状态机"><a href="#A-1-客户端状态机" class="headerlink" title="A.1 客户端状态机"></a>A.1 客户端状态机</h3><p>客户端可以假设以下状态：</p>
+<ul>
+<li><code>Init</code>:<br><code>SETUP</code> 已发送，等待回复。</li>
+<li><code>Ready</code>:<br>在播放状态下收到 <code>SETUP</code> 回复或 <code>PAUSE</code> 回复。</li>
+<li><code>Playing</code>:<br>收到 <code>PLAY</code> 回复</li>
+<li><code>Recording</code>:<br>收到 <code>RECORD</code> 回复</li>
+</ul>
+<p>通常，客户端在收到对请求的回复时更改状态。 请注意，某些请求在未来的时间或位置（例如 <code>PAUSE</code>）有效，并且状态也会相应更改。 如果对象不需要明确的 <code>SETUP</code>（例如，它可以通过多播组获得），则状态从 <code>Ready</code> 开始。 在这种情况下，只有两种状态，<code>Ready</code> 和 <code>Playing</code>。 当达到请求范围的末尾时，客户端还会将状态从“<code>Playing</code>/<code>Recording</code>”更改为“<code>Ready</code>”。</p>
+<p>“下一个状态”列指示在收到成功响应 (2xx) 后假定的状态。 如果请求产生 3xx 的状态码，则状态变为 <code>Init</code>，而 4xx 的状态码不会产生状态变化。 未为每个状态列出的消息不得由处于该状态的客户端发出，但不影响状态的消息除外，如上所列。 从服务器接收 <code>REDIRECT</code> 相当于从服务器接收 3xx 重定向状态。</p>
+<table>
+<thead>
+<tr>
+<th>state</th>
+<th>message sent</th>
+<th>next state after response</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>SETUP</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>Ready</td>
+<td>PLAY</td>
+<td>Playing</td>
+</tr>
+<tr>
+<td></td>
+<td>RECORD</td>
+<td>Recording</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>SETUP</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td>Playing</td>
+<td>PAUSE</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>PLAY</td>
+<td>Playing</td>
+</tr>
+<tr>
+<td></td>
+<td>SETUP</td>
+<td>Playing (changed transport)</td>
+</tr>
+<tr>
+<td>Recording</td>
+<td>PAUSE</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>RECORD</td>
+<td>Recording</td>
+</tr>
+<tr>
+<td></td>
+<td>SETUP</td>
+<td>Recording (changed transport)</td>
+</tr>
+</tbody></table>
+<h3 id="A-2-服务器状态机"><a href="#A-2-服务器状态机" class="headerlink" title="A.2 服务器状态机"></a>A.2 服务器状态机</h3><p>服务器可以呈现以下状态：</p>
+<ul>
+<li><code>Init</code>:<br>初始状态，尚未收到有效的 <code>SETUP</code>。</li>
+<li><code>Ready</code>:<br>上次 <code>SETUP</code> 接收成功，发送回复或播放后，上次接收 <code>PAUSE</code> 成功，回复发送。</li>
+<li><code>Playing</code>:<br>最后 <code>PLAY</code> 接收成功，回复已发送。 正在发送数据。</li>
+<li><code>Recording</code>:<br>服务器正在记录媒体数据。</li>
+</ul>
+<p>通常，服务器会在收到请求时更改状态。 如果服务器处于播放或录制状态并且处于单播模式，如果它在定义的时间间隔内没有从客户端收到“健康”信息，例如 RTCP 报告或 RTSP 命令，它可以恢复到 <code>Init</code> 并拆除 RTSP 会话 ，默认为一分钟。 服务器可以在 Session 响应头中声明另一个超时值（第 12.37 节）。 如果服务器处于就绪状态，并且在超过一分钟的时间间隔内没有收到 RTSP 请求，则它可以恢复到 <code>Init</code>。 请注意，某些请求（例如 <code>PAUSE</code>）可能会在未来的时间或位置生效，并且服务器状态会在适当的时间发生变化。 在客户端请求的范围结束时，服务器从播放或录制状态恢复到就绪状态。</p>
+<p><code>REDIRECT</code> 消息在发送时立即生效，除非它具有指定重定向何时生效的 Range 标头。 在这种情况下，服务器状态也会在适当的时候发生变化。</p>
+<p>如果对象不需要明确的 <code>SETUP</code>，则状态从 <code>Ready</code> 开始，只有两种状态，<code>Ready</code> 和 <code>Playing</code>。</p>
+<p>“下一个状态”列指示发送成功响应 (2xx) 后假定的状态。 如果请求导致状态代码为 3xx，则状态变为 Init。 状态代码 4xx 不会导致任何更改。</p>
+<table>
+<thead>
+<tr>
+<th>state</th>
+<th>message received</th>
+<th>next state</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>SETUP</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>Ready</td>
+<td>PLAY</td>
+<td>Playing</td>
+</tr>
+<tr>
+<td></td>
+<td>SETUP</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>RECORD</td>
+<td>Recording</td>
+</tr>
+<tr>
+<td>Playing</td>
+<td>PLAY</td>
+<td>Playing</td>
+</tr>
+<tr>
+<td></td>
+<td>PAUSE</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>SETUP</td>
+<td>Playing</td>
+</tr>
+<tr>
+<td>Recording</td>
+<td>RECORD</td>
+<td>Recording</td>
+</tr>
+<tr>
+<td></td>
+<td>PAUSE</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td></td>
+<td>TEARDOWN</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>SETUP</td>
+<td>Recording</td>
+</tr>
+</tbody></table>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">MaZhuang</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://blog.mazhuang.vip/stream/protocol/rtsp-c0ef3fecf501/">http://blog.mazhuang.vip/stream/protocol/rtsp-c0ef3fecf501/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">MaZhuang</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/translate/">
+                                    <span class="chip bg-color">translate</span>
+                                </a>
+                            
+                                <a href="/tags/rtsp/">
+                                    <span class="chip bg-color">rtsp</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="google,qq,wechat,twitter" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/tools/github/go-action-917caa029424/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="使用 gihub-action 发布 go release">
+                        
+                        <span class="card-title">使用 gihub-action 发布 go release</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            github 自动化
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/tools/" class="post-category">
+                                    tools
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Golang/">
+                        <span class="chip bg-color">Golang</span>
+                    </a>
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
+                    </a>
+                    
+                    <a href="/tags/workflow/">
+                        <span class="chip bg-color">workflow</span>
+                    </a>
+                    
+                    <a href="/tags/ci/">
+                        <span class="chip bg-color">ci</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/stream/ffmpeg/ffmpeg-cmd-da0b4531b2bd/">
+                    <div class="card-image">
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/ffmpeg/FFmpeg.jpg" class="responsive-img" alt="ffmpeg 命令行">
+                        
+                        <span class="card-title">ffmpeg 命令行</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            ffmpeg 工具官方文档翻译
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" class="post-category">
+                                    音视频
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ffmpeg/">
+                        <span class="chip bg-color">ffmpeg</span>
+                    </a>
+                    
+                    <a href="/tags/video/">
+                        <span class="chip bg-color">video</span>
+                    </a>
+                    
+                    <a href="/tags/audio/">
+                        <span class="chip bg-color">audio</span>
+                    </a>
+                    
+                    <a href="/tags/translate/">
+                        <span class="chip bg-color">translate</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('100')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Seeker<br />'
+            + '文章作者: MaZhuang<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">MaZhuang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">70.6k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/seek4self" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:mr.mazhuang@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2392368224" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2392368224" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.5'
+        zIndex="-1" count="199"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

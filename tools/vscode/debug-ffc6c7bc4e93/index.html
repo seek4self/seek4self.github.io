@@ -1,0 +1,1365 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="VSCode 调试 c++ 配置, Seeker">
+    <meta name="description" content="be the one that you wanna be">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>VSCode 调试 c++ 配置 | Seeker</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Seeker</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Seeker</div>
+        <div class="logo-desc">
+            
+            be the one that you wanna be
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/seek4self/seek4self.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0ae6e6;
+        fill: #173eeb;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/seek4self/seek4self.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">VSCode 调试 c++ 配置</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/vscode/">
+                                <span class="chip bg-color">vscode</span>
+                            </a>
+                        
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
+                            </a>
+                        
+                            <a href="/tags/debug/">
+                                <span class="chip bg-color">debug</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/tools/" class="post-category">
+                                tools
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-06-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-04-25
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    9 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>自从微软出了 VSCode 编辑器后，就没在使用其他 IDE 了，用来编写一些动态语言(Node.js、Python)程序，不需要编译，安装的相关插件能很好的帮助调试。但是对于 c++ 这种静态编译语言，调试就成了一个大麻烦，环境配置都很难顺利的走下去，正好准备用 VSCode 看 SRS 源码，将相关的 c++ 配置及调试过程记录一下。</p>
+<p>环境基于 WSL-Ubuntu 20.04</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
+<li>必要的 c++ 环境程序，安装过程不会的自行 Google 吧<ul>
+<li>gcc/g++</li>
+<li>make/cmake</li>
+<li>gdb</li>
+</ul>
+</li>
+<li>需要安装 VSCode 插件<ul>
+<li><code>C/C++</code> (c/c++ 语法)</li>
+<li><code>C++ Intellisense</code> (代码格式化)</li>
+<li><code>CMake</code> (cmake 语法高亮)</li>
+<li><code>CMake Tools</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="编译调试"><a href="#编译调试" class="headerlink" title="编译调试"></a>编译调试</h2><p>CMake 编译需要写 CMakeLists.txt 文件， make 需要 Makefile 文件， 根据需要自行选择，这里以 CMake 为例</p>
+<h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><h4 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h4><p>按快捷键 <code>Ctrl+Shift+P</code> 调出控制台， 输入 <code>cmake</code> ，选择<code>CMake:Configure</code> 或者 <code>CMake:Quick Start</code> 开始配置</p>
+<ol>
+<li><p>选择 gcc 编译工具版本</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake.png" alt="select gcc"></p>
+</li>
+<li><p>根据提示创建 <code>CMakeLists.txt</code>， 选择 <code>Create</code>， 创建新文件， 选择<code>Locate</code> 打开已有文件</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_configure.png" alt="create CMakeLists.txt"></p>
+</li>
+<li><p>若 2 选择<code>Create</code>, 则按提示创建文件，输入项目名称，选择输出类型，就会生成 <code>CMakeLists.txt</code> 文件, 根据需要配置相关项，参考<a href="#cmakeliststxt-%E5%AE%9E%E4%BE%8B">CMakeLists.txt 实例</a></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_project.png" alt="input project name"><br> <img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_out.png" alt="select output"></p>
+</li>
+</ol>
+<p>当状态栏出现如下图表时，则表明配置完成，可以选择 <code>Build</code> 尝试编译</p>
+<p><img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/cmake_status.png" alt="build status"></p>
+<h4 id="CMakeLists-txt-实例"><a href="#CMakeLists-txt-实例" class="headerlink" title="CMakeLists.txt 实例"></a>CMakeLists.txt 实例</h4><p>该配置是使用<code>pkgconfig</code>编译成动态库， 如需其他格式，自行修改</p>
+<pre class="line-numbers language-cmake" data-language="cmake"><code class="language-cmake"><span class="token keyword">cmake_minimum_required</span><span class="token punctuation">(</span><span class="token property">VERSION</span> <span class="token number">3.5</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 使用 pkgconfig 导入第三方库</span>
+<span class="token keyword">project</span><span class="token punctuation">(</span>decoder LANGUAGES C<span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">ENV</span>&#123;PKG_CONFIG_PATH<span class="token punctuation">&#125;</span> /usr/local/ffmpeg/lib/pkgconfig<span class="token punctuation">)</span>
+<span class="token keyword">find_package</span><span class="token punctuation">(</span>PkgConfig<span class="token punctuation">)</span>
+<span class="token function">pkg_check_modules</span><span class="token punctuation">(</span>FFMPEG REQUIRED libavcodec libavformat libavutil<span class="token punctuation">)</span>
+<span class="token keyword">message</span><span class="token punctuation">(</span>'sss',<span class="token punctuation">$&#123;</span>FFMPEG_INCLUDE_DIRS<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">include_directories</span><span class="token punctuation">(</span><span class="token punctuation">$&#123;</span>FFMPEG_INCLUDE_DIRS<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">link_directories</span><span class="token punctuation">(</span><span class="token punctuation">$&#123;</span>FFMPEG_LIBRARY_DIRS<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 显式指定编译器</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_C_COMPILER</span> <span class="token string">"gcc"</span><span class="token punctuation">)</span>
+ 
+<span class="token comment"># 开启调试信息</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_BUILD_TYPE</span> <span class="token string">"Debug"</span><span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_C_FLAGS_DEBUG</span> <span class="token string">"$ENV&#123;CFLAGS&#125; -O0 -Wall -g2 -ggdb"</span><span class="token punctuation">)</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_C_FLAGS_RELEASE</span> <span class="token string">"$ENV&#123;CFLAGS&#125; -O3 -Wall"</span><span class="token punctuation">)</span>
+ 
+ 
+<span class="token comment"># 开启所有警告</span>
+<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token variable">CMAKE_C_FLAGS</span> <span class="token string">"-Wall"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">add_executable</span><span class="token punctuation">(</span>mediainfo mediainfo.c<span class="token punctuation">)</span>
+<span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>mediainfo <span class="token punctuation">$&#123;</span>FFMPEG_LIBRARIES<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">add_executable</span><span class="token punctuation">(</span>extra_audio extra_audio.c<span class="token punctuation">)</span>
+<span class="token keyword">target_link_libraries</span><span class="token punctuation">(</span>extra_audio <span class="token punctuation">$&#123;</span>FFMPEG_LIBRARIES<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h3><p>设置好 CMake 后，打开 <code>.cpp</code> 文件， 按快捷键 <code>Ctrl+Shift+D</code> 打开调试面板，点击 <code>运行和调试</code>, 根据系统情况选取不同的 <code>C++</code> ,如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug.png" alt="select environment"></p>
+<p>然后根据需要选择不同版本的编译器配置，会生成 <code>launch.json</code> 和 <code>tasks.json</code>, 根据调试需求更改相应的参数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_g++.png" alt="select complier config"></p>
+<p>下面以提供调试启动配置实例, 详细配置请参考<a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/cpp/config-wsl">官方文档</a></p>
+<ul>
+<li>task.json</li>
+</ul>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"tasks"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>  <span class="token comment">// 默认生成的配置，用于编译单个C++可行，但是大项目就需要其他配置了，可以不用管,</span>
+            <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"cppbuild"</span><span class="token punctuation">,</span>
+            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"C/C++: gcc-9 build active file"</span><span class="token punctuation">,</span>
+            <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"/usr/bin/gcc-9"</span><span class="token punctuation">,</span>
+            <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"-g"</span><span class="token punctuation">,</span>
+                <span class="token string">"$&#123;workspaceFolder&#125;/main.c"</span><span class="token punctuation">,</span>
+                <span class="token string">"-o"</span><span class="token punctuation">,</span>
+                <span class="token string">"$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"$&#123;workspaceFolder&#125;"</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"problemMatcher"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"$gcc"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">"kind"</span><span class="token operator">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+                <span class="token property">"isDefault"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"detail"</span><span class="token operator">:</span> <span class="token string">"Task generated by Debugger."</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token comment">// 这个任务配置对于小项目来说修改完直接编译调试还不错，</span>
+        <span class="token comment">// 但是大项目最好手动编译好后，直接使用 launch 调试，不建议用 task 配置 </span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">// label 是 task 唯一标识， 对应下面 launch 的 preLaunchTask 配置</span>
+            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"cmake"</span><span class="token punctuation">,</span>
+            <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"shell"</span><span class="token punctuation">,</span>
+            <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"cmake"</span><span class="token punctuation">,</span>
+            <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"../"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 工作目录</span>
+                <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"$&#123;workspaceFolder&#125;/build"</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"make"</span><span class="token punctuation">,</span>
+            <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"shell"</span><span class="token punctuation">,</span>
+            <span class="token property">"command"</span><span class="token operator">:</span> <span class="token string">"make"</span><span class="token punctuation">,</span>
+            <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"$&#123;workspaceFolder&#125;/build"</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+            <span class="token comment">// dependsOn 按顺序执行多个 task</span>
+            <span class="token property">"dependsOn"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"cmake"</span><span class="token punctuation">,</span>
+                <span class="token string">"make"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"2.0.0"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>launch.json</li>
+</ul>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token comment">// 使用 IntelliSense 了解相关属性。 </span>
+    <span class="token comment">// 悬停以查看现有属性的描述。</span>
+    <span class="token comment">// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.2.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"configurations"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"gdb launch"</span><span class="token punctuation">,</span>
+            <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"cppdbg"</span><span class="token punctuation">,</span>
+            <span class="token property">"request"</span><span class="token operator">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
+            <span class="token comment">// program 是调试启动可执行文件路径 </span>
+            <span class="token property">"program"</span><span class="token operator">:</span> <span class="token string">"$&#123;workspaceFolder&#125;/build/decoder"</span><span class="token punctuation">,</span>
+            <span class="token comment">// args 将照命令行参数以空格分割，顺序依次写入数组列表，</span>
+            <span class="token property">"args"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"/mnt/e/film/Fate_Zero_all_OP_and_ED.mp4"</span><span class="token punctuation">,</span>
+                <span class="token string">"output"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"stopAtEntry"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token property">"cwd"</span><span class="token operator">:</span> <span class="token string">"$&#123;workspaceFolder&#125;"</span><span class="token punctuation">,</span>
+            <span class="token property">"environment"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"externalConsole"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token comment">// preLaunchTask 调试启动前置任务，需要配置 task.json, 进行一些编译任务</span>
+            <span class="token property">"preLaunchTask"</span><span class="token operator">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+            <span class="token property">"miDebuggerPath"</span><span class="token operator">:</span> <span class="token string">"/usr/bin/gdb"</span><span class="token punctuation">,</span>
+            <span class="token property">"MIMode"</span><span class="token operator">:</span> <span class="token string">"gdb"</span><span class="token punctuation">,</span>
+            <span class="token property">"setupCommands"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">&#123;</span>
+                    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"为 gdb 启用整齐打印"</span><span class="token punctuation">,</span>
+                    <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"-enable-pretty-printing"</span><span class="token punctuation">,</span>
+                    <span class="token property">"ignoreFailures"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>设置好后就可以愉快的 <code>F5</code> 了</p>
+<h3 id="C-插件配置"><a href="#C-插件配置" class="headerlink" title="C++ 插件配置"></a>C++ 插件配置</h3><p>该配置可以解决阅读源码时导入第三方文件报红线错误，以及一些自定义 C++ 的配置</p>
+<p>按快捷键 <code>Ctrl+Shift+P</code> 调出控制台, 输入 <code>c++</code>，选择 <code>C/C++编辑配置</code> UI界面或者 JSON 格式进行配置 <code>c_cpp_properties.json</code>，</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"configurations"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+         <span class="token punctuation">&#123;</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Linux"</span><span class="token punctuation">,</span>
+            <span class="token comment">// add header file path</span>
+            <span class="token property">"includePath"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"$&#123;workspaceFolder&#125;/**"</span><span class="token punctuation">,</span>
+                <span class="token string">"/usr/local/ffmpeg/include"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"defines"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">// set search path</span>
+            <span class="token property">"browse"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token property">"path"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">"/usr/local/ffmpeg/include"</span><span class="token punctuation">,</span>
+                    <span class="token string">"$&#123;workspaceFolder&#125;"</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token property">"databaseFilename"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+                <span class="token property">"limitSymbolsToIncludedHeaders"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"compilerPath"</span><span class="token operator">:</span> <span class="token string">"/usr/bin/clang"</span><span class="token punctuation">,</span>
+            <span class="token property">"cStandard"</span><span class="token operator">:</span> <span class="token string">"c11"</span><span class="token punctuation">,</span>
+            <span class="token property">"cppStandard"</span><span class="token operator">:</span> <span class="token string">"c++14"</span><span class="token punctuation">,</span>
+            <span class="token property">"intelliSenseMode"</span><span class="token operator">:</span> <span class="token string">"clang-x64"</span><span class="token punctuation">,</span>
+            <span class="token property">"compileCommands"</span><span class="token operator">:</span> <span class="token string">"$&#123;workspaceFolder&#125;/build/compile_commands.json"</span><span class="token punctuation">,</span>
+            <span class="token property">"configurationProvider"</span><span class="token operator">:</span> <span class="token string">"ms-vscode.cmake-tools"</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">4</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>配置属性</p>
+<ul>
+<li><p><code>name</code> 标识配置的友好名称。 Linux、Mac 和 Win32 是将在这些平台上自动选择的配置的特殊标识符。 VS Code 中的状态栏将显示哪个配置处于活动状态。您还可以单击状态栏中的标签来更改活动配置。</p>
+</li>
+<li><p><code>compilerPath</code> （可选）用于构建项目的编译器的完整路径，例如 <code>/usr/bin/gcc</code>，以启用更准确的 IntelliSense。该扩展将查询编译器以确定用于 IntelliSense 的系统包含路径和默认定义。</p>
+</li>
+<li><p><code>compilerArgs</code> （可选）用于修改所使用的包含或定义的编译器参数，例如 -nostdinc++、-m32 等。</p>
+</li>
+<li><p><code>intelliSenseMode</code> 使用的 IntelliSense 模式映射到 MSVC、gcc 或 Clang 的特定于体系结构的变体。如果未设置或设置为 <code>$&#123;default&#125;</code>，扩展将选择该平台的默认值。</p>
+<p>平台默认值：</p>
+<ul>
+<li>Windows: <code>msvc-x64</code></li>
+<li>Linux: <code>gcc-x64</code></li>
+<li>macOS: <code>clang-x64</code></li>
+</ul>
+</li>
+<li><p><code>includePath</code> 包含路径是一个文件夹，其中包含源文件中包含的头文件（例如 <code>#include &quot;myHeaderFile.h&quot;</code>）。指定 IntelliSense 引擎在搜索包含的头文件时使用的路径列表。在这些路径上搜索不是递归的。指定 <code>**</code> 表示递归搜索。例如， <code>$&#123;workspaceFolder&#125;/**</code> 将搜索所有子目录，而 <code>$&#123;workspaceFolder&#125;</code> 则不会。如果在安装了 Visual Studio 的 Windows 上，或者如果在 <code>compilerPath</code> 设置中指定了编译器，则无需在此列表中列出系统包含路径。</p>
+</li>
+<li><p><code>defines</code> 解析文件时要使用的 IntelliSense 引擎的预处理器定义列表。或者，使用 = 设置一个值，例如 VERSION=1。</p>
+</li>
+<li><p><code>cStandard</code> 用于 IntelliSense 的 C 语言标准的版本。</p>
+</li>
+<li><p><code>cppStandard</code> 用于 IntelliSense 的 C++ 语言标准的版本。</p>
+</li>
+<li><p><code>configurationProvider</code> 可以为源文件提供 IntelliSense 配置信息的 VS Code 扩展的 ID。例如，使用 VS Code 扩展 ID <code>ms-vscode.cmake-tools</code> 提供来自 CMake 工具扩展的配置信息。</p>
+</li>
+<li><p><code>windowsSdkVersion</code> Windows SDK 的版本包括在 Windows 上使用的路径，例如 <code>10.0.17134.0</code>。</p>
+</li>
+<li><p><code>macFrameworkPath</code> IntelliSense 引擎在从 Mac 框架搜索包含的标头时使用的路径列表。仅支持 macOS 的配置。</p>
+</li>
+<li><p><code>forcedInclude</code> （可选）在处理源文件中的任何其他字符之前应包含的文件列表。文件包含在列出的顺序中。</p>
+</li>
+<li><p><code>compileCommands</code> （可选）工作区的 <code>compile_commands.json</code> 文件的完整路径。将使用在此文件中发现的 <code>includePath</code> 和 <code>defines</code>，而不是为包含路径和定义设置设置的值。如果编译命令数据库不包含与您在编辑器中打开的文件相对应的翻译单元条目，则会出现一条警告消息，扩展将使用 <code>includePath</code> 和 <code>defines</code> 设置。  </p>
+<p>有关文件格式的更多信息，请参阅 <a target="_blank" rel="noopener" href="https://clang.llvm.org/docs/JSONCompilationDatabase.html">Clang 文档</a>。某些构建系统（例如 CMake）<a target="_blank" rel="noopener" href="https://cmake.org/cmake/help/v3.5/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html">简化了生成此文件的过程</a>。</p>
+</li>
+<li><p><code>browse</code> 当 <code>&quot;C_Cpp.intelliSenseEngine&quot;</code> 设置为 <code>&quot;Tag Parser&quot;</code>（也称为“模糊”IntelliSense，或“browse”引擎）时使用的属性集。这些属性也由转到定义/声明功能使用，或者当“Default”智能感知引擎无法解析源文件中的 <code>#includes</code> 时</p>
+<ul>
+<li><code>path</code> Tag Parser 用于搜索源文件中包含的标头的路径列表。<strong>如果省略，<code>includePath</code> 将用作 <code>path</code>。</strong>默认情况下，在这些路径上搜索是递归的。指定 <code>*</code> 表示非递归搜索。例如： <code>$&#123;workspaceFolder&#125;</code> 将搜索所有子目录，而 <code>$&#123;workspaceFolder&#125;/*</code> 不会。</li>
+<li><code>limitSymbolsToIncludedHeaders</code> 当为 <code>true</code> 时，标签解析器将只解析 <code>$&#123;workspaceFolder&#125;</code> 中的源文件直接或间接包含的代码文件。当为 <code>false</code> 时，标签解析器将解析在 <code>browse.path</code> 列表中指定的路径中找到的所有代码文件。</li>
+<li><code>databaseFilename</code> 生成的符号数据库的路径。此属性指示扩展将标记解析器的符号数据库保存在工作区默认存储位置以外的其他位置。如果指定了相对路径，它将相对于工作区的默认存储位置，而不是工作区文件夹本身。 <code>$&#123;workspaceFolder&#125;</code> 变量可用于指定相对于工作区文件夹的路径（例如 <code>$&#123;workspaceFolder&#125;/.vscode/browse.vc.db</code>）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="多线程调试"><a href="#多线程调试" class="headerlink" title="多线程调试"></a>多线程调试</h3><p>当调试 SRS 多线程程序时， 因为有守护进程，VSCode 调试没有自动跟踪子线程，在父线程就退出了,可以在 <code>launch.json</code> 中添加强制跟踪子线程的配置，</p>
+<ul>
+<li>launch.json</li>
+</ul>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.2.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"configurations"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+            ...
+            <span class="token property">"setupCommands"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">&#123;</span>
+                    <span class="token comment">// 设置跟踪子进程</span>
+                    <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"-gdb-set follow-fork-mode child"</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h2><h3 id="调试控制台打印数组信息"><a href="#调试控制台打印数组信息" class="headerlink" title="调试控制台打印数组信息"></a>调试控制台打印数组信息</h3><p>调试遇见数组中存放指针时，vscode 调试器往往解析不出来数组信息，只能显示 <code>0</code> 索引的数据:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_console.png" alt="调试信息"></p>
+<p>该段代码出自 ffmpeg 的示例程序 <a target="_blank" rel="noopener" href="https://github.com/FFmpeg/FFmpeg/blob/master/doc/examples/muxing.c#L455">muxing.c</a>，有兴趣可以自行尝试。</p>
+<p>因为 VSCode 也是基于 GDB 调试的，所以可以使用 GDB 的<code>@</code>操作符进行打印： <code>*array@len</code>，其中 <code>len</code> 是指定打印的长度，详细信息可以查看<a target="_blank" rel="noopener" href="https://sourceware.org/gdb/current/onlinedocs/gdb/Arrays.html#Arrays">gdb 在线文档</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/seek4self/imgbed@main/img/blog/vscode/cmake/debug_print_array.png" alt="调试输出"></p>
+<p>若要从中间打印数组，只需要将 <code>*array</code> 索引改至指定的起始位置 <code>array[start]@len</code>，就会打印从 <code>start</code>~`len` 之间的数据。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">MaZhuang</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://blog.mazhuang.vip/tools/vscode/debug-ffc6c7bc4e93/">http://blog.mazhuang.vip/tools/vscode/debug-ffc6c7bc4e93/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">MaZhuang</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/vscode/">
+                                    <span class="chip bg-color">vscode</span>
+                                </a>
+                            
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
+                                </a>
+                            
+                                <a href="/tags/debug/">
+                                    <span class="chip bg-color">debug</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="google,qq,wechat,twitter" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/database/mysql/catalog-in-mysql-ca9ab232a3bd/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="在 MySQL 中管理层级结构">
+                        
+                        <span class="card-title">在 MySQL 中管理层级结构</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            层级数据不好存储，不如换个存储模型
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/stream/srs/srs-first-hls-f06a7b0f2c25/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="SRS 初探之 HLS">
+                        
+                        <span class="card-title">SRS 初探之 HLS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            srs 源码阅读笔记
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9F%B3%E8%A7%86%E9%A2%91/" class="post-category">
+                                    音视频
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/srs/">
+                        <span class="chip bg-color">srs</span>
+                    </a>
+                    
+                    <a href="/tags/hls/">
+                        <span class="chip bg-color">hls</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('100')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Seeker<br />'
+            + '文章作者: MaZhuang<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">MaZhuang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">70.6k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/seek4self" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:mr.mazhuang@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2392368224" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2392368224" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.5'
+        zIndex="-1" count="199"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
