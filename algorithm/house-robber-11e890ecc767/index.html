@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Ubuntu 18.04 离线部署 Nvidia-Docker 环境, Seeker">
+    <meta name="keywords" content="打家劫舍系列, Seeker">
     <meta name="description" content="be the one that you wanna be">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Ubuntu 18.04 离线部署 Nvidia-Docker 环境 | Seeker</title>
+    <title>打家劫舍系列 | Seeker</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Ubuntu 18.04 离线部署 Nvidia-Docker 环境</h1>
+                    <h1 class="description center-align post-title">打家劫舍系列</h1>
                 </div>
             </div>
         </div>
@@ -387,12 +387,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/nvidia-docker/">
-                                <span class="chip bg-color">nvidia-docker</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
-                            <a href="/tags/Docker/">
-                                <span class="chip bg-color">Docker</span>
+                            <a href="/tags/dynamic-programming/">
+                                <span class="chip bg-color">dynamic programming</span>
                             </a>
                         
                     </div>
@@ -403,8 +403,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="post-category">
-                                环境搭建
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -416,28 +416,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-22
+                    2022-05-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-25
+                    2022-05-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    5 分
                 </div>
                 
 
@@ -460,272 +460,136 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Docker 容器化的方式使服务部署维护更加容易，但是 Docker 本身并不能直接调用 GPU cuda 来做一些事情，因此 Nvidia 官方给出了补救方案：<a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvidia-docker">Nvidia-Docker</a>。NVIDIA Container Toolkit 允许用户构建和运行 GPU 加速的 Docker 容器。该工具包包括一个容器运行时库和实用程序，用于自动配置容器以利用 NVIDIA GPU。</p>
-<p>在线环境安装部署，<a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">官方文档安装指引</a>讲的很明白了，按步骤走就行。这里主要讲一下离线部署方式。</p>
-<h2 id="环境需求"><a href="#环境需求" class="headerlink" title="环境需求"></a>环境需求</h2><p>运行 NVIDIA Container Toolkit 的先决条件列表如下所述：</p>
+                <h2 id="打家劫舍Ⅰ"><a href="#打家劫舍Ⅰ" class="headerlink" title="打家劫舍Ⅰ"></a>打家劫舍Ⅰ</h2><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong>。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你<strong>不触动警报装置的情况下</strong>，一夜之内能够偷窃到的最高金额。</p>
+<p>示例1：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">输入：[1,2,3,1]
+输出：4
+解释：偷窃 1 号房屋 (金额 &#x3D; 1) ，然后偷窃 3 号房屋 (金额 &#x3D; 3)。
+     偷窃到的最高金额 &#x3D; 1 + 3 &#x3D; 4 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例2：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">输入：[2,7,9,3,1]
+输出：12
+解释：偷窃 1 号房屋 (金额 &#x3D; 2), 偷窃 3 号房屋 (金额 &#x3D; 9)，接着偷窃 5 号房屋 (金额 &#x3D; 1)。
+     偷窃到的最高金额 &#x3D; 2 + 9 + 1 &#x3D; 12 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>提示：</p>
 <ul>
-<li>内核版本 &gt; 3.10 的 GNU/Linux x86_64</li>
-<li>Docker &gt;= 19.03（推荐，但某些发行版可能包含旧版本的 Docker。支持的最低版本为 1.12）</li>
-<li>架构 &gt;= Kepler（或计算能力 3.0）的 NVIDIA GPU</li>
-<li>NVIDIA Linux 驱动程序 &gt;= 418.81.07（请注意，不支持较旧的驱动程序版本或分支。）</li>
+<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 400</code></li>
 </ul>
-<p>Nvidia 驱动程序 <code>.run</code> <a target="_blank" rel="noopener" href="https://www.nvidia.com/Download/index.aspx?lang=en-us">下载地址</a></p>
-<h2 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h2><p>本文基于 Ubuntu 18.04 LTS x86_64 系统，其他系统下载方式大致相同。</p>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>访问 <a target="_blank" rel="noopener" href="https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/">https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/</a> Ubuntu 18.04 系统 Docker 资源下载页面，其他平台和系统参照官方<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/">安装文档</a>操作，或者直接在资源下载页面回退到<a target="_blank" rel="noopener" href="https://download.docker.com/">根目录</a>按自己的平台查找，下载 <code>containerd.io</code>、<code>docker-ce-cli</code>、<code>docker-ce</code> 这三个所需版本的 <code>deb</code> 包，下载命令如下：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.5.10-1_amd64.deb
-<span class="token comment"># 或者</span>
-<span class="token function">curl</span> -OL https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/containerd.io_1.5.10-1_amd64.deb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber">https://leetcode-cn.com/problems/house-robber</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>小偷进入每个房屋后，有两种选择，偷或者不偷，设定 <code>dp[i]</code> 是进入第 <code>i</code> 间房子能偷到最多的钱，如果偷第 <code>i</code> 间房子，而邻居不能偷，则有 <code>dp[i]= dp[i-2]+nums[i]</code>, 若不偷第 <code>i</code> 间房子，则有 <code>dp[i] = dp[i-1]</code>, 因此有状态转移方程：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="NVIDIA-Container-Toolkit"><a href="#NVIDIA-Container-Toolkit" class="headerlink" title="NVIDIA Container Toolkit"></a>NVIDIA Container Toolkit</h3><p>Nvidia-Docker 组件的安装包都对应项目的 Github 存储库的 gh-pages 分支中，自行选择需要的平台和版本：</p>
-<ul>
-<li>nvidia-docker2: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvidia-docker/tree/gh-pages/">https://github.com/NVIDIA/nvidia-docker/tree/gh-pages/</a></li>
-<li>nvidia-container-toolkit: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvidia-container-runtime/tree/gh-pages/">https://github.com/NVIDIA/nvidia-container-runtime/tree/gh-pages/</a></li>
-<li>libnvidia-container: <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/libnvidia-container/tree/gh-pages/">https://github.com/NVIDIA/libnvidia-container/tree/gh-pages/</a></li>
-</ul>
-<blockquote>
-<p>注：Github 下载不能直接使用 <code>wget</code>, 需要替换 <code>github.com</code> 域名为 <code>raw.githubusercontent.com</code> 后可用</p>
-</blockquote>
-<p>下面摘录了官方文档的架构和依赖描述，不想了解可以跳到<a href="#%E5%AE%89%E8%A3%85%E7%A6%BB%E7%BA%BF%E5%8C%85">安装</a>部分</p>
-<h4 id="架构概述"><a href="#架构概述" class="headerlink" title="架构概述"></a>架构概述</h4><p>NVIDIA Container Toolkit 的架构旨在支持生态系统中的任何容器运行时。对于 Docker，NVIDIA Container Toolkit 由以下组件组成（在层次结构中从上到下）：</p>
-<ul>
-<li><code>nvidia-docker2</code></li>
-<li><code>nvidia-container-runtime</code></li>
-<li><code>nvidia-container-toolkit</code></li>
-<li><code>libnvidia-container</code></li>
-</ul>
-<p>下图表示通过各个组件的流程：</p>
-<p><img src="https://docs.nvidia.com/datacenter/cloud-native/_images/nvidia-docker-arch.png" alt="nvidia-docker-arch.png"></p>
-<p>NVIDIA Container Toolkit 的包装也反映了这些依赖关系。如果您从 Docker 的顶级 <code>nvidia-docker2</code> 包开始，则可以看到包依赖项如下：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">├─ nvidia-docker2
-│    ├─ docker-ce <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">18.06</span>.0~ce~3-0~ubuntu<span class="token punctuation">)</span>
-│    ├─ docker-ee <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">18.06</span>.0~ce~3-0~ubuntu<span class="token punctuation">)</span>
-│    ├─ docker.io <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">18.06</span>.0<span class="token punctuation">)</span>
-│    └─ nvidia-container-runtime <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">3.3</span>.0<span class="token punctuation">)</span>
+<p>如果只有 1 间房，则只能偷该房间的钱，即 <code>dp[1] = nums[0]</code></p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
 
-├─ nvidia-container-runtime
-│    └─ nvidia-container-toolkit <span class="token punctuation">(</span><span class="token operator">&lt;&lt;</span> <span class="token number">2.0</span>.0<span class="token punctuation">)</span>
-
-├─ nvidia-container-toolkit
-│    └─ libnvidia-container-tools <span class="token punctuation">(</span><span class="token operator">&lt;&lt;</span> <span class="token number">2.0</span>.0<span class="token punctuation">)</span>
-
-├─ libnvidia-container-tools
-│    └─ libnvidia-container1 <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">1.2</span>.0~rc.3<span class="token punctuation">)</span>
-└─ libnvidia-container1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="应该使用那个包？"><a href="#应该使用那个包？" class="headerlink" title="应该使用那个包？"></a>应该使用那个包？</h4><p>鉴于这种组件层次结构，很容易看出，如果您只安装 <code>nvidia-container-toolkit</code>，那么您将不会安装 <code>nvidia-container-runtime</code> 作为其中的一部分，因此 <code>--runtime=nvidia</code> 将不可用。对于 Docker 19.03+，这很好，因为 Docker 在您传递 <code>--gpus</code> 选项时直接调用 <code>nvidia-container-toolkit</code>，而不是依赖 <code>nvidia-container-runtime</code> 作为代理。</p>
-<p>但是，如果您想在 Docker 19.03+ 中使用 Kubernetes，您实际上需要继续使用 <code>nvidia-docker2</code>，因为 Kubernetes 还不支持通过 <code>--gpus</code> 标志将 GPU 信息向下传递给 docker。它仍然依赖 <code>nvidia-container-runtime</code> 通过一组环境变量将 GPU 信息传递到运行时堆栈。</p>
-<p>无论使用 <code>nvidia-docker2</code> 还是 <code>nvidia-container-toolkit</code>，都使用相同的容器运行时堆栈。使用 <code>nvidia-docker2</code> 将安装一个瘦运行时，该运行时可以通过环境变量将 GPU 信息代理到 <code>nvidia-container-toolkit</code>，而不是依靠 <code>--gpus</code> 标志让 Docker 直接执行此操作。</p>
-<p>为简单起见（和向后兼容），建议继续使用 <code>nvidia-docker2</code> 作为顶级安装包。</p>
-<h2 id="安装离线包"><a href="#安装离线包" class="headerlink" title="安装离线包"></a>安装离线包</h2><h3 id="检查依赖"><a href="#检查依赖" class="headerlink" title="检查依赖"></a>检查依赖</h3><p>安装之前使用 <code>dpkg -I</code> 检查离线包的依赖库是否下载完成，安装顺序也需要按依赖关系进行安装</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dpkg -I ./pkg/docker/docker-ce_20.10.9_3-0_ubuntu-bionic_amd64.deb <span class="token operator">|</span> <span class="token function">grep</span> Depends
-Depends: containerd.io <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">1.4</span>.1<span class="token punctuation">)</span>, docker-ce-cli, iptables, libseccomp2 <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">2.3</span>.0<span class="token punctuation">)</span>, libc6 <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">2.8</span><span class="token punctuation">)</span>, libdevmapper1.02.1 <span class="token punctuation">(</span><span class="token operator">></span><span class="token operator">=</span> <span class="token number">2</span>:1.02.97<span class="token punctuation">)</span>, libsystemd0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>可以看到，要安装 <code>docker-ce 20.10.9</code> 版本需要关键依赖 <code>containerd.io</code> 和 <code>docker-ce-cli</code>，其他的均为系统库，且 <code>contain.io</code> 版本必须在 <code>1.4.1</code> 之后才行</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用 <code>dpkg -i</code> 按依赖顺序安装所有离线包，先安装 Docker 环境，再安装 Nvidia-Docker 环境</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Install docker server ...</span>
-<span class="token function">sudo</span> dpkg -i ./containerd.io_x.y.z-1_amd64.deb
-<span class="token function">sudo</span> dpkg -i ./docker-ce-cli_x.y.z_3-0_ubuntu-bionic_amd64.deb
-<span class="token function">sudo</span> dpkg -i ./docker-ce_x.y.z_3-0_ubuntu-bionic_amd64.deb
-<span class="token comment"># Install nvidia-container ...</span>
-<span class="token function">sudo</span> dpkg -i ./libnvidia-container1_x.y.z-1_amd64.deb
-<span class="token function">sudo</span> dpkg -i ./libnvidia-container-tools_x.y.z-1_amd64.deb
-<span class="token function">sudo</span> dpkg -i ./nvidia-container-toolkit_x.y.z-1_amd64.deb
-<span class="token function">sudo</span> dpkg -i ./nvidia-container-runtime_x.y.z-1_all.deb
-<span class="token function">sudo</span> dpkg -i ./nvidia-docker2_x.y.z-1_all.deb
-<span class="token comment"># restart docker daemon</span>
-<span class="token function">sudo</span> systemctl restart docker
-<span class="token comment"># test running</span>
-<span class="token function">sudo</span> docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="注册-runtime"><a href="#注册-runtime" class="headerlink" title="注册 runtime"></a>注册 runtime</h4><blockquote>
-<p>如果已经安装 <code>nvidia-docker2</code> 包，请忽略下面内容</p>
-</blockquote>
-<p>安装 <code>nvidia-docker2</code> 包时会配置默认的 runtime 如下:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/docker/daemon.json
-<span class="token punctuation">&#123;</span>
-    <span class="token string">"default-runtime"</span><span class="token builtin class-name">:</span> <span class="token string">"nvidia"</span>,
-    <span class="token string">"runtimes"</span><span class="token builtin class-name">:</span> <span class="token punctuation">&#123;</span>
-        <span class="token string">"nvidia"</span><span class="token builtin class-name">:</span> <span class="token punctuation">&#123;</span>
-            <span class="token string">"path"</span><span class="token builtin class-name">:</span> <span class="token string">"/usr/bin/nvidia-container-runtime"</span>,
-            <span class="token string">"runtimeArgs"</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        <span class="token punctuation">&#125;</span>
+<span class="token comment">/**
+ * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+ *
+ * 
+ * @param nums int整型一维数组 
+ * @return int整型
+*/</span>
+<span class="token keyword">func</span> <span class="token function">rob</span><span class="token punctuation">(</span>nums <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// write code here</span>
+    <span class="token keyword">if</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token number">2</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    dp <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+    dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i<span class="token operator">:=</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 每家可选择偷或者不偷</span>
+        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">,</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> dp<span class="token punctuation">[</span><span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span>
 
-<p>如果没有安装 <code>nvidia-docker2</code> 包，需要手动注册 nvidia 运行，请使用以下最适合您的环境的方法。您可能需要将新参数与现有配置合并。提供三个选项：</p>
-<ol>
-<li><p>修改 systemd 文件</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> -p /etc/systemd/system/docker.service.d
+<span class="token keyword">func</span> <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> a <span class="token operator">></span> b <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> a
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> b
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token function">sudo</span> <span class="token function">tee</span> /etc/systemd/system/docker.service.d/override.conf <span class="token operator">&lt;&lt;</span><span class="token string">EOF
-[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd --host=fd:// --add-runtime=nvidia=/usr/bin/nvidia-container-runtime
-EOF</span>
+<p>可以看到 dp 的值只和 <code>dp[i]</code> 、<code>dp[i-1]</code> 、<code>dp[i-2]</code>三者有关，因此可以优化空间复杂度 O(N) 为 O(1)</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
 
-<span class="token function">sudo</span> systemctl daemon-reload <span class="token punctuation">\</span>
-<span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> systemctl restart docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>配置 daemon.json</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;</span><span class="token string">EOF
-&#123;
-    "runtimes": &#123;
-        "nvidia": &#123;
-            "path": "/usr/bin/nvidia-container-runtime",
-            "runtimeArgs": []
-        &#125;
-    &#125;
-&#125;
-EOF</span>
+<span class="token keyword">func</span> <span class="token function">rob</span><span class="token punctuation">(</span>nums <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+    n <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span> 
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+    prev<span class="token punctuation">,</span> cur <span class="token operator">:=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">&#123;</span>
+       prev<span class="token punctuation">,</span> cur <span class="token operator">=</span> cur<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> prev<span class="token operator">+</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> cur
+<span class="token punctuation">&#125;</span>
 
-<span class="token function">sudo</span> <span class="token function">pkill</span> -SIGHUP dockerd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">func</span> <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> a <span class="token operator">></span> b <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> a
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> b
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p> 您可以选择通过将以下内容添加到 <code>/etc/docker/daemon.json</code> 来重新配置默认运行时：</p>
- <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"default-runtime"</span><span class="token operator">:</span> <span class="token string">"nvidia"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>命令行</p>
-<p> 使用 dockerd 添加 nvidia 运行时：</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dockerd --add-runtime<span class="token operator">=</span>nvidia<span class="token operator">=</span>/usr/bin/nvidia-container-runtime <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
-<h3 id="环境变量（OCI-规范）"><a href="#环境变量（OCI-规范）" class="headerlink" title="环境变量（OCI 规范）"></a>环境变量（OCI 规范）</h3><p>用户可以使用环境变量控制 NVIDIA 容器运行时的行为——尤其是枚举 GPU 和驱动程序的功能。每个环境变量都映射到来自 <a target="_blank" rel="noopener" href="https://github.com/NVIDIA/libnvidia-container"><code>libnvidia-container</code></a> 的 <code>nvidia-container-cli</code> 的命令行参数。这些变量已经在 NVIDIA 提供的基本 <a target="_blank" rel="noopener" href="https://ngc.nvidia.com/catalog/containers/nvidia:cuda">CUDA 镜像</a>中设置。</p>
-<h4 id="GPU-枚举"><a href="#GPU-枚举" class="headerlink" title="GPU 枚举"></a>GPU 枚举</h4><p>从 Docker <code>19.03</code> 开始​​，可以使用 <code>--gpus</code> 选项或环境变量 <code>NVIDIA_VISIBLE_DEVICES</code> 将 GPU 指定给 Docker CLI。此变量控制容器内可以访问哪些 GPU。</p>
-<p><code>NVIDIA_VISIBLE_DEVICES</code> 变量的值可能为：</p>
-<table>
-<thead>
-<tr>
-<th>可能的值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>0,1,2,</code> 或  <code>GPU-fef8089b</code></td>
-<td>GPU UUID 或索引的逗号分隔列表</td>
-</tr>
-<tr>
-<td><code>all</code></td>
-<td>所有 GPU 都可以访问，这是基本 CUDA 容器映像中的默认值</td>
-</tr>
-<tr>
-<td><code>none</code></td>
-<td>将无法访问任何 GPU，但将启用驱动程序功能</td>
-</tr>
-<tr>
-<td><code>void</code> 或 不设置</td>
-<td><code>nvidia-container-runtime</code> 将具有与 <code>runc</code> 相同的行为（即既不公开 GPU 也不公开功能）</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>使用 <code>NVIDIA_VISIBLE_DEVICES</code> 变量时，您可能需要将 <code>--runtime</code> 设置为 <code>nvidia</code>，除非已设置为默认值。</p>
-</blockquote>
-<p>举一些栗子</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 启动启用 GPU 的 CUDA 容器</span>
-docker run --rm --gpus all nvidia/cuda nvidia-smi
-docker run --rm --runtime<span class="token operator">=</span>nvidia <span class="token punctuation">\</span>
-    -e <span class="token assign-left variable">NVIDIA_VISIBLE_DEVICES</span><span class="token operator">=</span>all nvidia/cuda nvidia-smi
-<span class="token comment"># 启动 GPU 的容器使用特定 GPU</span>
-docker run --gpus <span class="token string">'"device=1,2"'</span> <span class="token punctuation">\</span>
-    nvidia/cuda nvidia-smi --query-gpu<span class="token operator">=</span>uuid --format<span class="token operator">=</span>csv
-docker run --gpus <span class="token assign-left variable">device</span><span class="token operator">=</span>GPU-18a3e86f-4c0e-cd9f-59c3-55488c4b0c24 <span class="token punctuation">\</span>
-     nvidia/cuda nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="打家劫舍Ⅱ"><a href="#打家劫舍Ⅱ" class="headerlink" title="打家劫舍Ⅱ"></a>打家劫舍Ⅱ</h2><p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都<strong>围成一圈</strong> ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，<strong>如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警</strong> 。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你<strong>在不触动警报装置的情况下</strong> ，今晚能够偷窃到的最高金额。</p>
+<p>示例 1：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">输入：nums &#x3D; [2,3,2]
+输出：3
+解释：你不能先偷窃 1 号房屋（金额 &#x3D; 2），然后偷窃 3 号房屋（金额 &#x3D; 2）, 因为他们是相邻的。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="驱动功能"><a href="#驱动功能" class="headerlink" title="驱动功能"></a>驱动功能</h4><p><code>NVIDIA_DRIVER_CAPABILITIES</code> 控制哪些驱动程序库/二进制文件将安装在容器内。</p>
-<p><code>NVIDIA_DRIVER_CAPABILITIES</code> 变量的值可能为：</p>
-<table>
-<thead>
-<tr>
-<th>可能的值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>compute,video</code> 或 <code>graphics,utility</code></td>
-<td>容器需要的驱动程序功能的逗号分隔列表</td>
-</tr>
-<tr>
-<td><code>all</code></td>
-<td>启用所有可用的驱动程序功能</td>
-</tr>
-<tr>
-<td>空 或 不设置</td>
-<td>使用默认驱动程序功能：实用程序、计算</td>
-</tr>
-</tbody></table>
-<p>支持的驱动程序功能如下表所示：</p>
-<table>
-<thead>
-<tr>
-<th>驱动功能</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>compute</code></td>
-<td>CUDA 和 OpenCL 应用程序需要</td>
-</tr>
-<tr>
-<td><code>compat32</code></td>
-<td>运行 32 位应用程序所必需的</td>
-</tr>
-<tr>
-<td><code>graphics</code></td>
-<td>运行 OpenGL 和 Vulkan 应用程序</td>
-</tr>
-<tr>
-<td><code>utility</code></td>
-<td>使用 <code>nvidia-smi</code> 和 NVML 所需的</td>
-</tr>
-<tr>
-<td><code>video</code></td>
-<td>需要使用视频编解码器 SDK</td>
-</tr>
-<tr>
-<td><code>display</code></td>
-<td>利用 X11 显示所需的</td>
-</tr>
-</tbody></table>
-<p>例如，指定 <code>compute</code> 和 <code>utility</code> 功能，允许使用 CUDA 和 NVML</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run --rm --runtime<span class="token operator">=</span>nvidia <span class="token punctuation">\</span>
-    -e <span class="token assign-left variable">NVIDIA_VISIBLE_DEVICES</span><span class="token operator">=</span><span class="token number">2,3</span> <span class="token punctuation">\</span>
-    -e <span class="token assign-left variable">NVIDIA_DRIVER_CAPABILITIES</span><span class="token operator">=</span>compute,utility <span class="token punctuation">\</span>
-    nvidia/cuda nvidia-smi
+<p>示例 2：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">输入：nums &#x3D; [1,2,3,1]
+输出：4
+解释：你可以先偷窃 1 号房屋（金额 &#x3D; 1），然后偷窃 3 号房屋（金额 &#x3D; 3）。
+     偷窃到的最高金额 &#x3D; 1 + 3 &#x3D; 4 。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-docker run --rm --gpus <span class="token string">'all,"capabilities=compute,utility"'</span> <span class="token punctuation">\</span>
-    nvidia/cuda:11.0-base nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>示例 3：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">输入：nums &#x3D; [1,2,3]
+输出：3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><p>NVIDIA 运行时还提供了对容器支持的配置定义约束的能力。</p>
-<p><code>NVIDIA_REQUIRE_*</code>，该变量是一个逻辑表达式，用于定义容器上的软件版本或 GPU 架构的约束。</p>
-<p>下面提供了支持的约束：</p>
-<table>
-<thead>
-<tr>
-<th>约束</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>cuda</code></td>
-<td>对 CUDA 驱动程序版本的约束</td>
-</tr>
-<tr>
-<td><code>driver</code></td>
-<td>对驱动程序版本的限制</td>
-</tr>
-<tr>
-<td><code>arch</code></td>
-<td>对所选 GPU 的计算架构的约束</td>
-</tr>
-<tr>
-<td><code>brand</code></td>
-<td>对所选 GPU 品牌的限制（例如 GeForce、Tesla、GRID）</td>
-</tr>
-</tbody></table>
-<p>多个约束可以在单个环境变量中表示：空格分隔的约束是 逻辑或关系，逗号分隔的约束是 逻辑与关系， <code>NVIDIA_REQUIRE_*</code> 形式的多个环境变量是 逻辑与 在一起的。</p>
-<p>例如，可以为容器映像指定以下约束，以约束支持的 CUDA 和驱动程序版本：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">NVIDIA_REQUIRE_CUDA <span class="token string">"cuda>=11.0 driver>=450"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>提示：</p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 1000</code></li>
+</ul>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/house-robber-ii">https://leetcode-cn.com/problems/house-robber-ii</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>由于房屋首尾相连，所以偷了第一家，就不能偷最后一家，不偷第一家，就能偷最后一家，其他条件和打家劫舍Ⅰ相同，所以可以分两种情况，去掉头/尾两间房，分别计算出各自的最大值，再两者选最大</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
 
-<h4 id="Dockerfiles-配置"><a href="#Dockerfiles-配置" class="headerlink" title="Dockerfiles 配置"></a>Dockerfiles 配置</h4><p>可以通过环境变量在镜像中设置功能和 GPU 枚举。如果在 Dockerfile 中设置了环境变量，则不需要在 <code>docker run</code> 命令行中设置它们。</p>
-<p>例如，如果您正在创建自己的自定义 CUDA 容器，可以设置环境变量的默认值如下：</p>
-<pre class="line-numbers language-Dockerfile" data-language="Dockerfile"><code class="language-Dockerfile">ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES compute,utility<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>这些环境变量已经在 NVIDIA 提供的 CUDA 镜像中设置。</p>
+<span class="token keyword">func</span> <span class="token function">rob</span><span class="token punctuation">(</span>nums <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+    n <span class="token operator">:=</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 0 ~ n-2 间房能偷的最大值</span>
+    pre<span class="token punctuation">,</span> cur <span class="token operator">:=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i<span class="token operator">:=</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">&#123;</span>
+        pre<span class="token punctuation">,</span> cur <span class="token operator">=</span> cur<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> pre <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    m <span class="token operator">:=</span> cur
+    <span class="token comment">// 1 ~ n-1 间房能偷的最大值</span>
+    pre<span class="token punctuation">,</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">&#123;</span>
+        pre<span class="token punctuation">,</span> cur <span class="token operator">=</span> cur<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>cur<span class="token punctuation">,</span> pre <span class="token operator">+</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token function">max</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> cur<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">func</span> <span class="token function">max</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> a <span class="token operator">></span> b <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> a
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> b
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -752,7 +616,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility<span aria-hidden="true" class="li
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.mazhuang.vip/environment/docker/setup-nvidia-docker-8272923955cb/">http://blog.mazhuang.vip/environment/docker/setup-nvidia-docker-8272923955cb/</a>
+                    <a href="http://blog.mazhuang.vip/algorithm/house-robber-11e890ecc767/">http://blog.mazhuang.vip/algorithm/house-robber-11e890ecc767/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -790,12 +654,12 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility<span aria-hidden="true" class="li
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/nvidia-docker/">
-                                    <span class="chip bg-color">nvidia-docker</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
-                                <a href="/tags/Docker/">
-                                    <span class="chip bg-color">Docker</span>
+                                <a href="/tags/dynamic-programming/">
+                                    <span class="chip bg-color">dynamic programming</span>
                                 </a>
                             
                         </div>
@@ -839,9 +703,64 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility<span aria-hidden="true" class="li
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/algorithm/house-robber-11e890ecc767/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="打家劫舍系列">
+                        
+                        <span class="card-title">打家劫舍系列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            动态规划解决打家劫舍问题
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/dynamic-programming/">
+                        <span class="chip bg-color">dynamic programming</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/language/go/go-faq-247d2da13bbf/">
                     <div class="card-image">
@@ -859,9 +778,9 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility<span aria-hidden="true" class="li
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -883,63 +802,6 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility<span aria-hidden="true" class="li
                     
                     <a href="/tags/Go/">
                         <span class="chip bg-color">Go</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/database/postgres/postgres-7bf49e6e12c8/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Postgres 心得">
-                        
-                        <span class="card-title">Postgres 心得</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            使用 Postgres 的经历
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Postgres/">
-                        <span class="chip bg-color">Postgres</span>
-                    </a>
-                    
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
-                    </a>
-                    
-                    <a href="/tags/psql/">
-                        <span class="chip bg-color">psql</span>
                     </a>
                     
                 </div>
