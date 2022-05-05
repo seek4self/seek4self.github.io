@@ -56,6 +56,8 @@ dp[i] = max(dp[i-1], dp[i-2]+nums[i])
 
 如果只有 1 间房，则只能偷该房间的钱，即 `dp[1] = nums[0]`
 
+### 代码实现
+
 ```go
 package main
 
@@ -87,6 +89,8 @@ func max(a, b int) int {
     return b
 }
 ```
+
+### 空间优化
 
 可以看到 dp 的值只和 `dp[i]` 、`dp[i-1]` 、`dp[i-2]`三者有关，因此可以优化空间复杂度 O(N) 为 O(1)
 
@@ -179,6 +183,170 @@ func rob(nums []int) int {
         pre, cur = cur, max(cur, pre + nums[i])
     }
     return max(m, cur)
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+```
+
+## 打家劫舍Ⅲ
+
+小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为 `root` 。
+
+除了 `root` 之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果**两个直接相连的房子在同一天晚上被打劫 ，房屋将自动报警**。
+
+给定二叉树的 `root` 。返回**在不触动警报的情况下** ，小偷能够盗取的最高金额 。
+
+示例 1:
+
+```txt
+        3
+       / \
+      2   3
+       \   \
+        3   1
+
+输入: root = [3,2,3,null,3,null,1]
+输出: 7
+解释: 小偷一晚能够盗取的最高金额 3 + 3 + 1 = 7
+```
+
+示例 2:
+
+```txt
+
+        3
+       / \
+      4   5
+     / \   \
+    1   3   1
+
+输入: root = [3,4,5,1,3,null,1]
+输出: 9
+解释: 小偷一晚能够盗取的最高金额 4 + 5 = 9
+```
+
+提示：
+
+- 树的节点数在 `[1, 104]` 范围内
+- `0 <= Node.val <= 104`
+
+来源：力扣（LeetCode）
+链接：<https://leetcode-cn.com/problems/house-robber-iii>
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+### 题解
+
+这道题将之前的链表改为二叉树，本质上还是偷与不偷二者的选择，因此可以直接递归深度遍历，分别获取偷和不偷的值，求最值
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func rob(root *TreeNode) int {
+    if root == nil {
+        return 0
+    }
+    do := root.Val
+    if root.Left != nil {
+        do += rob(root.Left.Left) + rob(root.Left.Right)
+    }
+    if root.Right != nil {
+        do += rob(root.Right.Left) + rob(root.Right.Right)
+    }
+    notDo := rob(root.Left) + rob(root.Right)
+    return max(do, notDo)
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+```
+
+### 时间优化
+
+由于要计算偷和不偷两种情况，节点会被遍历两边，将会超出时间范围，可以用 hash 存储当前节点的最值，省去重复的时间
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+var memo = make(map[*TreeNode]int)
+
+func rob(root *TreeNode) int {
+    if root == nil {
+        return 0
+    }
+    if v, ok := memo[root]; ok {
+        return v
+    }
+    do := root.Val
+    if root.Left != nil {
+        do += rob(root.Left.Left) + rob(root.Left.Right)
+    }
+    if root.Right != nil {
+        do += rob(root.Right.Left) + rob(root.Right.Right)
+    }
+    notDo := rob(root.Left) + rob(root.Right)
+    res := max(do, notDo)
+    memo[root] = res
+    return res
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+```
+
+### 空间优化
+
+由于偷与不偷只关系相邻的节点，即子节点的值决定父节点的值，所以可以用回溯的方式自底向上依次计算偷与不偷的最值，这样省去了 hash 表的存储空间
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func rob(root *TreeNode) int {
+    do, notDo := dfs(root)
+    return max(do, notDo)
+}
+
+func dfs(root *TreeNode) (do, notDo int) {
+    if root == nil {
+        return
+    }
+    lDo, lNotDo := dfs(root.Left)
+    rDo, rNotDo := dfs(root.Right)
+    // 偷了父节点，左右子节点都不能偷
+    do = root.Val + lNotDo + rNotDo
+    // 不偷父节点，左右子节点可偷可不偷，取各节点最大值
+    notDo = max(lDo, lNotDo) + max(rDo, rNotDo)
+    return
 }
 
 func max(a, b int) int {
